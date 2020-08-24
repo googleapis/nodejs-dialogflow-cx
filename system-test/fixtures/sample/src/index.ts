@@ -28,7 +28,7 @@ import {
   TransitionRouteGroupsClient,
   VersionsClient,
   WebhooksClient,
-} from 'cx';
+} from '@google-cloud/dialogflow-cx';
 
 function main() {
   new AgentsClient();

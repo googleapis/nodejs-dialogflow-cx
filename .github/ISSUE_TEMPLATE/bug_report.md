@@ -26,7 +26,7 @@ If the support paths suggested above still do not result in a resolution, please
   - OS:
   - Node.js version:
   - npm version:
-  - `cx` version:
+  - `@google-cloud/dialogflow-cx` version:
 
 #### Steps to reproduce
 
