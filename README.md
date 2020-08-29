@@ -62,24 +62,67 @@ npm install @google-cloud/dialogflow-cx
  * TODO(developer): Uncomment these variables before running the sample.
  */
 // const projectId = 'my-project';
-// const location = 'us';
-// const agent = 'foo';
+// const location = 'global';
+// const agentId = 'my-agent';
+// const audioFileName = '/path/to/audio.raw';
+// const encoding = 'AUDIO_ENCODING_LINEAR_16';
+// const sampleRateHertz = 16000;
+// const languageCode = 'en'
 
 // Imports the Google Cloud Some API library
-const {IntentsClient} = require('@google-cloud/dialogflow-cx');
-const client = new IntentsClient();
-async function listIntents() {
-  const parent = client.agentPath(projectId, location, agent);
-  console.info(parent);
-  // TODO: implement a quickstart that does something useful:
-  /*
-  const [intents] = await client.listIntents({
-    parent,
-  });
-  console.info(intents);
-  */
+const {SessionsClient} = require('@google-cloud/dialogflow-cx');
+const client = new SessionsClient();
+
+const fs = require('fs');
+const util = require('util');
+
+async function detectIntentAudio() {
+  console.info('gots here');
+  const sessionId = Math.random().toString(36).substring(7);
+  console.info(sessionId);
+  const sessionPath = client.projectLocationAgentSessionPath(
+    projectId,
+    location,
+    agentId,
+    sessionId
+  );
+  console.info(sessionPath);
+
+  // Read the content of the audio file and send it as part of the request.
+  const readFile = util.promisify(fs.readFile);
+  const inputAudio = await readFile(audioFileName);
+
+  const request = {
+    session: sessionPath,
+    queryInput: {
+      audio: {
+        config: {
+          audioEncoding: encoding,
+          sampleRateHertz: sampleRateHertz,
+        },
+        audio: inputAudio,
+      },
+      languageCode,
+    },
+  };
+  const [response] = await client.detectIntent(request);
+  console.log(`User Query: ${response.queryResult.transcript}`);
+  for (const message of response.queryResult.responseMessages) {
+    if (message.text) {
+      console.log(`Agent Response: ${message.text.text}`);
+    }
+  }
+  if (response.queryResult.match.intent) {
+    console.log(
+      `Matched Intent: ${response.queryResult.match.intent.displayName}`
+    );
+  }
+  console.log(
+    `Current Page: ${response.queryResult.currentPage.displayName}`
+  );
 }
-listIntents();
+
+detectIntentAudio();
 
 ```
 
@@ -92,6 +135,10 @@ has instructions for running the samples.
 
 | Sample                      | Source Code                       | Try it |
 | --------------------------- | --------------------------------- | ------ |
+| Detect_intent_audio | [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect_intent_audio.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect_intent_audio.js,samples/README.md) |
+| Detect_intent_streaming | [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect_intent_streaming.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect_intent_streaming.js,samples/README.md) |
+| Detect_intent_text | [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect_intent_text.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect_intent_text.js,samples/README.md) |
+| List-intents | [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/list-intents.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/list-intents.js,samples/README.md) |
 | Quickstart | [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/quickstart.js) | [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/quickstart.js,samples/README.md) |
 
 
