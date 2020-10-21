@@ -27,9 +27,8 @@ const version = require('../../../package.json').version;
 
 /**
  *  A session represents an interaction with a user. You retrieve user input
- *  and pass it to the
- *  {@link google.cloud.dialogflow.cx.v3beta1.Sessions.DetectIntent|DetectIntent}
- *  method to determine user intent and respond.
+ *  and pass it to the {@link google.cloud.dialogflow.cx.v3beta1.Sessions.DetectIntent|DetectIntent} method to determine
+ *  user intent and respond.
  * @class
  * @memberof v3beta1
  */
@@ -386,6 +385,9 @@ export class SessionsClient {
    *   It's up to the API caller to choose an appropriate `Session ID`. It can be
    *   a random number or some type of session identifiers (preferably hashed).
    *   The length of the `Session ID` must not exceed 36 characters.
+   *
+   *   For more information, see the [sessions
+   *   guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).
    * @param {google.cloud.dialogflow.cx.v3beta1.QueryParameters} request.queryParams
    *   The parameters of this query.
    * @param {google.cloud.dialogflow.cx.v3beta1.QueryInput} request.queryInput
@@ -492,6 +494,9 @@ export class SessionsClient {
    *   It's up to the API caller to choose an appropriate `Session ID`. It can be
    *   a random number or some type of session identifiers (preferably hashed).
    *   The length of the `Session ID` must not exceed 36 characters.
+   *
+   *   For more information, see the [sessions
+   *   guide](https://cloud.google.com/dialogflow/cx/docs/concept/session).
    * @param {google.cloud.dialogflow.cx.v3beta1.QueryParameters} request.queryParams
    *   The parameters of this query.
    * @param {google.cloud.dialogflow.cx.v3beta1.QueryInput} request.queryInput
@@ -581,13 +586,9 @@ export class SessionsClient {
     >
   ): void;
   /**
-   * Fulfills a matched intent returned by
-   * {@link google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent|MatchIntent}.
-   * Must be called after
-   * {@link google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent|MatchIntent},
-   * with input from
-   * {@link google.cloud.dialogflow.cx.v3beta1.MatchIntentResponse|MatchIntentResponse}.
-   * Otherwise, the behavior is undefined.
+   * Fulfills a matched intent returned by {@link google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent|MatchIntent}.
+   * Must be called after {@link google.cloud.dialogflow.cx.v3beta1.Sessions.MatchIntent|MatchIntent}, with input from
+   * {@link google.cloud.dialogflow.cx.v3beta1.MatchIntentResponse|MatchIntentResponse}. Otherwise, the behavior is undefined.
    *
    * @param {Object} request
    *   The request object that will be sent.

@@ -725,8 +725,8 @@ export class FlowsClient {
    * @param {google.cloud.dialogflow.cx.v3beta1.Flow} request.flow
    *   Required. The flow to update.
    * @param {google.protobuf.FieldMask} request.updateMask
-   *   Required. The mask to control which fields get updated. If `update_mask` is
-   *   not specified, an error will be returned.
+   *   Required. The mask to control which fields get updated. If `update_mask` is not
+   *   specified, an error will be returned.
    * @param {string} request.languageCode
    *   The language of the following fields in `flow`:
    *

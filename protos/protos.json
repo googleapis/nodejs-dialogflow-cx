@@ -318,6 +318,17 @@
                             }
                           }
                         },
+                        "ImportAgentResponse": {
+                          "fields": {
+                            "agent": {
+                              "type": "string",
+                              "id": 1,
+                              "options": {
+                                "(google.api.resource_reference).type": "dialogflow.googleapis.com/Agent"
+                              }
+                            }
+                          }
+                        },
                         "Flows": {
                           "options": {
                             "(google.api.default_host)": "dialogflow.googleapis.com",
@@ -392,13 +403,6 @@
                             "modelTrainingMode": {
                               "type": "ModelTrainingMode",
                               "id": 4
-                            },
-                            "enableSpellCorrection": {
-                              "type": "bool",
-                              "id": 5,
-                              "options": {
-                                "deprecated": true
-                              }
                             }
                           },
                           "nested": {
@@ -720,6 +724,10 @@
                                 "defaultValue": {
                                   "type": "google.protobuf.Value",
                                   "id": 9
+                                },
+                                "redact": {
+                                  "type": "bool",
+                                  "id": 11
                                 }
                               },
                               "nested": {
@@ -1144,11 +1152,36 @@
                                 "ssml": {
                                   "type": "string",
                                   "id": 2
+                                },
+                                "allowPlaybackInterruption": {
+                                  "type": "bool",
+                                  "id": 3,
+                                  "options": {
+                                    "(google.api.field_behavior)": "OUTPUT_ONLY"
+                                  }
                                 }
                               }
                             },
                             "EndInteraction": {
                               "fields": {}
+                            },
+                            "PlayAudio": {
+                              "fields": {
+                                "audioUri": {
+                                  "type": "string",
+                                  "id": 1,
+                                  "options": {
+                                    "(google.api.field_behavior)": "REQUIRED"
+                                  }
+                                },
+                                "allowPlaybackInterruption": {
+                                  "type": "bool",
+                                  "id": 2,
+                                  "options": {
+                                    "(google.api.field_behavior)": "OUTPUT_ONLY"
+                                  }
+                                }
+                              }
                             },
                             "MixedAudio": {
                               "fields": {
@@ -1184,24 +1217,6 @@
                                         "(google.api.field_behavior)": "OUTPUT_ONLY"
                                       }
                                     }
-                                  }
-                                }
-                              }
-                            },
-                            "PlayAudio": {
-                              "fields": {
-                                "audioUri": {
-                                  "type": "string",
-                                  "id": 1,
-                                  "options": {
-                                    "(google.api.field_behavior)": "REQUIRED"
-                                  }
-                                },
-                                "allowPlaybackInterruption": {
-                                  "type": "bool",
-                                  "id": 2,
-                                  "options": {
-                                    "(google.api.field_behavior)": "OUTPUT_ONLY"
                                   }
                                 }
                               }
@@ -1994,6 +2009,10 @@
                                 "isList": {
                                   "type": "bool",
                                   "id": 3
+                                },
+                                "redact": {
+                                  "type": "bool",
+                                  "id": 4
                                 }
                               }
                             }
@@ -2318,6 +2337,10 @@
                             "parameters": {
                               "type": "google.protobuf.Struct",
                               "id": 5
+                            },
+                            "analyzeQueryTextSentiment": {
+                              "type": "bool",
+                              "id": 8
                             }
                           }
                         },
@@ -2327,7 +2350,8 @@
                               "oneof": [
                                 "text",
                                 "intent",
-                                "audio"
+                                "audio",
+                                "event"
                               ]
                             }
                           },
@@ -2343,6 +2367,10 @@
                             "audio": {
                               "type": "AudioInput",
                               "id": 5
+                            },
+                            "event": {
+                              "type": "EventInput",
+                              "id": 6
                             },
                             "languageCode": {
                               "type": "string",
@@ -2429,6 +2457,10 @@
                             "diagnosticInfo": {
                               "type": "google.protobuf.Struct",
                               "id": 10
+                            },
+                            "sentimentAnalysisResult": {
+                              "type": "SentimentAnalysisResult",
+                              "id": 17
                             }
                           }
                         },
@@ -2467,6 +2499,14 @@
                             "audio": {
                               "type": "bytes",
                               "id": 2
+                            }
+                          }
+                        },
+                        "EventInput": {
+                          "fields": {
+                            "event": {
+                              "type": "string",
+                              "id": 1
                             }
                           }
                         },
@@ -2535,7 +2575,8 @@
                               "oneof": [
                                 "text",
                                 "triggerIntent",
-                                "transcript"
+                                "transcript",
+                                "triggerEvent"
                               ]
                             }
                           },
@@ -2551,6 +2592,10 @@
                             "transcript": {
                               "type": "string",
                               "id": 3
+                            },
+                            "triggerEvent": {
+                              "type": "string",
+                              "id": 6
                             },
                             "matches": {
                               "rule": "repeated",
@@ -2596,6 +2641,18 @@
                             "outputAudioConfig": {
                               "type": "OutputAudioConfig",
                               "id": 4
+                            }
+                          }
+                        },
+                        "SentimentAnalysisResult": {
+                          "fields": {
+                            "score": {
+                              "type": "float",
+                              "id": 1
+                            },
+                            "magnitude": {
+                              "type": "float",
+                              "id": 2
                             }
                           }
                         },

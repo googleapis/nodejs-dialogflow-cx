@@ -35,8 +35,7 @@ import * as gapicConfig from './session_entity_types_client_config.json';
 const version = require('../../../package.json').version;
 
 /**
- *  Service for managing
- *  {@link google.cloud.dialogflow.cx.v3beta1.SessionEntityType|SessionEntityTypes}.
+ *  Service for managing {@link google.cloud.dialogflow.cx.v3beta1.SessionEntityType|SessionEntityTypes}.
  * @class
  * @memberof v3beta1
  */
