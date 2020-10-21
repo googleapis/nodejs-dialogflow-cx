@@ -791,7 +791,7 @@ export class AgentsClient {
     >
   ): void;
   /**
-   * Exports the specified agent to a ZIP file.
+   * Exports the specified agent to a binary file.
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -931,10 +931,10 @@ export class AgentsClient {
     >
   ): void;
   /**
-   * Restores the specified agent from a ZIP file.
+   * Restores the specified agent from a binary file.
    *
-   * Note that all existing intents, intent routes, entity types, pages and
-   * webhooks in the agent will be deleted.
+   * Replaces the current agent with a new one. Note that all existing resources
+   * in agent (e.g. intents, entity types, flows) will be removed.
    *
    * @param {Object} request
    *   The request object that will be sent.
