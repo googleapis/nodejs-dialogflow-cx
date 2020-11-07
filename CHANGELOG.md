@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v1.1.0...v1.1.1) (2020-11-07)
+
+
+### Bug Fixes
+
+* do not modify options object, use defaultScopes ([#27](https://www.github.com/googleapis/nodejs-dialogflow-cx/issues/27)) ([a0124c7](https://www.github.com/googleapis/nodejs-dialogflow-cx/commit/a0124c774e59d0a2873445f6fa7697a192739ebf))
+
 ## [1.1.0](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v1.0.0...v1.1.0) (2020-10-14)
 
 
