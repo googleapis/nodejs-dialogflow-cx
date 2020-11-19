@@ -4,22 +4,22 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/nodejs-dialogflow-cx.git",
-        "sha": "12708256e6ce36e24bc0fbb9f816cf4102771a0e"
+        "sha": "243c27bc59f0dce50cf6472c6a487e7bf7dcd3f2"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "1a97126c6ced4e6179ade331a5372ec06e24f727",
-        "internalRef": "328383688"
+        "sha": "836f0eaf5f21f300f63ac635e5ef263d183e0cdd",
+        "internalRef": "342188199"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "8cf6d2834ad14318e64429c3b94f6443ae83daf9"
+        "sha": "1f1148d3c7a7a52f0c98077f976bd9b3c948ee2b"
       }
     }
   ],
@@ -75,10 +75,12 @@
     ".kokoro/test.bat",
     ".kokoro/test.sh",
     ".kokoro/trampoline.sh",
+    ".kokoro/trampoline_v2.sh",
     ".mocharc.js",
     ".nycrc",
     ".prettierignore",
     ".prettierrc.js",
+    ".trampolinerc",
     "CODE_OF_CONDUCT.md",
     "CONTRIBUTING.md",
     "LICENSE",
@@ -91,9 +93,7 @@
     "protos/google/cloud/dialogflow/cx/v3beta1/environment.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/flow.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/fulfillment.proto",
-    "protos/google/cloud/dialogflow/cx/v3beta1/gcs.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/intent.proto",
-    "protos/google/cloud/dialogflow/cx/v3beta1/ivr.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/page.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/response_message.proto",
     "protos/google/cloud/dialogflow/cx/v3beta1/session.proto",

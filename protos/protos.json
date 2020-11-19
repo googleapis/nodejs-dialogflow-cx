@@ -541,13 +541,6 @@
                             "modelTrainingMode": {
                               "type": "ModelTrainingMode",
                               "id": 4
-                            },
-                            "enableSpellCorrection": {
-                              "type": "bool",
-                              "id": 5,
-                              "options": {
-                                "deprecated": true
-                              }
                             }
                           },
                           "nested": {
@@ -921,6 +914,10 @@
                                 "defaultValue": {
                                   "type": "google.protobuf.Value",
                                   "id": 9
+                                },
+                                "redact": {
+                                  "type": "bool",
+                                  "id": 11
                                 }
                               },
                               "nested": {
@@ -1345,11 +1342,15 @@
                                 "ssml": {
                                   "type": "string",
                                   "id": 2
+                                },
+                                "allowPlaybackInterruption": {
+                                  "type": "bool",
+                                  "id": 3,
+                                  "options": {
+                                    "(google.api.field_behavior)": "OUTPUT_ONLY"
+                                  }
                                 }
                               }
-                            },
-                            "EndInteraction": {
-                              "fields": {}
                             },
                             "MixedAudio": {
                               "fields": {
@@ -1388,6 +1389,9 @@
                                   }
                                 }
                               }
+                            },
+                            "EndInteraction": {
+                              "fields": {}
                             },
                             "PlayAudio": {
                               "fields": {
@@ -2313,6 +2317,21 @@
                             "isFallback": {
                               "type": "bool",
                               "id": 6
+                            },
+                            "labels": {
+                              "keyType": "string",
+                              "type": "string",
+                              "id": 7,
+                              "options": {
+                                "(google.api.field_behavior)": "OPTIONAL"
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "id": 8,
+                              "options": {
+                                "(google.api.field_behavior)": "OPTIONAL"
+                              }
                             }
                           },
                           "nested": {
@@ -2373,6 +2392,10 @@
                                 "isList": {
                                   "type": "bool",
                                   "id": 3
+                                },
+                                "redact": {
+                                  "type": "bool",
+                                  "id": 4
                                 }
                               }
                             }
@@ -2733,6 +2756,10 @@
                             "parameters": {
                               "type": "google.protobuf.Struct",
                               "id": 5
+                            },
+                            "analyzeQueryTextSentiment": {
+                              "type": "bool",
+                              "id": 8
                             }
                           }
                         },
@@ -2742,7 +2769,9 @@
                               "oneof": [
                                 "text",
                                 "intent",
-                                "audio"
+                                "audio",
+                                "event",
+                                "dtmf"
                               ]
                             }
                           },
@@ -2758,6 +2787,14 @@
                             "audio": {
                               "type": "AudioInput",
                               "id": 5
+                            },
+                            "event": {
+                              "type": "EventInput",
+                              "id": 6
+                            },
+                            "dtmf": {
+                              "type": "DtmfInput",
+                              "id": 7
                             },
                             "languageCode": {
                               "type": "string",
@@ -2844,6 +2881,10 @@
                             "diagnosticInfo": {
                               "type": "google.protobuf.Struct",
                               "id": 10
+                            },
+                            "sentimentAnalysisResult": {
+                              "type": "SentimentAnalysisResult",
+                              "id": 17
                             }
                           }
                         },
@@ -2885,11 +2926,35 @@
                             }
                           }
                         },
+                        "EventInput": {
+                          "fields": {
+                            "event": {
+                              "type": "string",
+                              "id": 1
+                            }
+                          }
+                        },
+                        "DtmfInput": {
+                          "fields": {
+                            "digits": {
+                              "type": "string",
+                              "id": 1
+                            },
+                            "finishDigit": {
+                              "type": "string",
+                              "id": 2
+                            }
+                          }
+                        },
                         "Match": {
                           "fields": {
                             "intent": {
                               "type": "Intent",
                               "id": 1
+                            },
+                            "event": {
+                              "type": "string",
+                              "id": 6
                             },
                             "parameters": {
                               "type": "google.protobuf.Struct",
@@ -2916,7 +2981,8 @@
                                 "DIRECT_INTENT": 2,
                                 "PARAMETER_FILLING": 3,
                                 "NO_MATCH": 4,
-                                "NO_INPUT": 5
+                                "NO_INPUT": 5,
+                                "EVENT": 6
                               }
                             }
                           }
@@ -2950,7 +3016,8 @@
                               "oneof": [
                                 "text",
                                 "triggerIntent",
-                                "transcript"
+                                "transcript",
+                                "triggerEvent"
                               ]
                             }
                           },
@@ -2966,6 +3033,10 @@
                             "transcript": {
                               "type": "string",
                               "id": 3
+                            },
+                            "triggerEvent": {
+                              "type": "string",
+                              "id": 6
                             },
                             "matches": {
                               "rule": "repeated",
@@ -3011,6 +3082,18 @@
                             "outputAudioConfig": {
                               "type": "OutputAudioConfig",
                               "id": 4
+                            }
+                          }
+                        },
+                        "SentimentAnalysisResult": {
+                          "fields": {
+                            "score": {
+                              "type": "float",
+                              "id": 1
+                            },
+                            "magnitude": {
+                              "type": "float",
+                              "id": 2
                             }
                           }
                         },
