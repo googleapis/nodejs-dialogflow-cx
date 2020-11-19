@@ -31,6 +31,11 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
+/**
+ * Client JSON configuration object, loaded from
+ * `src/v3beta1/agents_client_config.json`.
+ * This file defines retry strategy and timeouts for all API methods in this library.
+ */
 import * as gapicConfig from './agents_client_config.json';
 import {operationsProtos} from 'google-gax';
 const version = require('../../../package.json').version;
@@ -85,9 +90,9 @@ export class AgentsClient {
    *     your project ID will be detected automatically.
    * @param {string} [options.apiEndpoint] - The domain name of the
    *     API remote host.
-   * @param {gax.ClientConfig} [options.clientConfig] - client configuration override.
-   *     Follows the structure of `agents_client_config.json`.
-   * @param {boolean} fallback - Use HTTP fallback mode.
+   * @param {gax.ClientConfig} [options.clientConfig] - Client configuration override.
+   *     Follows the structure of {@link gapicConfig}.
+   * @param {boolean} [options.fallback] - Use HTTP fallback mode.
    *     In fallback mode, a special browser-compatible transport implementation is used
    *     instead of gRPC transport. In browser context (if the `window` object is defined)
    *     the fallback mode is enabled automatically; set `options.fallback` to `false`
@@ -100,6 +105,7 @@ export class AgentsClient {
       opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
+    // eslint-disable-next-line no-undef
     const fallback =
       opts?.fallback ??
       (typeof window !== 'undefined' && typeof window.fetch !== 'undefined');
@@ -398,7 +404,7 @@ export class AgentsClient {
   // -------------------
   getAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
@@ -408,7 +414,7 @@ export class AgentsClient {
   >;
   getAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
       | protos.google.cloud.dialogflow.cx.v3beta1.IGetAgentRequest
@@ -448,7 +454,7 @@ export class AgentsClient {
   getAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
           | protos.google.cloud.dialogflow.cx.v3beta1.IGetAgentRequest
@@ -471,12 +477,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -491,7 +497,7 @@ export class AgentsClient {
   }
   createAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
@@ -501,7 +507,7 @@ export class AgentsClient {
   >;
   createAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
       | protos.google.cloud.dialogflow.cx.v3beta1.ICreateAgentRequest
@@ -543,7 +549,7 @@ export class AgentsClient {
   createAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
           | protos.google.cloud.dialogflow.cx.v3beta1.ICreateAgentRequest
@@ -566,12 +572,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -586,7 +592,7 @@ export class AgentsClient {
   }
   updateAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
@@ -596,7 +602,7 @@ export class AgentsClient {
   >;
   updateAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
       | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateAgentRequest
@@ -638,7 +644,7 @@ export class AgentsClient {
   updateAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IAgent,
           | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateAgentRequest
@@ -661,12 +667,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -681,7 +687,7 @@ export class AgentsClient {
   }
   deleteAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.protobuf.IEmpty,
@@ -691,7 +697,7 @@ export class AgentsClient {
   >;
   deleteAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.protobuf.IEmpty,
       | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteAgentRequest
@@ -731,7 +737,7 @@ export class AgentsClient {
   deleteAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.protobuf.IEmpty,
           | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteAgentRequest
@@ -754,12 +760,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -775,7 +781,7 @@ export class AgentsClient {
 
   exportAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IExportAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       LROperation<
@@ -788,7 +794,7 @@ export class AgentsClient {
   >;
   exportAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IExportAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       LROperation<
         protos.google.cloud.dialogflow.cx.v3beta1.IExportAgentResponse,
@@ -838,7 +844,7 @@ export class AgentsClient {
   exportAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IExportAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           LROperation<
             protos.google.cloud.dialogflow.cx.v3beta1.IExportAgentResponse,
@@ -866,12 +872,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -923,7 +929,7 @@ export class AgentsClient {
   }
   restoreAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IRestoreAgentRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       LROperation<
@@ -936,7 +942,7 @@ export class AgentsClient {
   >;
   restoreAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IRestoreAgentRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       LROperation<
         protos.google.protobuf.IEmpty,
@@ -990,7 +996,7 @@ export class AgentsClient {
   restoreAgent(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IRestoreAgentRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           LROperation<
             protos.google.protobuf.IEmpty,
@@ -1018,12 +1024,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -1072,7 +1078,7 @@ export class AgentsClient {
   }
   listAgents(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IAgent[],
@@ -1082,7 +1088,7 @@ export class AgentsClient {
   >;
   listAgents(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: PaginationCallback<
       protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
       | protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsResponse
@@ -1130,7 +1136,7 @@ export class AgentsClient {
   listAgents(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | PaginationCallback<
           protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
           | protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsResponse
@@ -1153,12 +1159,12 @@ export class AgentsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -1198,7 +1204,7 @@ export class AgentsClient {
    */
   listAgentsStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Transform {
     request = request || {};
     options = options || {};
@@ -1250,7 +1256,7 @@ export class AgentsClient {
    */
   listAgentsAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListAgentsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IAgent> {
     request = request || {};
     options = options || {};

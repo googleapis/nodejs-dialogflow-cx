@@ -30,6 +30,11 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
+/**
+ * Client JSON configuration object, loaded from
+ * `src/v3beta1/transition_route_groups_client_config.json`.
+ * This file defines retry strategy and timeouts for all API methods in this library.
+ */
 import * as gapicConfig from './transition_route_groups_client_config.json';
 
 const version = require('../../../package.json').version;
@@ -83,9 +88,9 @@ export class TransitionRouteGroupsClient {
    *     your project ID will be detected automatically.
    * @param {string} [options.apiEndpoint] - The domain name of the
    *     API remote host.
-   * @param {gax.ClientConfig} [options.clientConfig] - client configuration override.
-   *     Follows the structure of `transition_route_groups_client_config.json`.
-   * @param {boolean} fallback - Use HTTP fallback mode.
+   * @param {gax.ClientConfig} [options.clientConfig] - Client configuration override.
+   *     Follows the structure of {@link gapicConfig}.
+   * @param {boolean} [options.fallback] - Use HTTP fallback mode.
    *     In fallback mode, a special browser-compatible transport implementation is used
    *     instead of gRPC transport. In browser context (if the `window` object is defined)
    *     the fallback mode is enabled automatically; set `options.fallback` to `false`
@@ -99,6 +104,7 @@ export class TransitionRouteGroupsClient {
       opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
+    // eslint-disable-next-line no-undef
     const fallback =
       opts?.fallback ??
       (typeof window !== 'undefined' && typeof window.fetch !== 'undefined');
@@ -351,7 +357,7 @@ export class TransitionRouteGroupsClient {
   // -------------------
   getTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetTransitionRouteGroupRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
@@ -364,7 +370,7 @@ export class TransitionRouteGroupsClient {
   >;
   getTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetTransitionRouteGroupRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
       | protos.google.cloud.dialogflow.cx.v3beta1.IGetTransitionRouteGroupRequest
@@ -415,7 +421,7 @@ export class TransitionRouteGroupsClient {
   getTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetTransitionRouteGroupRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
           | protos.google.cloud.dialogflow.cx.v3beta1.IGetTransitionRouteGroupRequest
@@ -441,12 +447,12 @@ export class TransitionRouteGroupsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -465,7 +471,7 @@ export class TransitionRouteGroupsClient {
   }
   createTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateTransitionRouteGroupRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
@@ -478,7 +484,7 @@ export class TransitionRouteGroupsClient {
   >;
   createTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateTransitionRouteGroupRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
       | protos.google.cloud.dialogflow.cx.v3beta1.ICreateTransitionRouteGroupRequest
@@ -531,7 +537,7 @@ export class TransitionRouteGroupsClient {
   createTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateTransitionRouteGroupRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
           | protos.google.cloud.dialogflow.cx.v3beta1.ICreateTransitionRouteGroupRequest
@@ -557,12 +563,12 @@ export class TransitionRouteGroupsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -581,7 +587,7 @@ export class TransitionRouteGroupsClient {
   }
   updateTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateTransitionRouteGroupRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
@@ -594,7 +600,7 @@ export class TransitionRouteGroupsClient {
   >;
   updateTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateTransitionRouteGroupRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
       | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateTransitionRouteGroupRequest
@@ -645,7 +651,7 @@ export class TransitionRouteGroupsClient {
   updateTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateTransitionRouteGroupRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup,
           | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateTransitionRouteGroupRequest
@@ -671,12 +677,12 @@ export class TransitionRouteGroupsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -695,7 +701,7 @@ export class TransitionRouteGroupsClient {
   }
   deleteTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteTransitionRouteGroupRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.protobuf.IEmpty,
@@ -708,7 +714,7 @@ export class TransitionRouteGroupsClient {
   >;
   deleteTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteTransitionRouteGroupRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.protobuf.IEmpty,
       | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteTransitionRouteGroupRequest
@@ -757,7 +763,7 @@ export class TransitionRouteGroupsClient {
   deleteTransitionRouteGroup(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteTransitionRouteGroupRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.protobuf.IEmpty,
           | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteTransitionRouteGroupRequest
@@ -783,12 +789,12 @@ export class TransitionRouteGroupsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -808,7 +814,7 @@ export class TransitionRouteGroupsClient {
 
   listTransitionRouteGroups(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup[],
@@ -818,7 +824,7 @@ export class TransitionRouteGroupsClient {
   >;
   listTransitionRouteGroups(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: PaginationCallback<
       protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
       | protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsResponse
@@ -877,7 +883,7 @@ export class TransitionRouteGroupsClient {
   listTransitionRouteGroups(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | PaginationCallback<
           protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
           | protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsResponse
@@ -900,12 +906,12 @@ export class TransitionRouteGroupsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -960,7 +966,7 @@ export class TransitionRouteGroupsClient {
    */
   listTransitionRouteGroupsStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Transform {
     request = request || {};
     options = options || {};
@@ -1023,7 +1029,7 @@ export class TransitionRouteGroupsClient {
    */
   listTransitionRouteGroupsAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListTransitionRouteGroupsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): AsyncIterable<
     protos.google.cloud.dialogflow.cx.v3beta1.ITransitionRouteGroup
   > {

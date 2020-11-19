@@ -31,6 +31,11 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
+/**
+ * Client JSON configuration object, loaded from
+ * `src/v3beta1/flows_client_config.json`.
+ * This file defines retry strategy and timeouts for all API methods in this library.
+ */
 import * as gapicConfig from './flows_client_config.json';
 import {operationsProtos} from 'google-gax';
 const version = require('../../../package.json').version;
@@ -85,9 +90,9 @@ export class FlowsClient {
    *     your project ID will be detected automatically.
    * @param {string} [options.apiEndpoint] - The domain name of the
    *     API remote host.
-   * @param {gax.ClientConfig} [options.clientConfig] - client configuration override.
-   *     Follows the structure of `flows_client_config.json`.
-   * @param {boolean} fallback - Use HTTP fallback mode.
+   * @param {gax.ClientConfig} [options.clientConfig] - Client configuration override.
+   *     Follows the structure of {@link gapicConfig}.
+   * @param {boolean} [options.fallback] - Use HTTP fallback mode.
    *     In fallback mode, a special browser-compatible transport implementation is used
    *     instead of gRPC transport. In browser context (if the `window` object is defined)
    *     the fallback mode is enabled automatically; set `options.fallback` to `false`
@@ -100,6 +105,7 @@ export class FlowsClient {
       opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
+    // eslint-disable-next-line no-undef
     const fallback =
       opts?.fallback ??
       (typeof window !== 'undefined' && typeof window.fetch !== 'undefined');
@@ -386,7 +392,7 @@ export class FlowsClient {
   // -------------------
   createFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateFlowRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
@@ -396,7 +402,7 @@ export class FlowsClient {
   >;
   createFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateFlowRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
       | protos.google.cloud.dialogflow.cx.v3beta1.ICreateFlowRequest
@@ -449,7 +455,7 @@ export class FlowsClient {
   createFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateFlowRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
           | protos.google.cloud.dialogflow.cx.v3beta1.ICreateFlowRequest
@@ -472,12 +478,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -492,7 +498,7 @@ export class FlowsClient {
   }
   deleteFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteFlowRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.protobuf.IEmpty,
@@ -502,7 +508,7 @@ export class FlowsClient {
   >;
   deleteFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteFlowRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.protobuf.IEmpty,
       | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteFlowRequest
@@ -554,7 +560,7 @@ export class FlowsClient {
   deleteFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteFlowRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.protobuf.IEmpty,
           | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteFlowRequest
@@ -577,12 +583,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -597,7 +603,7 @@ export class FlowsClient {
   }
   getFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetFlowRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
@@ -607,7 +613,7 @@ export class FlowsClient {
   >;
   getFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetFlowRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
       | protos.google.cloud.dialogflow.cx.v3beta1.IGetFlowRequest
@@ -660,7 +666,7 @@ export class FlowsClient {
   getFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetFlowRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
           | protos.google.cloud.dialogflow.cx.v3beta1.IGetFlowRequest
@@ -683,12 +689,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -703,7 +709,7 @@ export class FlowsClient {
   }
   updateFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateFlowRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
@@ -713,7 +719,7 @@ export class FlowsClient {
   >;
   updateFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateFlowRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
       | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateFlowRequest
@@ -766,7 +772,7 @@ export class FlowsClient {
   updateFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateFlowRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IFlow,
           | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateFlowRequest
@@ -789,12 +795,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -810,7 +816,7 @@ export class FlowsClient {
 
   trainFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ITrainFlowRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       LROperation<
@@ -823,7 +829,7 @@ export class FlowsClient {
   >;
   trainFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ITrainFlowRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       LROperation<
         protos.google.protobuf.IEmpty,
@@ -870,7 +876,7 @@ export class FlowsClient {
   trainFlow(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ITrainFlowRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           LROperation<
             protos.google.protobuf.IEmpty,
@@ -898,12 +904,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -952,7 +958,7 @@ export class FlowsClient {
   }
   listFlows(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IFlow[],
@@ -962,7 +968,7 @@ export class FlowsClient {
   >;
   listFlows(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: PaginationCallback<
       protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
       | protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsResponse
@@ -1022,7 +1028,7 @@ export class FlowsClient {
   listFlows(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | PaginationCallback<
           protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
           | protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsResponse
@@ -1045,12 +1051,12 @@ export class FlowsClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -1102,7 +1108,7 @@ export class FlowsClient {
    */
   listFlowsStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Transform {
     request = request || {};
     options = options || {};
@@ -1166,7 +1172,7 @@ export class FlowsClient {
    */
   listFlowsAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListFlowsRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IFlow> {
     request = request || {};
     options = options || {};

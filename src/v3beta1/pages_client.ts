@@ -30,6 +30,11 @@ import * as path from 'path';
 import {Transform} from 'stream';
 import {RequestType} from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
+/**
+ * Client JSON configuration object, loaded from
+ * `src/v3beta1/pages_client_config.json`.
+ * This file defines retry strategy and timeouts for all API methods in this library.
+ */
 import * as gapicConfig from './pages_client_config.json';
 
 const version = require('../../../package.json').version;
@@ -83,9 +88,9 @@ export class PagesClient {
    *     your project ID will be detected automatically.
    * @param {string} [options.apiEndpoint] - The domain name of the
    *     API remote host.
-   * @param {gax.ClientConfig} [options.clientConfig] - client configuration override.
-   *     Follows the structure of `pages_client_config.json`.
-   * @param {boolean} fallback - Use HTTP fallback mode.
+   * @param {gax.ClientConfig} [options.clientConfig] - Client configuration override.
+   *     Follows the structure of {@link gapicConfig}.
+   * @param {boolean} [options.fallback] - Use HTTP fallback mode.
    *     In fallback mode, a special browser-compatible transport implementation is used
    *     instead of gRPC transport. In browser context (if the `window` object is defined)
    *     the fallback mode is enabled automatically; set `options.fallback` to `false`
@@ -98,6 +103,7 @@ export class PagesClient {
       opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
+    // eslint-disable-next-line no-undef
     const fallback =
       opts?.fallback ??
       (typeof window !== 'undefined' && typeof window.fetch !== 'undefined');
@@ -349,7 +355,7 @@ export class PagesClient {
   // -------------------
   getPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetPageRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
@@ -359,7 +365,7 @@ export class PagesClient {
   >;
   getPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetPageRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
       | protos.google.cloud.dialogflow.cx.v3beta1.IGetPageRequest
@@ -416,7 +422,7 @@ export class PagesClient {
   getPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IGetPageRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IPage,
           | protos.google.cloud.dialogflow.cx.v3beta1.IGetPageRequest
@@ -439,12 +445,12 @@ export class PagesClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -459,7 +465,7 @@ export class PagesClient {
   }
   createPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreatePageRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
@@ -469,7 +475,7 @@ export class PagesClient {
   >;
   createPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreatePageRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
       | protos.google.cloud.dialogflow.cx.v3beta1.ICreatePageRequest
@@ -527,7 +533,7 @@ export class PagesClient {
   createPage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.ICreatePageRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IPage,
           | protos.google.cloud.dialogflow.cx.v3beta1.ICreatePageRequest
@@ -550,12 +556,12 @@ export class PagesClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -570,7 +576,7 @@ export class PagesClient {
   }
   updatePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdatePageRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
@@ -580,7 +586,7 @@ export class PagesClient {
   >;
   updatePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdatePageRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.cloud.dialogflow.cx.v3beta1.IPage,
       | protos.google.cloud.dialogflow.cx.v3beta1.IUpdatePageRequest
@@ -637,7 +643,7 @@ export class PagesClient {
   updatePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdatePageRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IPage,
           | protos.google.cloud.dialogflow.cx.v3beta1.IUpdatePageRequest
@@ -660,12 +666,12 @@ export class PagesClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -680,7 +686,7 @@ export class PagesClient {
   }
   deletePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeletePageRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.protobuf.IEmpty,
@@ -690,7 +696,7 @@ export class PagesClient {
   >;
   deletePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeletePageRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: Callback<
       protos.google.protobuf.IEmpty,
       | protos.google.cloud.dialogflow.cx.v3beta1.IDeletePageRequest
@@ -742,7 +748,7 @@ export class PagesClient {
   deletePage(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IDeletePageRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | Callback<
           protos.google.protobuf.IEmpty,
           | protos.google.cloud.dialogflow.cx.v3beta1.IDeletePageRequest
@@ -765,12 +771,12 @@ export class PagesClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -786,7 +792,7 @@ export class PagesClient {
 
   listPages(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Promise<
     [
       protos.google.cloud.dialogflow.cx.v3beta1.IPage[],
@@ -796,7 +802,7 @@ export class PagesClient {
   >;
   listPages(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
-    options: gax.CallOptions,
+    options: CallOptions,
     callback: PaginationCallback<
       protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
       | protos.google.cloud.dialogflow.cx.v3beta1.IListPagesResponse
@@ -861,7 +867,7 @@ export class PagesClient {
   listPages(
     request: protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
     optionsOrCallback?:
-      | gax.CallOptions
+      | CallOptions
       | PaginationCallback<
           protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
           | protos.google.cloud.dialogflow.cx.v3beta1.IListPagesResponse
@@ -884,12 +890,12 @@ export class PagesClient {
     ]
   > | void {
     request = request || {};
-    let options: gax.CallOptions;
+    let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
     } else {
-      options = optionsOrCallback as gax.CallOptions;
+      options = optionsOrCallback as CallOptions;
     }
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -946,7 +952,7 @@ export class PagesClient {
    */
   listPagesStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): Transform {
     request = request || {};
     options = options || {};
@@ -1015,7 +1021,7 @@ export class PagesClient {
    */
   listPagesAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListPagesRequest,
-    options?: gax.CallOptions
+    options?: CallOptions
   ): AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IPage> {
     request = request || {};
     options = options || {};
