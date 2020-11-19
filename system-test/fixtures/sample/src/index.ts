@@ -29,7 +29,7 @@ import {
   TransitionRouteGroupsClient,
   VersionsClient,
   WebhooksClient,
-} from 'cx';
+} from '@google-cloud/dialogflow-cx';
 
 // check that the client class type name can be used
 function doStuffWithAgentsClient(client: AgentsClient) {

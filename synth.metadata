@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/nodejs-dialogflow-cx.git",
-        "sha": "9518aea20f565020dab7968494dac11adb500251"
+        "sha": "952834e548ea067b2c8c3f55895da067d6de6efb"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "8ff09481bac31dc08ddba403ac6337fb304b60f6",
-        "internalRef": "343290645"
+        "sha": "e346666243b3ba5248fe6a5d2ec193a40f35087f",
+        "internalRef": "343319445"
       }
     }
   ],
@@ -89,7 +89,6 @@
     "README.md",
     "api-extractor.json",
     "linkinator.config.json",
-    "package-lock.json.2425639963",
     "protos/google/cloud/dialogflow/cx/v3/agent.proto",
     "protos/google/cloud/dialogflow/cx/v3/audio_config.proto",
     "protos/google/cloud/dialogflow/cx/v3/entity_type.proto",
@@ -124,7 +123,7 @@
     "protos/protos.json",
     "renovate.json",
     "samples/README.md",
-    "samples/package-lock.json.2472842040",
+    "samples/package-lock.json.997938137",
     "src/index.ts",
     "src/v3/agents_client.ts",
     "src/v3/agents_client_config.json",

@@ -17,7 +17,7 @@
 // ** All changes to this file may be overwritten. **
 
 /* eslint-disable node/no-missing-require, no-unused-vars */
-const cx = require('cx');
+const cx = require('@google-cloud/dialogflow-cx');
 
 function main() {
   const agentsClient = new cx.AgentsClient();
