@@ -41,18 +41,18 @@ async function main(
 
   const fs = require('fs');
   const util = require('util');
+  // Assumes uuid module has been installed from npm,
+  // npm i uuid:
+  const {v4} = require('uuid');
 
   async function detectIntentAudio() {
-    console.info('gots here');
-    const sessionId = Math.random().toString(36).substring(7);
-    console.info(sessionId);
+    const sessionId = v4();
     const sessionPath = client.projectLocationAgentSessionPath(
       projectId,
       location,
       agentId,
       sessionId
     );
-    console.info(sessionPath);
 
     // Read the content of the audio file and send it as part of the request.
     const readFile = util.promisify(fs.readFile);
