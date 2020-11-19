@@ -16,7 +16,20 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-import {AgentsClient, EntityTypesClient, EnvironmentsClient, FlowsClient, IntentsClient, PagesClient, SecuritySettingsServiceClient, SessionEntityTypesClient, SessionsClient, TransitionRouteGroupsClient, VersionsClient, WebhooksClient} from 'cx';
+import {
+  AgentsClient,
+  EntityTypesClient,
+  EnvironmentsClient,
+  FlowsClient,
+  IntentsClient,
+  PagesClient,
+  SecuritySettingsServiceClient,
+  SessionEntityTypesClient,
+  SessionsClient,
+  TransitionRouteGroupsClient,
+  VersionsClient,
+  WebhooksClient,
+} from 'cx';
 
 // check that the client class type name can be used
 function doStuffWithAgentsClient(client: AgentsClient) {
@@ -37,7 +50,9 @@ function doStuffWithIntentsClient(client: IntentsClient) {
 function doStuffWithPagesClient(client: PagesClient) {
   client.close();
 }
-function doStuffWithSecuritySettingsServiceClient(client: SecuritySettingsServiceClient) {
+function doStuffWithSecuritySettingsServiceClient(
+  client: SecuritySettingsServiceClient
+) {
   client.close();
 }
 function doStuffWithSessionEntityTypesClient(client: SessionEntityTypesClient) {
@@ -46,7 +61,9 @@ function doStuffWithSessionEntityTypesClient(client: SessionEntityTypesClient) {
 function doStuffWithSessionsClient(client: SessionsClient) {
   client.close();
 }
-function doStuffWithTransitionRouteGroupsClient(client: TransitionRouteGroupsClient) {
+function doStuffWithTransitionRouteGroupsClient(
+  client: TransitionRouteGroupsClient
+) {
   client.close();
 }
 function doStuffWithVersionsClient(client: VersionsClient) {
