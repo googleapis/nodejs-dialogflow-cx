@@ -16,19 +16,7 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-import {
-  AgentsClient,
-  EntityTypesClient,
-  EnvironmentsClient,
-  FlowsClient,
-  IntentsClient,
-  PagesClient,
-  SessionEntityTypesClient,
-  SessionsClient,
-  TransitionRouteGroupsClient,
-  VersionsClient,
-  WebhooksClient,
-} from '@google-cloud/dialogflow-cx';
+import {AgentsClient, EntityTypesClient, EnvironmentsClient, FlowsClient, IntentsClient, PagesClient, SecuritySettingsServiceClient, SessionEntityTypesClient, SessionsClient, TransitionRouteGroupsClient, VersionsClient, WebhooksClient} from 'cx';
 
 // check that the client class type name can be used
 function doStuffWithAgentsClient(client: AgentsClient) {
@@ -49,15 +37,16 @@ function doStuffWithIntentsClient(client: IntentsClient) {
 function doStuffWithPagesClient(client: PagesClient) {
   client.close();
 }
+function doStuffWithSecuritySettingsServiceClient(client: SecuritySettingsServiceClient) {
+  client.close();
+}
 function doStuffWithSessionEntityTypesClient(client: SessionEntityTypesClient) {
   client.close();
 }
 function doStuffWithSessionsClient(client: SessionsClient) {
   client.close();
 }
-function doStuffWithTransitionRouteGroupsClient(
-  client: TransitionRouteGroupsClient
-) {
+function doStuffWithTransitionRouteGroupsClient(client: TransitionRouteGroupsClient) {
   client.close();
 }
 function doStuffWithVersionsClient(client: VersionsClient) {
@@ -86,6 +75,9 @@ function main() {
   // check that the client instance can be created
   const pagesClient = new PagesClient();
   doStuffWithPagesClient(pagesClient);
+  // check that the client instance can be created
+  const securitySettingsServiceClient = new SecuritySettingsServiceClient();
+  doStuffWithSecuritySettingsServiceClient(securitySettingsServiceClient);
   // check that the client instance can be created
   const sessionEntityTypesClient = new SessionEntityTypesClient();
   doStuffWithSessionEntityTypesClient(sessionEntityTypesClient);
