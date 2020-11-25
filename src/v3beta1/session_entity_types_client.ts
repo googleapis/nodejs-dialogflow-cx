@@ -989,9 +989,7 @@ export class SessionEntityTypesClient {
   listSessionEntityTypesAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListSessionEntityTypesRequest,
     options?: CallOptions
-  ): AsyncIterable<
-    protos.google.cloud.dialogflow.cx.v3beta1.ISessionEntityType
-  > {
+  ): AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.ISessionEntityType> {
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -1008,9 +1006,7 @@ export class SessionEntityTypesClient {
       this.innerApiCalls['listSessionEntityTypes'] as GaxCall,
       (request as unknown) as RequestType,
       callSettings
-    ) as AsyncIterable<
-      protos.google.cloud.dialogflow.cx.v3beta1.ISessionEntityType
-    >;
+    ) as AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.ISessionEntityType>;
   }
   // --------------------
   // -- Path templates --
