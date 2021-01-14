@@ -175,6 +175,9 @@ export class PagesClient {
       environmentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}'
       ),
+      experimentPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/experiments/{experiment}'
+      ),
       flowPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}'
       ),
@@ -195,6 +198,9 @@ export class PagesClient {
       ),
       projectLocationAgentSessionEntityTypePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/sessions/{session}/entityTypes/{entity_type}'
+      ),
+      securitySettingsPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/securitySettings/{security_settings}'
       ),
       transitionRouteGroupPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}/transitionRouteGroups/{transition_route_group}'
@@ -1237,6 +1243,92 @@ export class PagesClient {
   }
 
   /**
+   * Return a fully-qualified experiment resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} environment
+   * @param {string} experiment
+   * @returns {string} Resource name string.
+   */
+  experimentPath(
+    project: string,
+    location: string,
+    agent: string,
+    environment: string,
+    experiment: string
+  ) {
+    return this.pathTemplates.experimentPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      environment: environment,
+      experiment: experiment,
+    });
+  }
+
+  /**
+   * Parse the project from Experiment resource.
+   *
+   * @param {string} experimentName
+   *   A fully-qualified path representing Experiment resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromExperimentName(experimentName: string) {
+    return this.pathTemplates.experimentPathTemplate.match(experimentName)
+      .project;
+  }
+
+  /**
+   * Parse the location from Experiment resource.
+   *
+   * @param {string} experimentName
+   *   A fully-qualified path representing Experiment resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromExperimentName(experimentName: string) {
+    return this.pathTemplates.experimentPathTemplate.match(experimentName)
+      .location;
+  }
+
+  /**
+   * Parse the agent from Experiment resource.
+   *
+   * @param {string} experimentName
+   *   A fully-qualified path representing Experiment resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromExperimentName(experimentName: string) {
+    return this.pathTemplates.experimentPathTemplate.match(experimentName)
+      .agent;
+  }
+
+  /**
+   * Parse the environment from Experiment resource.
+   *
+   * @param {string} experimentName
+   *   A fully-qualified path representing Experiment resource.
+   * @returns {string} A string representing the environment.
+   */
+  matchEnvironmentFromExperimentName(experimentName: string) {
+    return this.pathTemplates.experimentPathTemplate.match(experimentName)
+      .environment;
+  }
+
+  /**
+   * Parse the experiment from Experiment resource.
+   *
+   * @param {string} experimentName
+   *   A fully-qualified path representing Experiment resource.
+   * @returns {string} A string representing the experiment.
+   */
+  matchExperimentFromExperimentName(experimentName: string) {
+    return this.pathTemplates.experimentPathTemplate.match(experimentName)
+      .experiment;
+  }
+
+  /**
    * Return a fully-qualified flow resource name string.
    *
    * @param {string} project
@@ -1722,6 +1814,65 @@ export class PagesClient {
     return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
       projectLocationAgentSessionEntityTypeName
     ).entity_type;
+  }
+
+  /**
+   * Return a fully-qualified securitySettings resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} security_settings
+   * @returns {string} Resource name string.
+   */
+  securitySettingsPath(
+    project: string,
+    location: string,
+    securitySettings: string
+  ) {
+    return this.pathTemplates.securitySettingsPathTemplate.render({
+      project: project,
+      location: location,
+      security_settings: securitySettings,
+    });
+  }
+
+  /**
+   * Parse the project from SecuritySettings resource.
+   *
+   * @param {string} securitySettingsName
+   *   A fully-qualified path representing SecuritySettings resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromSecuritySettingsName(securitySettingsName: string) {
+    return this.pathTemplates.securitySettingsPathTemplate.match(
+      securitySettingsName
+    ).project;
+  }
+
+  /**
+   * Parse the location from SecuritySettings resource.
+   *
+   * @param {string} securitySettingsName
+   *   A fully-qualified path representing SecuritySettings resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromSecuritySettingsName(securitySettingsName: string) {
+    return this.pathTemplates.securitySettingsPathTemplate.match(
+      securitySettingsName
+    ).location;
+  }
+
+  /**
+   * Parse the security_settings from SecuritySettings resource.
+   *
+   * @param {string} securitySettingsName
+   *   A fully-qualified path representing SecuritySettings resource.
+   * @returns {string} A string representing the security_settings.
+   */
+  matchSecuritySettingsFromSecuritySettingsName(securitySettingsName: string) {
+    return this.pathTemplates.securitySettingsPathTemplate.match(
+      securitySettingsName
+    ).security_settings;
   }
 
   /**

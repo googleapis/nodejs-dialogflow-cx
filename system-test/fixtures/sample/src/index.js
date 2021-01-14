@@ -23,6 +23,7 @@ function main() {
   const agentsClient = new cx.AgentsClient();
   const entityTypesClient = new cx.EntityTypesClient();
   const environmentsClient = new cx.EnvironmentsClient();
+  const experimentsClient = new cx.ExperimentsClient();
   const flowsClient = new cx.FlowsClient();
   const intentsClient = new cx.IntentsClient();
   const pagesClient = new cx.PagesClient();
