@@ -156,17 +156,20 @@ export class SecuritySettingsServiceClient {
       agentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}'
       ),
+      agentValidationResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/validationResult'
+      ),
       entityTypePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/entityTypes/{entity_type}'
       ),
       environmentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}'
       ),
-      experimentPathTemplate: new this._gaxModule.PathTemplate(
-        'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/experiments/{experiment}'
-      ),
       flowPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}'
+      ),
+      flowValidationResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}/validationResult'
       ),
       intentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/intents/{intent}'
@@ -188,6 +191,12 @@ export class SecuritySettingsServiceClient {
       ),
       securitySettingsPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/securitySettings/{security_settings}'
+      ),
+      testCasePathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/testCases/{test_case}'
+      ),
+      testCaseResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/testCases/{test_case}/results/{result}'
       ),
       transitionRouteGroupPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}/transitionRouteGroups/{transition_route_group}'
@@ -864,6 +873,55 @@ export class SecuritySettingsServiceClient {
   }
 
   /**
+   * Return a fully-qualified agentValidationResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @returns {string} Resource name string.
+   */
+  agentValidationResultPath(project:string,location:string,agent:string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+    });
+  }
+
+  /**
+   * Parse the project from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).project;
+  }
+
+  /**
+   * Parse the location from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).location;
+  }
+
+  /**
+   * Parse the agent from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).agent;
+  }
+
+  /**
    * Return a fully-qualified entityType resource name string.
    *
    * @param {string} project
@@ -988,81 +1046,6 @@ export class SecuritySettingsServiceClient {
   }
 
   /**
-   * Return a fully-qualified experiment resource name string.
-   *
-   * @param {string} project
-   * @param {string} location
-   * @param {string} agent
-   * @param {string} environment
-   * @param {string} experiment
-   * @returns {string} Resource name string.
-   */
-  experimentPath(project:string,location:string,agent:string,environment:string,experiment:string) {
-    return this.pathTemplates.experimentPathTemplate.render({
-      project: project,
-      location: location,
-      agent: agent,
-      environment: environment,
-      experiment: experiment,
-    });
-  }
-
-  /**
-   * Parse the project from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the project.
-   */
-  matchProjectFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName).project;
-  }
-
-  /**
-   * Parse the location from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the location.
-   */
-  matchLocationFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName).location;
-  }
-
-  /**
-   * Parse the agent from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the agent.
-   */
-  matchAgentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName).agent;
-  }
-
-  /**
-   * Parse the environment from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the environment.
-   */
-  matchEnvironmentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName).environment;
-  }
-
-  /**
-   * Parse the experiment from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the experiment.
-   */
-  matchExperimentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName).experiment;
-  }
-
-  /**
    * Return a fully-qualified flow resource name string.
    *
    * @param {string} project
@@ -1122,6 +1105,68 @@ export class SecuritySettingsServiceClient {
    */
   matchFlowFromFlowName(flowName: string) {
     return this.pathTemplates.flowPathTemplate.match(flowName).flow;
+  }
+
+  /**
+   * Return a fully-qualified flowValidationResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} flow
+   * @returns {string} Resource name string.
+   */
+  flowValidationResultPath(project:string,location:string,agent:string,flow:string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      flow: flow,
+    });
+  }
+
+  /**
+   * Parse the project from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).project;
+  }
+
+  /**
+   * Parse the location from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).location;
+  }
+
+  /**
+   * Parse the agent from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).agent;
+  }
+
+  /**
+   * Parse the flow from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the flow.
+   */
+  matchFlowFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).flow;
   }
 
   /**
@@ -1530,6 +1575,143 @@ export class SecuritySettingsServiceClient {
    */
   matchSecuritySettingsFromSecuritySettingsName(securitySettingsName: string) {
     return this.pathTemplates.securitySettingsPathTemplate.match(securitySettingsName).security_settings;
+  }
+
+  /**
+   * Return a fully-qualified testCase resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} test_case
+   * @returns {string} Resource name string.
+   */
+  testCasePath(project:string,location:string,agent:string,testCase:string) {
+    return this.pathTemplates.testCasePathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      test_case: testCase,
+    });
+  }
+
+  /**
+   * Parse the project from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).project;
+  }
+
+  /**
+   * Parse the location from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).location;
+  }
+
+  /**
+   * Parse the agent from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).agent;
+  }
+
+  /**
+   * Parse the test_case from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the test_case.
+   */
+  matchTestCaseFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).test_case;
+  }
+
+  /**
+   * Return a fully-qualified testCaseResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} test_case
+   * @param {string} result
+   * @returns {string} Resource name string.
+   */
+  testCaseResultPath(project:string,location:string,agent:string,testCase:string,result:string) {
+    return this.pathTemplates.testCaseResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      test_case: testCase,
+      result: result,
+    });
+  }
+
+  /**
+   * Parse the project from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).project;
+  }
+
+  /**
+   * Parse the location from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).location;
+  }
+
+  /**
+   * Parse the agent from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).agent;
+  }
+
+  /**
+   * Parse the test_case from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the test_case.
+   */
+  matchTestCaseFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).test_case;
+  }
+
+  /**
+   * Parse the result from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the result.
+   */
+  matchResultFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).result;
   }
 
   /**

@@ -30,6 +30,16 @@
                 "deleteAgent"
               ]
             },
+            "ValidateAgent": {
+              "methods": [
+                "validateAgent"
+              ]
+            },
+            "GetAgentValidationResult": {
+              "methods": [
+                "getAgentValidationResult"
+              ]
+            },
             "ExportAgent": {
               "methods": [
                 "exportAgent"
@@ -70,6 +80,16 @@
             "DeleteAgent": {
               "methods": [
                 "deleteAgent"
+              ]
+            },
+            "ValidateAgent": {
+              "methods": [
+                "validateAgent"
+              ]
+            },
+            "GetAgentValidationResult": {
+              "methods": [
+                "getAgentValidationResult"
               ]
             },
             "ExportAgent": {
@@ -243,94 +263,6 @@
         }
       }
     },
-    "Experiments": {
-      "clients": {
-        "grpc": {
-          "libraryClient": "ExperimentsClient",
-          "rpcs": {
-            "GetExperiment": {
-              "methods": [
-                "getExperiment"
-              ]
-            },
-            "CreateExperiment": {
-              "methods": [
-                "createExperiment"
-              ]
-            },
-            "UpdateExperiment": {
-              "methods": [
-                "updateExperiment"
-              ]
-            },
-            "DeleteExperiment": {
-              "methods": [
-                "deleteExperiment"
-              ]
-            },
-            "StartExperiment": {
-              "methods": [
-                "startExperiment"
-              ]
-            },
-            "StopExperiment": {
-              "methods": [
-                "stopExperiment"
-              ]
-            },
-            "ListExperiments": {
-              "methods": [
-                "listExperiments",
-                "listExperimentsStream",
-                "listExperimentsAsync"
-              ]
-            }
-          }
-        },
-        "grpc-fallback": {
-          "libraryClient": "ExperimentsClient",
-          "rpcs": {
-            "GetExperiment": {
-              "methods": [
-                "getExperiment"
-              ]
-            },
-            "CreateExperiment": {
-              "methods": [
-                "createExperiment"
-              ]
-            },
-            "UpdateExperiment": {
-              "methods": [
-                "updateExperiment"
-              ]
-            },
-            "DeleteExperiment": {
-              "methods": [
-                "deleteExperiment"
-              ]
-            },
-            "StartExperiment": {
-              "methods": [
-                "startExperiment"
-              ]
-            },
-            "StopExperiment": {
-              "methods": [
-                "stopExperiment"
-              ]
-            },
-            "ListExperiments": {
-              "methods": [
-                "listExperiments",
-                "listExperimentsStream",
-                "listExperimentsAsync"
-              ]
-            }
-          }
-        }
-      }
-    },
     "Flows": {
       "clients": {
         "grpc": {
@@ -354,6 +286,16 @@
             "UpdateFlow": {
               "methods": [
                 "updateFlow"
+              ]
+            },
+            "ValidateFlow": {
+              "methods": [
+                "validateFlow"
+              ]
+            },
+            "GetFlowValidationResult": {
+              "methods": [
+                "getFlowValidationResult"
               ]
             },
             "TrainFlow": {
@@ -391,6 +333,16 @@
             "UpdateFlow": {
               "methods": [
                 "updateFlow"
+              ]
+            },
+            "ValidateFlow": {
+              "methods": [
+                "validateFlow"
+              ]
+            },
+            "GetFlowValidationResult": {
+              "methods": [
+                "getFlowValidationResult"
               ]
             },
             "TrainFlow": {
@@ -724,6 +676,138 @@
             "FulfillIntent": {
               "methods": [
                 "fulfillIntent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "TestCases": {
+      "clients": {
+        "grpc": {
+          "libraryClient": "TestCasesClient",
+          "rpcs": {
+            "BatchDeleteTestCases": {
+              "methods": [
+                "batchDeleteTestCases"
+              ]
+            },
+            "GetTestCase": {
+              "methods": [
+                "getTestCase"
+              ]
+            },
+            "CreateTestCase": {
+              "methods": [
+                "createTestCase"
+              ]
+            },
+            "UpdateTestCase": {
+              "methods": [
+                "updateTestCase"
+              ]
+            },
+            "CalculateCoverage": {
+              "methods": [
+                "calculateCoverage"
+              ]
+            },
+            "RunTestCase": {
+              "methods": [
+                "runTestCase"
+              ]
+            },
+            "BatchRunTestCases": {
+              "methods": [
+                "batchRunTestCases"
+              ]
+            },
+            "ImportTestCases": {
+              "methods": [
+                "importTestCases"
+              ]
+            },
+            "ExportTestCases": {
+              "methods": [
+                "exportTestCases"
+              ]
+            },
+            "ListTestCases": {
+              "methods": [
+                "listTestCases",
+                "listTestCasesStream",
+                "listTestCasesAsync"
+              ]
+            },
+            "ListTestCaseResults": {
+              "methods": [
+                "listTestCaseResults",
+                "listTestCaseResultsStream",
+                "listTestCaseResultsAsync"
+              ]
+            }
+          }
+        },
+        "grpc-fallback": {
+          "libraryClient": "TestCasesClient",
+          "rpcs": {
+            "BatchDeleteTestCases": {
+              "methods": [
+                "batchDeleteTestCases"
+              ]
+            },
+            "GetTestCase": {
+              "methods": [
+                "getTestCase"
+              ]
+            },
+            "CreateTestCase": {
+              "methods": [
+                "createTestCase"
+              ]
+            },
+            "UpdateTestCase": {
+              "methods": [
+                "updateTestCase"
+              ]
+            },
+            "CalculateCoverage": {
+              "methods": [
+                "calculateCoverage"
+              ]
+            },
+            "RunTestCase": {
+              "methods": [
+                "runTestCase"
+              ]
+            },
+            "BatchRunTestCases": {
+              "methods": [
+                "batchRunTestCases"
+              ]
+            },
+            "ImportTestCases": {
+              "methods": [
+                "importTestCases"
+              ]
+            },
+            "ExportTestCases": {
+              "methods": [
+                "exportTestCases"
+              ]
+            },
+            "ListTestCases": {
+              "methods": [
+                "listTestCases",
+                "listTestCasesStream",
+                "listTestCasesAsync"
+              ]
+            },
+            "ListTestCaseResults": {
+              "methods": [
+                "listTestCaseResults",
+                "listTestCaseResultsStream",
+                "listTestCaseResultsAsync"
               ]
             }
           }

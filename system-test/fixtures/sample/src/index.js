@@ -24,13 +24,13 @@ function main() {
   const agentsClient = new cx.AgentsClient();
   const entityTypesClient = new cx.EntityTypesClient();
   const environmentsClient = new cx.EnvironmentsClient();
-  const experimentsClient = new cx.ExperimentsClient();
   const flowsClient = new cx.FlowsClient();
   const intentsClient = new cx.IntentsClient();
   const pagesClient = new cx.PagesClient();
   const securitySettingsServiceClient = new cx.SecuritySettingsServiceClient();
   const sessionEntityTypesClient = new cx.SessionEntityTypesClient();
   const sessionsClient = new cx.SessionsClient();
+  const testCasesClient = new cx.TestCasesClient();
   const transitionRouteGroupsClient = new cx.TransitionRouteGroupsClient();
   const versionsClient = new cx.VersionsClient();
   const webhooksClient = new cx.WebhooksClient();
