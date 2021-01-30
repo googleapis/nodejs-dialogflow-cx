@@ -19,6 +19,7 @@
 export {AgentsClient} from './agents_client';
 export {EntityTypesClient} from './entity_types_client';
 export {EnvironmentsClient} from './environments_client';
+export {ExperimentsClient} from './experiments_client';
 export {FlowsClient} from './flows_client';
 export {IntentsClient} from './intents_client';
 export {PagesClient} from './pages_client';
