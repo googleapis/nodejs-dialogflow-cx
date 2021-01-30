@@ -18,18 +18,11 @@
 
 /* global window */
 import * as gax from 'google-gax';
-import {
-  Callback,
-  CallOptions,
-  Descriptors,
-  ClientOptions,
-  PaginationCallback,
-  GaxCall,
-} from 'google-gax';
+import {Callback, CallOptions, Descriptors, ClientOptions, PaginationCallback, GaxCall} from 'google-gax';
 import * as path from 'path';
 
-import {Transform} from 'stream';
-import {RequestType} from 'google-gax/build/src/apitypes';
+import { Transform } from 'stream';
+import { RequestType } from 'google-gax/build/src/apitypes';
 import * as protos from '../../protos/protos';
 /**
  * Client JSON configuration object, loaded from
@@ -100,13 +93,10 @@ export class EntityTypesClient {
   constructor(opts?: ClientOptions) {
     // Ensure that options include all the required fields.
     const staticMembers = this.constructor as typeof EntityTypesClient;
-    const servicePath =
-      opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
+    const servicePath = opts?.servicePath || opts?.apiEndpoint || staticMembers.servicePath;
     const port = opts?.port || staticMembers.port;
     const clientConfig = opts?.clientConfig ?? {};
-    const fallback =
-      opts?.fallback ??
-      (typeof window !== 'undefined' && typeof window?.fetch === 'function');
+    const fallback = opts?.fallback ?? (typeof window !== 'undefined' && typeof window?.fetch === 'function');
     opts = Object.assign({servicePath, port, clientConfig, fallback}, opts);
 
     // If scopes are unset in options and we're connecting to a non-default endpoint, set scopes just in case.
@@ -124,7 +114,7 @@ export class EntityTypesClient {
     this._opts = opts;
 
     // Save the auth object to the client, for use by other methods.
-    this.auth = this._gaxGrpc.auth as gax.GoogleAuth;
+    this.auth = (this._gaxGrpc.auth as gax.GoogleAuth);
 
     // Set the default scopes in auth client if needed.
     if (servicePath === staticMembers.servicePath) {
@@ -132,7 +122,10 @@ export class EntityTypesClient {
     }
 
     // Determine the client header string.
-    const clientHeader = [`gax/${this._gaxModule.version}`, `gapic/${version}`];
+    const clientHeader = [
+      `gax/${this._gaxModule.version}`,
+      `gapic/${version}`,
+    ];
     if (typeof process !== 'undefined' && 'versions' in process) {
       clientHeader.push(`gl-node/${process.versions.node}`);
     } else {
@@ -148,18 +141,12 @@ export class EntityTypesClient {
     // For Node.js, pass the path to JSON proto file.
     // For browsers, pass the JSON content.
 
-    const nodejsProtoPath = path.join(
-      __dirname,
-      '..',
-      '..',
-      'protos',
-      'protos.json'
-    );
+    const nodejsProtoPath = path.join(__dirname, '..', '..', 'protos', 'protos.json');
     this._protos = this._gaxGrpc.loadProto(
-      opts.fallback
-        ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require('../../protos/protos.json')
-        : nodejsProtoPath
+      opts.fallback ?
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        require("../../protos/protos.json") :
+        nodejsProtoPath
     );
 
     // This API contains "path templates"; forward-slash-separated
@@ -169,17 +156,20 @@ export class EntityTypesClient {
       agentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}'
       ),
+      agentValidationResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/validationResult'
+      ),
       entityTypePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/entityTypes/{entity_type}'
       ),
       environmentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}'
       ),
-      experimentPathTemplate: new this._gaxModule.PathTemplate(
-        'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/experiments/{experiment}'
-      ),
       flowPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}'
+      ),
+      flowValidationResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}/validationResult'
       ),
       intentPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/intents/{intent}'
@@ -202,6 +192,12 @@ export class EntityTypesClient {
       securitySettingsPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/securitySettings/{security_settings}'
       ),
+      testCasePathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/testCases/{test_case}'
+      ),
+      testCaseResultPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/testCases/{test_case}/results/{result}'
+      ),
       transitionRouteGroupPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/flows/{flow}/transitionRouteGroups/{transition_route_group}'
       ),
@@ -217,20 +213,14 @@ export class EntityTypesClient {
     // (e.g. 50 results at a time, with tokens to get subsequent
     // pages). Denote the keys used for pagination and results.
     this.descriptors.page = {
-      listEntityTypes: new this._gaxModule.PageDescriptor(
-        'pageToken',
-        'nextPageToken',
-        'entityTypes'
-      ),
+      listEntityTypes:
+          new this._gaxModule.PageDescriptor('pageToken', 'nextPageToken', 'entityTypes')
     };
 
     // Put together the default options sent with requests.
     this._defaults = this._gaxGrpc.constructSettings(
-      'google.cloud.dialogflow.cx.v3beta1.EntityTypes',
-      gapicConfig as gax.ClientConfig,
-      opts.clientConfig || {},
-      {'x-goog-api-client': clientHeader.join(' ')}
-    );
+        'google.cloud.dialogflow.cx.v3beta1.EntityTypes', gapicConfig as gax.ClientConfig,
+        opts.clientConfig || {}, {'x-goog-api-client': clientHeader.join(' ')});
 
     // Set up a dictionary of "inner API calls"; the core implementation
     // of calling the API is handled in `google-gax`, with this code
@@ -258,24 +248,16 @@ export class EntityTypesClient {
     // Put together the "service stub" for
     // google.cloud.dialogflow.cx.v3beta1.EntityTypes.
     this.entityTypesStub = this._gaxGrpc.createStub(
-      this._opts.fallback
-        ? (this._protos as protobuf.Root).lookupService(
-            'google.cloud.dialogflow.cx.v3beta1.EntityTypes'
-          )
-        : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        this._opts.fallback ?
+          (this._protos as protobuf.Root).lookupService('google.cloud.dialogflow.cx.v3beta1.EntityTypes') :
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           (this._protos as any).google.cloud.dialogflow.cx.v3beta1.EntityTypes,
-      this._opts
-    ) as Promise<{[method: string]: Function}>;
+        this._opts) as Promise<{[method: string]: Function}>;
 
     // Iterate over each of the methods that the service provides
     // and create an API call method for each.
-    const entityTypesStubMethods = [
-      'listEntityTypes',
-      'getEntityType',
-      'createEntityType',
-      'updateEntityType',
-      'deleteEntityType',
-    ];
+    const entityTypesStubMethods =
+        ['listEntityTypes', 'getEntityType', 'createEntityType', 'updateEntityType', 'deleteEntityType'];
     for (const methodName of entityTypesStubMethods) {
       const callPromise = this.entityTypesStub.then(
         stub => (...args: Array<{}>) => {
@@ -285,12 +267,13 @@ export class EntityTypesClient {
           const func = stub[methodName];
           return func.apply(stub, args);
         },
-        (err: Error | null | undefined) => () => {
+        (err: Error|null|undefined) => () => {
           throw err;
-        }
-      );
+        });
 
-      const descriptor = this.descriptors.page[methodName] || undefined;
+      const descriptor =
+        this.descriptors.page[methodName] ||
+        undefined;
       const apiCall = this._gaxModule.createApiCall(
         callPromise,
         this._defaults[methodName],
@@ -336,7 +319,7 @@ export class EntityTypesClient {
   static get scopes() {
     return [
       'https://www.googleapis.com/auth/cloud-platform',
-      'https://www.googleapis.com/auth/dialogflow',
+      'https://www.googleapis.com/auth/dialogflow'
     ];
   }
 
@@ -346,9 +329,8 @@ export class EntityTypesClient {
    * Return the project ID used by this class.
    * @returns {Promise} A promise that resolves to string containing the project ID.
    */
-  getProjectId(
-    callback?: Callback<string, undefined, undefined>
-  ): Promise<string> | void {
+  getProjectId(callback?: Callback<string, undefined, undefined>):
+      Promise<string>|void {
     if (callback) {
       this.auth.getProjectId(callback);
       return;
@@ -360,105 +342,78 @@ export class EntityTypesClient {
   // -- Service calls --
   // -------------------
   getEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
+      options?: CallOptions):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|undefined, {}|undefined
+      ]>;
   getEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
-    options: CallOptions,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  getEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Retrieves the specified entity type.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entity type.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
-   *   ID>/entityTypes/<Entity Type ID>`.
-   * @param {string} request.languageCode
-   *   The language to retrieve the entity type for. The following fields are
-   *   language dependent:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example
-   * const [response] = await client.getEntityType(request);
-   */
-  getEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
-    optionsOrCallback?:
-      | CallOptions
-      | Callback<
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
+      options: CallOptions,
+      callback: Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-          | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+  getEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
+      callback: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Retrieves the specified entity type.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entity type.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+ *   ID>/entityTypes/<Entity Type ID>`.
+ * @param {string} request.languageCode
+ *   The language to retrieve the entity type for. The following fields are
+ *   language dependent:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+ *   for more details and examples.
+ * @example
+ * const [response] = await client.getEntityType(request);
+ */
+  getEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
+      optionsOrCallback?: CallOptions|Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -467,111 +422,84 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.getEntityType(request, options, callback);
   }
   createEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
+      options?: CallOptions):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|undefined, {}|undefined
+      ]>;
   createEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
-    options: CallOptions,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  createEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Creates an entity type in the specified agent.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The agent to create a entity type for.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
-   * @param {google.cloud.dialogflow.cx.v3beta1.EntityType} request.entityType
-   *   Required. The entity type to create.
-   * @param {string} request.languageCode
-   *   The language of the following fields in `entity_type`:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example
-   * const [response] = await client.createEntityType(request);
-   */
-  createEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
-    optionsOrCallback?:
-      | CallOptions
-      | Callback<
+      request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
+      options: CallOptions,
+      callback: Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-          | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+  createEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
+      callback: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Creates an entity type in the specified agent.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The agent to create a entity type for.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
+ * @param {google.cloud.dialogflow.cx.v3beta1.EntityType} request.entityType
+ *   Required. The entity type to create.
+ * @param {string} request.languageCode
+ *   The language of the following fields in `entity_type`:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+ *   for more details and examples.
+ * @example
+ * const [response] = await client.createEntityType(request);
+ */
+  createEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
+      optionsOrCallback?: CallOptions|Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -580,110 +508,83 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.createEntityType(request, options, callback);
   }
   updateEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
+      options?: CallOptions):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|undefined, {}|undefined
+      ]>;
   updateEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
-    options: CallOptions,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  updateEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
-    callback: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Updates the specified entity type.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.dialogflow.cx.v3beta1.EntityType} request.entityType
-   *   Required. The entity type to update.
-   * @param {string} request.languageCode
-   *   The language of the following fields in `entity_type`:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The mask to control which fields get updated.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example
-   * const [response] = await client.updateEntityType(request);
-   */
-  updateEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
-    optionsOrCallback?:
-      | CallOptions
-      | Callback<
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
+      options: CallOptions,
+      callback: Callback<
           protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-          | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+  updateEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
+      callback: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Updates the specified entity type.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {google.cloud.dialogflow.cx.v3beta1.EntityType} request.entityType
+ *   Required. The entity type to update.
+ * @param {string} request.languageCode
+ *   The language of the following fields in `entity_type`:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {google.protobuf.FieldMask} request.updateMask
+ *   The mask to control which fields get updated.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+ *   for more details and examples.
+ * @example
+ * const [response] = await client.updateEntityType(request);
+ */
+  updateEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
+      optionsOrCallback?: CallOptions|Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+          protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType,
+        protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -698,103 +599,76 @@ export class EntityTypesClient {
     return this.innerApiCalls.updateEntityType(request, options, callback);
   }
   deleteEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  >;
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
+      options?: CallOptions):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|undefined, {}|undefined
+      ]>;
   deleteEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
-    options: CallOptions,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  deleteEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
-    callback: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): void;
-  /**
-   * Deletes the specified entity type.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the entity type to delete.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
-   *   ID>/entityTypes/<Entity Type ID>`.
-   * @param {boolean} request.force
-   *   This field has no effect for entity type not being used.
-   *   For entity types that are used by intents or pages:
-   *
-   *   *  If `force` is set to false, an error will be returned with message
-   *      indicating the referencing resources.
-   *   *  If `force` is set to true, Dialogflow will remove the entity type, as
-   *      well as any references to the entity type (i.e. Page
-   *      {@link google.cloud.dialogflow.cx.v3beta1.Form.Parameter|parameter} of the entity type will be changed to
-   *      '@sys.any' and intent {@link google.cloud.dialogflow.cx.v3beta1.Intent.Parameter|parameter} of the entity type
-   *      will be removed).
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example
-   * const [response] = await client.deleteEntityType(request);
-   */
-  deleteEntityType(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
-    optionsOrCallback?:
-      | CallOptions
-      | Callback<
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
+      options: CallOptions,
+      callback: Callback<
           protos.google.protobuf.IEmpty,
-          | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-          | null
-          | undefined,
-          {} | null | undefined
-        >,
-    callback?: Callback<
-      protos.google.protobuf.IEmpty,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-      | null
-      | undefined,
-      {} | null | undefined
-    >
-  ): Promise<
-    [
-      protos.google.protobuf.IEmpty,
-      (
-        | protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest
-        | undefined
-      ),
-      {} | undefined
-    ]
-  > | void {
+          protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+  deleteEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
+      callback: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|null|undefined,
+          {}|null|undefined>): void;
+/**
+ * Deletes the specified entity type.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.name
+ *   Required. The name of the entity type to delete.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+ *   ID>/entityTypes/<Entity Type ID>`.
+ * @param {boolean} request.force
+ *   This field has no effect for entity type not being used.
+ *   For entity types that are used by intents or pages:
+ *
+ *   *  If `force` is set to false, an error will be returned with message
+ *      indicating the referencing resources.
+ *   *  If `force` is set to true, Dialogflow will remove the entity type, as
+ *      well as any references to the entity type (i.e. Page
+ *      {@link google.cloud.dialogflow.cx.v3beta1.Form.Parameter|parameter} of the entity type will be changed to
+ *      '@sys.any' and intent {@link google.cloud.dialogflow.cx.v3beta1.Intent.Parameter|parameter} of the entity type
+ *      will be removed).
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+ *   for more details and examples.
+ * @example
+ * const [response] = await client.deleteEntityType(request);
+ */
+  deleteEntityType(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
+      optionsOrCallback?: CallOptions|Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|null|undefined,
+          {}|null|undefined>,
+      callback?: Callback<
+          protos.google.protobuf.IEmpty,
+          protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|null|undefined,
+          {}|null|undefined>):
+      Promise<[
+        protos.google.protobuf.IEmpty,
+        protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest|undefined, {}|undefined
+      ]>|void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -803,113 +677,94 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      name: request.name || '',
+      'name': request.name || '',
     });
     this.initialize();
     return this.innerApiCalls.deleteEntityType(request, options, callback);
   }
 
   listEntityTypes(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType[],
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest | null,
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-    ]
-  >;
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      options?: CallOptions):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType[],
+        protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest|null,
+        protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
+      ]>;
   listEntityTypes(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    options: CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-      | null
-      | undefined,
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType
-    >
-  ): void;
-  listEntityTypes(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-      | null
-      | undefined,
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType
-    >
-  ): void;
-  /**
-   * Returns the list of all entity types in the specified agent.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The agent to list all entity types for.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
-   * @param {string} request.languageCode
-   *   The language to list entity types for. The following fields are language
-   *   dependent:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {number} request.pageSize
-   *   The maximum number of items to return in a single page. By default 100 and
-   *   at most 1000.
-   * @param {string} request.pageToken
-   *   The next_page_token value returned from a previous list request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is Array of [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
-   *   The client library will perform auto-pagination by default: it will call the API as many
-   *   times as needed and will merge results from all the pages into this array.
-   *   Note that it can affect your quota.
-   *   We recommend using `listEntityTypesAsync()`
-   *   method described below for async iteration which you can stop as needed.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
-   *   for more details and examples.
-   */
-  listEntityTypes(
-    request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    optionsOrCallback?:
-      | CallOptions
-      | PaginationCallback<
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      options: CallOptions,
+      callback: PaginationCallback<
           protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-          | protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-          | null
-          | undefined,
-          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType
-        >,
-    callback?: PaginationCallback<
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-      | protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-      | null
-      | undefined,
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType
-    >
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3beta1.IEntityType[],
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest | null,
-      protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
-    ]
-  > | void {
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse|null|undefined,
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>): void;
+  listEntityTypes(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      callback: PaginationCallback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse|null|undefined,
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>): void;
+/**
+ * Returns the list of all entity types in the specified agent.
+ *
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The agent to list all entity types for.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
+ * @param {string} request.languageCode
+ *   The language to list entity types for. The following fields are language
+ *   dependent:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {number} request.pageSize
+ *   The maximum number of items to return in a single page. By default 100 and
+ *   at most 1000.
+ * @param {string} request.pageToken
+ *   The next_page_token value returned from a previous list request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Promise} - The promise which resolves to an array.
+ *   The first element of the array is Array of [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}.
+ *   The client library will perform auto-pagination by default: it will call the API as many
+ *   times as needed and will merge results from all the pages into this array.
+ *   Note that it can affect your quota.
+ *   We recommend using `listEntityTypesAsync()`
+ *   method described below for async iteration which you can stop as needed.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
+ *   for more details and examples.
+ */
+  listEntityTypes(
+      request: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      optionsOrCallback?: CallOptions|PaginationCallback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse|null|undefined,
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>,
+      callback?: PaginationCallback<
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+          protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse|null|undefined,
+          protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>):
+      Promise<[
+        protos.google.cloud.dialogflow.cx.v3beta1.IEntityType[],
+        protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest|null,
+        protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesResponse
+      ]>|void {
     request = request || {};
     let options: CallOptions;
     if (typeof optionsOrCallback === 'function' && callback === undefined) {
       callback = optionsOrCallback;
       options = {};
-    } else {
+    }
+    else {
       options = optionsOrCallback as CallOptions;
     }
     options = options || {};
@@ -918,53 +773,53 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     this.initialize();
     return this.innerApiCalls.listEntityTypes(request, options, callback);
   }
 
-  /**
-   * Equivalent to `method.name.toCamelCase()`, but returns a NodeJS Stream object.
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The agent to list all entity types for.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
-   * @param {string} request.languageCode
-   *   The language to list entity types for. The following fields are language
-   *   dependent:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {number} request.pageSize
-   *   The maximum number of items to return in a single page. By default 100 and
-   *   at most 1000.
-   * @param {string} request.pageToken
-   *   The next_page_token value returned from a previous list request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Stream}
-   *   An object stream which emits an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType} on 'data' event.
-   *   The client library will perform auto-pagination by default: it will call the API as many
-   *   times as needed. Note that it can affect your quota.
-   *   We recommend using `listEntityTypesAsync()`
-   *   method described below for async iteration which you can stop as needed.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
-   *   for more details and examples.
-   */
+/**
+ * Equivalent to `method.name.toCamelCase()`, but returns a NodeJS Stream object.
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The agent to list all entity types for.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
+ * @param {string} request.languageCode
+ *   The language to list entity types for. The following fields are language
+ *   dependent:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {number} request.pageSize
+ *   The maximum number of items to return in a single page. By default 100 and
+ *   at most 1000.
+ * @param {string} request.pageToken
+ *   The next_page_token value returned from a previous list request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Stream}
+ *   An object stream which emits an object representing [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType} on 'data' event.
+ *   The client library will perform auto-pagination by default: it will call the API as many
+ *   times as needed. Note that it can affect your quota.
+ *   We recommend using `listEntityTypesAsync()`
+ *   method described below for async iteration which you can stop as needed.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
+ *   for more details and examples.
+ */
   listEntityTypesStream(
-    request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    options?: CallOptions
-  ): Transform {
+      request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      options?: CallOptions):
+    Transform{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -972,7 +827,7 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     const callSettings = new gax.CallSettings(options);
     this.initialize();
@@ -983,53 +838,53 @@ export class EntityTypesClient {
     );
   }
 
-  /**
-   * Equivalent to `listEntityTypes`, but returns an iterable object.
-   *
-   * `for`-`await`-`of` syntax is used with the iterable to get response elements on-demand.
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The agent to list all entity types for.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
-   * @param {string} request.languageCode
-   *   The language to list entity types for. The following fields are language
-   *   dependent:
-   *
-   *   *   `EntityType.entities.value`
-   *   *   `EntityType.entities.synonyms`
-   *   *   `EntityType.excluded_phrases.value`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {number} request.pageSize
-   *   The maximum number of items to return in a single page. By default 100 and
-   *   at most 1000.
-   * @param {string} request.pageToken
-   *   The next_page_token value returned from a previous list request.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Object}
-   *   An iterable Object that allows [async iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols).
-   *   When you iterate the returned iterable, each element will be an object representing
-   *   [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}. The API will be called under the hood as needed, once per the page,
-   *   so you can stop the iteration when you don't need more results.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
-   *   for more details and examples.
-   * @example
-   * const iterable = client.listEntityTypesAsync(request);
-   * for await (const response of iterable) {
-   *   // process response
-   * }
-   */
+/**
+ * Equivalent to `listEntityTypes`, but returns an iterable object.
+ *
+ * `for`-`await`-`of` syntax is used with the iterable to get response elements on-demand.
+ * @param {Object} request
+ *   The request object that will be sent.
+ * @param {string} request.parent
+ *   Required. The agent to list all entity types for.
+ *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
+ * @param {string} request.languageCode
+ *   The language to list entity types for. The following fields are language
+ *   dependent:
+ *
+ *   *   `EntityType.entities.value`
+ *   *   `EntityType.entities.synonyms`
+ *   *   `EntityType.excluded_phrases.value`
+ *
+ *   If not specified, the agent's default language is used.
+ *   [Many
+ *   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+ *   are supported.
+ *   Note: languages must be enabled in the agent before they can be used.
+ * @param {number} request.pageSize
+ *   The maximum number of items to return in a single page. By default 100 and
+ *   at most 1000.
+ * @param {string} request.pageToken
+ *   The next_page_token value returned from a previous list request.
+ * @param {object} [options]
+ *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+ * @returns {Object}
+ *   An iterable Object that allows [async iteration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols).
+ *   When you iterate the returned iterable, each element will be an object representing
+ *   [EntityType]{@link google.cloud.dialogflow.cx.v3beta1.EntityType}. The API will be called under the hood as needed, once per the page,
+ *   so you can stop the iteration when you don't need more results.
+ *   Please see the
+ *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
+ *   for more details and examples.
+ * @example
+ * const iterable = client.listEntityTypesAsync(request);
+ * for await (const response of iterable) {
+ *   // process response
+ * }
+ */
   listEntityTypesAsync(
-    request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
-    options?: CallOptions
-  ): AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IEntityType> {
+      request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
+      options?: CallOptions):
+    AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>{
     request = request || {};
     options = options || {};
     options.otherArgs = options.otherArgs || {};
@@ -1037,14 +892,14 @@ export class EntityTypesClient {
     options.otherArgs.headers[
       'x-goog-request-params'
     ] = gax.routingHeader.fromParams({
-      parent: request.parent || '',
+      'parent': request.parent || '',
     });
     options = options || {};
     const callSettings = new gax.CallSettings(options);
     this.initialize();
     return this.descriptors.page.listEntityTypes.asyncIterate(
       this.innerApiCalls['listEntityTypes'] as GaxCall,
-      (request as unknown) as RequestType,
+      request as unknown as RequestType,
       callSettings
     ) as AsyncIterable<protos.google.cloud.dialogflow.cx.v3beta1.IEntityType>;
   }
@@ -1060,7 +915,7 @@ export class EntityTypesClient {
    * @param {string} agent
    * @returns {string} Resource name string.
    */
-  agentPath(project: string, location: string, agent: string) {
+  agentPath(project:string,location:string,agent:string) {
     return this.pathTemplates.agentPathTemplate.render({
       project: project,
       location: location,
@@ -1102,6 +957,55 @@ export class EntityTypesClient {
   }
 
   /**
+   * Return a fully-qualified agentValidationResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @returns {string} Resource name string.
+   */
+  agentValidationResultPath(project:string,location:string,agent:string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+    });
+  }
+
+  /**
+   * Parse the project from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).project;
+  }
+
+  /**
+   * Parse the location from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).location;
+  }
+
+  /**
+   * Parse the agent from AgentValidationResult resource.
+   *
+   * @param {string} agentValidationResultName
+   *   A fully-qualified path representing AgentValidationResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromAgentValidationResultName(agentValidationResultName: string) {
+    return this.pathTemplates.agentValidationResultPathTemplate.match(agentValidationResultName).agent;
+  }
+
+  /**
    * Return a fully-qualified entityType resource name string.
    *
    * @param {string} project
@@ -1110,12 +1014,7 @@ export class EntityTypesClient {
    * @param {string} entity_type
    * @returns {string} Resource name string.
    */
-  entityTypePath(
-    project: string,
-    location: string,
-    agent: string,
-    entityType: string
-  ) {
+  entityTypePath(project:string,location:string,agent:string,entityType:string) {
     return this.pathTemplates.entityTypePathTemplate.render({
       project: project,
       location: location,
@@ -1132,8 +1031,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromEntityTypeName(entityTypeName: string) {
-    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName)
-      .project;
+    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName).project;
   }
 
   /**
@@ -1144,8 +1042,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromEntityTypeName(entityTypeName: string) {
-    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName)
-      .location;
+    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName).location;
   }
 
   /**
@@ -1156,8 +1053,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the agent.
    */
   matchAgentFromEntityTypeName(entityTypeName: string) {
-    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName)
-      .agent;
+    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName).agent;
   }
 
   /**
@@ -1168,8 +1064,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the entity_type.
    */
   matchEntityTypeFromEntityTypeName(entityTypeName: string) {
-    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName)
-      .entity_type;
+    return this.pathTemplates.entityTypePathTemplate.match(entityTypeName).entity_type;
   }
 
   /**
@@ -1181,12 +1076,7 @@ export class EntityTypesClient {
    * @param {string} environment
    * @returns {string} Resource name string.
    */
-  environmentPath(
-    project: string,
-    location: string,
-    agent: string,
-    environment: string
-  ) {
+  environmentPath(project:string,location:string,agent:string,environment:string) {
     return this.pathTemplates.environmentPathTemplate.render({
       project: project,
       location: location,
@@ -1203,8 +1093,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromEnvironmentName(environmentName: string) {
-    return this.pathTemplates.environmentPathTemplate.match(environmentName)
-      .project;
+    return this.pathTemplates.environmentPathTemplate.match(environmentName).project;
   }
 
   /**
@@ -1215,8 +1104,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromEnvironmentName(environmentName: string) {
-    return this.pathTemplates.environmentPathTemplate.match(environmentName)
-      .location;
+    return this.pathTemplates.environmentPathTemplate.match(environmentName).location;
   }
 
   /**
@@ -1227,8 +1115,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the agent.
    */
   matchAgentFromEnvironmentName(environmentName: string) {
-    return this.pathTemplates.environmentPathTemplate.match(environmentName)
-      .agent;
+    return this.pathTemplates.environmentPathTemplate.match(environmentName).agent;
   }
 
   /**
@@ -1239,94 +1126,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the environment.
    */
   matchEnvironmentFromEnvironmentName(environmentName: string) {
-    return this.pathTemplates.environmentPathTemplate.match(environmentName)
-      .environment;
-  }
-
-  /**
-   * Return a fully-qualified experiment resource name string.
-   *
-   * @param {string} project
-   * @param {string} location
-   * @param {string} agent
-   * @param {string} environment
-   * @param {string} experiment
-   * @returns {string} Resource name string.
-   */
-  experimentPath(
-    project: string,
-    location: string,
-    agent: string,
-    environment: string,
-    experiment: string
-  ) {
-    return this.pathTemplates.experimentPathTemplate.render({
-      project: project,
-      location: location,
-      agent: agent,
-      environment: environment,
-      experiment: experiment,
-    });
-  }
-
-  /**
-   * Parse the project from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the project.
-   */
-  matchProjectFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName)
-      .project;
-  }
-
-  /**
-   * Parse the location from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the location.
-   */
-  matchLocationFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName)
-      .location;
-  }
-
-  /**
-   * Parse the agent from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the agent.
-   */
-  matchAgentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName)
-      .agent;
-  }
-
-  /**
-   * Parse the environment from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the environment.
-   */
-  matchEnvironmentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName)
-      .environment;
-  }
-
-  /**
-   * Parse the experiment from Experiment resource.
-   *
-   * @param {string} experimentName
-   *   A fully-qualified path representing Experiment resource.
-   * @returns {string} A string representing the experiment.
-   */
-  matchExperimentFromExperimentName(experimentName: string) {
-    return this.pathTemplates.experimentPathTemplate.match(experimentName)
-      .experiment;
+    return this.pathTemplates.environmentPathTemplate.match(environmentName).environment;
   }
 
   /**
@@ -1338,7 +1138,7 @@ export class EntityTypesClient {
    * @param {string} flow
    * @returns {string} Resource name string.
    */
-  flowPath(project: string, location: string, agent: string, flow: string) {
+  flowPath(project:string,location:string,agent:string,flow:string) {
     return this.pathTemplates.flowPathTemplate.render({
       project: project,
       location: location,
@@ -1392,6 +1192,68 @@ export class EntityTypesClient {
   }
 
   /**
+   * Return a fully-qualified flowValidationResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} flow
+   * @returns {string} Resource name string.
+   */
+  flowValidationResultPath(project:string,location:string,agent:string,flow:string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      flow: flow,
+    });
+  }
+
+  /**
+   * Parse the project from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).project;
+  }
+
+  /**
+   * Parse the location from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).location;
+  }
+
+  /**
+   * Parse the agent from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).agent;
+  }
+
+  /**
+   * Parse the flow from FlowValidationResult resource.
+   *
+   * @param {string} flowValidationResultName
+   *   A fully-qualified path representing FlowValidationResult resource.
+   * @returns {string} A string representing the flow.
+   */
+  matchFlowFromFlowValidationResultName(flowValidationResultName: string) {
+    return this.pathTemplates.flowValidationResultPathTemplate.match(flowValidationResultName).flow;
+  }
+
+  /**
    * Return a fully-qualified intent resource name string.
    *
    * @param {string} project
@@ -1400,7 +1262,7 @@ export class EntityTypesClient {
    * @param {string} intent
    * @returns {string} Resource name string.
    */
-  intentPath(project: string, location: string, agent: string, intent: string) {
+  intentPath(project:string,location:string,agent:string,intent:string) {
     return this.pathTemplates.intentPathTemplate.render({
       project: project,
       location: location,
@@ -1460,7 +1322,7 @@ export class EntityTypesClient {
    * @param {string} location
    * @returns {string} Resource name string.
    */
-  locationPath(project: string, location: string) {
+  locationPath(project:string,location:string) {
     return this.pathTemplates.locationPathTemplate.render({
       project: project,
       location: location,
@@ -1499,13 +1361,7 @@ export class EntityTypesClient {
    * @param {string} page
    * @returns {string} Resource name string.
    */
-  pagePath(
-    project: string,
-    location: string,
-    agent: string,
-    flow: string,
-    page: string
-  ) {
+  pagePath(project:string,location:string,agent:string,flow:string,page:string) {
     return this.pathTemplates.pagePathTemplate.render({
       project: project,
       location: location,
@@ -1576,7 +1432,7 @@ export class EntityTypesClient {
    * @param {string} project
    * @returns {string} Resource name string.
    */
-  projectPath(project: string) {
+  projectPath(project:string) {
     return this.pathTemplates.projectPathTemplate.render({
       project: project,
     });
@@ -1604,24 +1460,15 @@ export class EntityTypesClient {
    * @param {string} entity_type
    * @returns {string} Resource name string.
    */
-  projectLocationAgentEnvironmentSessionEntityTypePath(
-    project: string,
-    location: string,
-    agent: string,
-    environment: string,
-    session: string,
-    entityType: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.render(
-      {
-        project: project,
-        location: location,
-        agent: agent,
-        environment: environment,
-        session: session,
-        entity_type: entityType,
-      }
-    );
+  projectLocationAgentEnvironmentSessionEntityTypePath(project:string,location:string,agent:string,environment:string,session:string,entityType:string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      environment: environment,
+      session: session,
+      entity_type: entityType,
+    });
   }
 
   /**
@@ -1631,12 +1478,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the project.
    */
-  matchProjectFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).project;
+  matchProjectFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).project;
   }
 
   /**
@@ -1646,12 +1489,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the location.
    */
-  matchLocationFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).location;
+  matchLocationFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).location;
   }
 
   /**
@@ -1661,12 +1500,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the agent.
    */
-  matchAgentFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).agent;
+  matchAgentFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).agent;
   }
 
   /**
@@ -1676,12 +1511,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the environment.
    */
-  matchEnvironmentFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).environment;
+  matchEnvironmentFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).environment;
   }
 
   /**
@@ -1691,12 +1522,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the session.
    */
-  matchSessionFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).session;
+  matchSessionFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).session;
   }
 
   /**
@@ -1706,12 +1533,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_environment_session_entity_type resource.
    * @returns {string} A string representing the entity_type.
    */
-  matchEntityTypeFromProjectLocationAgentEnvironmentSessionEntityTypeName(
-    projectLocationAgentEnvironmentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(
-      projectLocationAgentEnvironmentSessionEntityTypeName
-    ).entity_type;
+  matchEntityTypeFromProjectLocationAgentEnvironmentSessionEntityTypeName(projectLocationAgentEnvironmentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentEnvironmentSessionEntityTypePathTemplate.match(projectLocationAgentEnvironmentSessionEntityTypeName).entity_type;
   }
 
   /**
@@ -1724,22 +1547,14 @@ export class EntityTypesClient {
    * @param {string} entity_type
    * @returns {string} Resource name string.
    */
-  projectLocationAgentSessionEntityTypePath(
-    project: string,
-    location: string,
-    agent: string,
-    session: string,
-    entityType: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.render(
-      {
-        project: project,
-        location: location,
-        agent: agent,
-        session: session,
-        entity_type: entityType,
-      }
-    );
+  projectLocationAgentSessionEntityTypePath(project:string,location:string,agent:string,session:string,entityType:string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      session: session,
+      entity_type: entityType,
+    });
   }
 
   /**
@@ -1749,12 +1564,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_session_entity_type resource.
    * @returns {string} A string representing the project.
    */
-  matchProjectFromProjectLocationAgentSessionEntityTypeName(
-    projectLocationAgentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
-      projectLocationAgentSessionEntityTypeName
-    ).project;
+  matchProjectFromProjectLocationAgentSessionEntityTypeName(projectLocationAgentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(projectLocationAgentSessionEntityTypeName).project;
   }
 
   /**
@@ -1764,12 +1575,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_session_entity_type resource.
    * @returns {string} A string representing the location.
    */
-  matchLocationFromProjectLocationAgentSessionEntityTypeName(
-    projectLocationAgentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
-      projectLocationAgentSessionEntityTypeName
-    ).location;
+  matchLocationFromProjectLocationAgentSessionEntityTypeName(projectLocationAgentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(projectLocationAgentSessionEntityTypeName).location;
   }
 
   /**
@@ -1779,12 +1586,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_session_entity_type resource.
    * @returns {string} A string representing the agent.
    */
-  matchAgentFromProjectLocationAgentSessionEntityTypeName(
-    projectLocationAgentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
-      projectLocationAgentSessionEntityTypeName
-    ).agent;
+  matchAgentFromProjectLocationAgentSessionEntityTypeName(projectLocationAgentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(projectLocationAgentSessionEntityTypeName).agent;
   }
 
   /**
@@ -1794,12 +1597,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_session_entity_type resource.
    * @returns {string} A string representing the session.
    */
-  matchSessionFromProjectLocationAgentSessionEntityTypeName(
-    projectLocationAgentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
-      projectLocationAgentSessionEntityTypeName
-    ).session;
+  matchSessionFromProjectLocationAgentSessionEntityTypeName(projectLocationAgentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(projectLocationAgentSessionEntityTypeName).session;
   }
 
   /**
@@ -1809,12 +1608,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing project_location_agent_session_entity_type resource.
    * @returns {string} A string representing the entity_type.
    */
-  matchEntityTypeFromProjectLocationAgentSessionEntityTypeName(
-    projectLocationAgentSessionEntityTypeName: string
-  ) {
-    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(
-      projectLocationAgentSessionEntityTypeName
-    ).entity_type;
+  matchEntityTypeFromProjectLocationAgentSessionEntityTypeName(projectLocationAgentSessionEntityTypeName: string) {
+    return this.pathTemplates.projectLocationAgentSessionEntityTypePathTemplate.match(projectLocationAgentSessionEntityTypeName).entity_type;
   }
 
   /**
@@ -1825,11 +1620,7 @@ export class EntityTypesClient {
    * @param {string} security_settings
    * @returns {string} Resource name string.
    */
-  securitySettingsPath(
-    project: string,
-    location: string,
-    securitySettings: string
-  ) {
+  securitySettingsPath(project:string,location:string,securitySettings:string) {
     return this.pathTemplates.securitySettingsPathTemplate.render({
       project: project,
       location: location,
@@ -1845,9 +1636,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromSecuritySettingsName(securitySettingsName: string) {
-    return this.pathTemplates.securitySettingsPathTemplate.match(
-      securitySettingsName
-    ).project;
+    return this.pathTemplates.securitySettingsPathTemplate.match(securitySettingsName).project;
   }
 
   /**
@@ -1858,9 +1647,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromSecuritySettingsName(securitySettingsName: string) {
-    return this.pathTemplates.securitySettingsPathTemplate.match(
-      securitySettingsName
-    ).location;
+    return this.pathTemplates.securitySettingsPathTemplate.match(securitySettingsName).location;
   }
 
   /**
@@ -1871,9 +1658,144 @@ export class EntityTypesClient {
    * @returns {string} A string representing the security_settings.
    */
   matchSecuritySettingsFromSecuritySettingsName(securitySettingsName: string) {
-    return this.pathTemplates.securitySettingsPathTemplate.match(
-      securitySettingsName
-    ).security_settings;
+    return this.pathTemplates.securitySettingsPathTemplate.match(securitySettingsName).security_settings;
+  }
+
+  /**
+   * Return a fully-qualified testCase resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} test_case
+   * @returns {string} Resource name string.
+   */
+  testCasePath(project:string,location:string,agent:string,testCase:string) {
+    return this.pathTemplates.testCasePathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      test_case: testCase,
+    });
+  }
+
+  /**
+   * Parse the project from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).project;
+  }
+
+  /**
+   * Parse the location from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).location;
+  }
+
+  /**
+   * Parse the agent from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).agent;
+  }
+
+  /**
+   * Parse the test_case from TestCase resource.
+   *
+   * @param {string} testCaseName
+   *   A fully-qualified path representing TestCase resource.
+   * @returns {string} A string representing the test_case.
+   */
+  matchTestCaseFromTestCaseName(testCaseName: string) {
+    return this.pathTemplates.testCasePathTemplate.match(testCaseName).test_case;
+  }
+
+  /**
+   * Return a fully-qualified testCaseResult resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} test_case
+   * @param {string} result
+   * @returns {string} Resource name string.
+   */
+  testCaseResultPath(project:string,location:string,agent:string,testCase:string,result:string) {
+    return this.pathTemplates.testCaseResultPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      test_case: testCase,
+      result: result,
+    });
+  }
+
+  /**
+   * Parse the project from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).project;
+  }
+
+  /**
+   * Parse the location from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).location;
+  }
+
+  /**
+   * Parse the agent from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).agent;
+  }
+
+  /**
+   * Parse the test_case from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the test_case.
+   */
+  matchTestCaseFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).test_case;
+  }
+
+  /**
+   * Parse the result from TestCaseResult resource.
+   *
+   * @param {string} testCaseResultName
+   *   A fully-qualified path representing TestCaseResult resource.
+   * @returns {string} A string representing the result.
+   */
+  matchResultFromTestCaseResultName(testCaseResultName: string) {
+    return this.pathTemplates.testCaseResultPathTemplate.match(testCaseResultName).result;
   }
 
   /**
@@ -1886,13 +1808,7 @@ export class EntityTypesClient {
    * @param {string} transition_route_group
    * @returns {string} Resource name string.
    */
-  transitionRouteGroupPath(
-    project: string,
-    location: string,
-    agent: string,
-    flow: string,
-    transitionRouteGroup: string
-  ) {
+  transitionRouteGroupPath(project:string,location:string,agent:string,flow:string,transitionRouteGroup:string) {
     return this.pathTemplates.transitionRouteGroupPathTemplate.render({
       project: project,
       location: location,
@@ -1910,9 +1826,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the project.
    */
   matchProjectFromTransitionRouteGroupName(transitionRouteGroupName: string) {
-    return this.pathTemplates.transitionRouteGroupPathTemplate.match(
-      transitionRouteGroupName
-    ).project;
+    return this.pathTemplates.transitionRouteGroupPathTemplate.match(transitionRouteGroupName).project;
   }
 
   /**
@@ -1923,9 +1837,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the location.
    */
   matchLocationFromTransitionRouteGroupName(transitionRouteGroupName: string) {
-    return this.pathTemplates.transitionRouteGroupPathTemplate.match(
-      transitionRouteGroupName
-    ).location;
+    return this.pathTemplates.transitionRouteGroupPathTemplate.match(transitionRouteGroupName).location;
   }
 
   /**
@@ -1936,9 +1848,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the agent.
    */
   matchAgentFromTransitionRouteGroupName(transitionRouteGroupName: string) {
-    return this.pathTemplates.transitionRouteGroupPathTemplate.match(
-      transitionRouteGroupName
-    ).agent;
+    return this.pathTemplates.transitionRouteGroupPathTemplate.match(transitionRouteGroupName).agent;
   }
 
   /**
@@ -1949,9 +1859,7 @@ export class EntityTypesClient {
    * @returns {string} A string representing the flow.
    */
   matchFlowFromTransitionRouteGroupName(transitionRouteGroupName: string) {
-    return this.pathTemplates.transitionRouteGroupPathTemplate.match(
-      transitionRouteGroupName
-    ).flow;
+    return this.pathTemplates.transitionRouteGroupPathTemplate.match(transitionRouteGroupName).flow;
   }
 
   /**
@@ -1961,12 +1869,8 @@ export class EntityTypesClient {
    *   A fully-qualified path representing TransitionRouteGroup resource.
    * @returns {string} A string representing the transition_route_group.
    */
-  matchTransitionRouteGroupFromTransitionRouteGroupName(
-    transitionRouteGroupName: string
-  ) {
-    return this.pathTemplates.transitionRouteGroupPathTemplate.match(
-      transitionRouteGroupName
-    ).transition_route_group;
+  matchTransitionRouteGroupFromTransitionRouteGroupName(transitionRouteGroupName: string) {
+    return this.pathTemplates.transitionRouteGroupPathTemplate.match(transitionRouteGroupName).transition_route_group;
   }
 
   /**
@@ -1979,13 +1883,7 @@ export class EntityTypesClient {
    * @param {string} version
    * @returns {string} Resource name string.
    */
-  versionPath(
-    project: string,
-    location: string,
-    agent: string,
-    flow: string,
-    version: string
-  ) {
+  versionPath(project:string,location:string,agent:string,flow:string,version:string) {
     return this.pathTemplates.versionPathTemplate.render({
       project: project,
       location: location,
@@ -2059,12 +1957,7 @@ export class EntityTypesClient {
    * @param {string} webhook
    * @returns {string} Resource name string.
    */
-  webhookPath(
-    project: string,
-    location: string,
-    agent: string,
-    webhook: string
-  ) {
+  webhookPath(project:string,location:string,agent:string,webhook:string) {
     return this.pathTemplates.webhookPathTemplate.render({
       project: project,
       location: location,

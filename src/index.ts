@@ -46,39 +46,7 @@ type VersionsClient = v3.VersionsClient;
 const WebhooksClient = v3.WebhooksClient;
 type WebhooksClient = v3.WebhooksClient;
 
-export {
-  v3beta1,
-  v3,
-  AgentsClient,
-  EntityTypesClient,
-  EnvironmentsClient,
-  ExperimentsClient,
-  FlowsClient,
-  IntentsClient,
-  PagesClient,
-  SecuritySettingsServiceClient,
-  SessionEntityTypesClient,
-  SessionsClient,
-  TransitionRouteGroupsClient,
-  VersionsClient,
-  WebhooksClient,
-};
-export default {
-  v3beta1,
-  v3,
-  AgentsClient,
-  EntityTypesClient,
-  EnvironmentsClient,
-  ExperimentsClient,
-  FlowsClient,
-  IntentsClient,
-  PagesClient,
-  SecuritySettingsServiceClient,
-  SessionEntityTypesClient,
-  SessionsClient,
-  TransitionRouteGroupsClient,
-  VersionsClient,
-  WebhooksClient,
-};
+export {v3beta1, v3, AgentsClient, EntityTypesClient, EnvironmentsClient, ExperimentsClient, FlowsClient, IntentsClient, PagesClient, SecuritySettingsServiceClient, SessionEntityTypesClient, SessionsClient, TransitionRouteGroupsClient, VersionsClient, WebhooksClient};
+export default {v3beta1, v3, AgentsClient, EntityTypesClient, EnvironmentsClient, ExperimentsClient, FlowsClient, IntentsClient, PagesClient, SecuritySettingsServiceClient, SessionEntityTypesClient, SessionsClient, TransitionRouteGroupsClient, VersionsClient, WebhooksClient};
 import * as protos from '../protos/protos';
 export {protos};
