@@ -645,9 +645,9 @@ export class TestCasesClient {
  * @param {google.cloud.dialogflow.cx.v3beta1.TestCase} request.testCase
  *   Required. The test case to update.
  * @param {google.protobuf.FieldMask} request.updateMask
- *   Required. The mask to specify which fields should be updated. Only a test case's
- *   metadata and replayed_conversation_turns may be updated. The original
- *   test_case_conversation_turns may not be updated.
+ *   Required. The mask to specify which fields should be updated. The
+ *   {@link google.cloud.dialogflow.cx.v3beta1.TestCase.creation_time|`creationTime`} and
+ *   {@link google.cloud.dialogflow.cx.v3beta1.TestCase.last_test_result|`lastTestResult`} cannot be updated.
  * @param {object} [options]
  *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
  * @returns {Promise} - The promise which resolves to an array.
