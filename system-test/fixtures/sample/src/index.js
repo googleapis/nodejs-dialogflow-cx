@@ -16,7 +16,6 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
-
 /* eslint-disable node/no-missing-require, no-unused-vars */
 const cx = require('@google-cloud/dialogflow-cx');
 
@@ -24,6 +23,7 @@ function main() {
   const agentsClient = new cx.AgentsClient();
   const entityTypesClient = new cx.EntityTypesClient();
   const environmentsClient = new cx.EnvironmentsClient();
+  const experimentsClient = new cx.ExperimentsClient();
   const flowsClient = new cx.FlowsClient();
   const intentsClient = new cx.IntentsClient();
   const pagesClient = new cx.PagesClient();
