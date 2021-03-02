@@ -37543,6 +37543,9 @@ export namespace google {
                         /** QueryParameters parameters */
                         parameters?: (google.protobuf.IStruct|null);
 
+                        /** QueryParameters disableWebhook */
+                        disableWebhook?: (boolean|null);
+
                         /** QueryParameters analyzeQueryTextSentiment */
                         analyzeQueryTextSentiment?: (boolean|null);
 
@@ -37573,6 +37576,9 @@ export namespace google {
 
                         /** QueryParameters parameters. */
                         public parameters?: (google.protobuf.IStruct|null);
+
+                        /** QueryParameters disableWebhook. */
+                        public disableWebhook: boolean;
 
                         /** QueryParameters analyzeQueryTextSentiment. */
                         public analyzeQueryTextSentiment: boolean;

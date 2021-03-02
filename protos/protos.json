@@ -10209,6 +10209,10 @@
                               "type": "google.protobuf.Struct",
                               "id": 5
                             },
+                            "disableWebhook": {
+                              "type": "bool",
+                              "id": 7
+                            },
                             "analyzeQueryTextSentiment": {
                               "type": "bool",
                               "id": 8
