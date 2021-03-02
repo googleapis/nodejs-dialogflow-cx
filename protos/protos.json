@@ -1659,18 +1659,6 @@
                             }
                           }
                         },
-                        "AudioEncoding": {
-                          "values": {
-                            "AUDIO_ENCODING_UNSPECIFIED": 0,
-                            "AUDIO_ENCODING_LINEAR_16": 1,
-                            "AUDIO_ENCODING_FLAC": 2,
-                            "AUDIO_ENCODING_MULAW": 3,
-                            "AUDIO_ENCODING_AMR": 4,
-                            "AUDIO_ENCODING_AMR_WB": 5,
-                            "AUDIO_ENCODING_OGG_OPUS": 6,
-                            "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE": 7
-                          }
-                        },
                         "SpeechWordInfo": {
                           "fields": {
                             "word": {
@@ -1689,6 +1677,18 @@
                               "type": "float",
                               "id": 4
                             }
+                          }
+                        },
+                        "AudioEncoding": {
+                          "values": {
+                            "AUDIO_ENCODING_UNSPECIFIED": 0,
+                            "AUDIO_ENCODING_LINEAR_16": 1,
+                            "AUDIO_ENCODING_FLAC": 2,
+                            "AUDIO_ENCODING_MULAW": 3,
+                            "AUDIO_ENCODING_AMR": 4,
+                            "AUDIO_ENCODING_AMR_WB": 5,
+                            "AUDIO_ENCODING_OGG_OPUS": 6,
+                            "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE": 7
                           }
                         },
                         "InputAudioConfig": {
@@ -1772,14 +1772,6 @@
                             }
                           }
                         },
-                        "SsmlVoiceGender": {
-                          "values": {
-                            "SSML_VOICE_GENDER_UNSPECIFIED": 0,
-                            "SSML_VOICE_GENDER_MALE": 1,
-                            "SSML_VOICE_GENDER_FEMALE": 2,
-                            "SSML_VOICE_GENDER_NEUTRAL": 3
-                          }
-                        },
                         "OutputAudioConfig": {
                           "fields": {
                             "audioEncoding": {
@@ -1797,6 +1789,14 @@
                               "type": "SynthesizeSpeechConfig",
                               "id": 3
                             }
+                          }
+                        },
+                        "SsmlVoiceGender": {
+                          "values": {
+                            "SSML_VOICE_GENDER_UNSPECIFIED": 0,
+                            "SSML_VOICE_GENDER_MALE": 1,
+                            "SSML_VOICE_GENDER_FEMALE": 2,
+                            "SSML_VOICE_GENDER_NEUTRAL": 3
                           }
                         },
                         "OutputAudioEncoding": {
