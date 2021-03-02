@@ -4480,7 +4480,7 @@
                               "requestType": "RunTestCaseRequest",
                               "responseType": "google.longrunning.Operation",
                               "options": {
-                                "(google.api.http).post": "/v3/projects/*/locations/*/agents/*/testCases:run",
+                                "(google.api.http).post": "/v3/{name=projects/*/locations/*/agents/*/testCases/*}:run",
                                 "(google.api.http).body": "*",
                                 "(google.longrunning.operation_info).response_type": "RunTestCaseResponse",
                                 "(google.longrunning.operation_info).metadata_type": "RunTestCaseMetadata"
@@ -4488,7 +4488,7 @@
                               "parsedOptions": [
                                 {
                                   "(google.api.http)": {
-                                    "post": "/v3/projects/*/locations/*/agents/*/testCases:run",
+                                    "post": "/v3/{name=projects/*/locations/*/agents/*/testCases/*}:run",
                                     "body": "*"
                                   }
                                 },
@@ -4866,6 +4866,52 @@
                             }
                           }
                         },
+                        "TransitionRouteGroupCoverage": {
+                          "fields": {
+                            "coverages": {
+                              "rule": "repeated",
+                              "type": "Coverage",
+                              "id": 1
+                            },
+                            "coverageScore": {
+                              "type": "float",
+                              "id": 2
+                            }
+                          },
+                          "nested": {
+                            "Coverage": {
+                              "fields": {
+                                "routeGroup": {
+                                  "type": "TransitionRouteGroup",
+                                  "id": 1
+                                },
+                                "transitions": {
+                                  "rule": "repeated",
+                                  "type": "Transition",
+                                  "id": 2
+                                },
+                                "coverageScore": {
+                                  "type": "float",
+                                  "id": 3
+                                }
+                              },
+                              "nested": {
+                                "Transition": {
+                                  "fields": {
+                                    "transitionRoute": {
+                                      "type": "TransitionRoute",
+                                      "id": 1
+                                    },
+                                    "covered": {
+                                      "type": "bool",
+                                      "id": 2
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
                         "IntentCoverage": {
                           "fields": {
                             "intents": {
@@ -4919,7 +4965,8 @@
                               "values": {
                                 "COVERAGE_TYPE_UNSPECIFIED": 0,
                                 "INTENT": 1,
-                                "PAGE_TRANSITION": 2
+                                "PAGE_TRANSITION": 2,
+                                "TRANSITION_ROUTE_GROUP": 3
                               }
                             }
                           }
@@ -4929,7 +4976,8 @@
                             "coverageType": {
                               "oneof": [
                                 "intentCoverage",
-                                "transitionCoverage"
+                                "transitionCoverage",
+                                "routeGroupCoverage"
                               ]
                             }
                           },
@@ -4948,6 +4996,10 @@
                             "transitionCoverage": {
                               "type": "TransitionCoverage",
                               "id": 4
+                            },
+                            "routeGroupCoverage": {
+                              "type": "TransitionRouteGroupCoverage",
+                              "id": 6
                             }
                           }
                         },

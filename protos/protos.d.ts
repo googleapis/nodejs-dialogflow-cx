@@ -17219,6 +17219,306 @@ export namespace google {
                         }
                     }
 
+                    /** Properties of a TransitionRouteGroupCoverage. */
+                    interface ITransitionRouteGroupCoverage {
+
+                        /** TransitionRouteGroupCoverage coverages */
+                        coverages?: (google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage[]|null);
+
+                        /** TransitionRouteGroupCoverage coverageScore */
+                        coverageScore?: (number|null);
+                    }
+
+                    /** Represents a TransitionRouteGroupCoverage. */
+                    class TransitionRouteGroupCoverage implements ITransitionRouteGroupCoverage {
+
+                        /**
+                         * Constructs a new TransitionRouteGroupCoverage.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage);
+
+                        /** TransitionRouteGroupCoverage coverages. */
+                        public coverages: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage[];
+
+                        /** TransitionRouteGroupCoverage coverageScore. */
+                        public coverageScore: number;
+
+                        /**
+                         * Creates a new TransitionRouteGroupCoverage instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns TransitionRouteGroupCoverage instance
+                         */
+                        public static create(properties?: google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage;
+
+                        /**
+                         * Encodes the specified TransitionRouteGroupCoverage message. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.verify|verify} messages.
+                         * @param message TransitionRouteGroupCoverage message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified TransitionRouteGroupCoverage message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.verify|verify} messages.
+                         * @param message TransitionRouteGroupCoverage message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a TransitionRouteGroupCoverage message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns TransitionRouteGroupCoverage
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage;
+
+                        /**
+                         * Decodes a TransitionRouteGroupCoverage message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns TransitionRouteGroupCoverage
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage;
+
+                        /**
+                         * Verifies a TransitionRouteGroupCoverage message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a TransitionRouteGroupCoverage message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns TransitionRouteGroupCoverage
+                         */
+                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage;
+
+                        /**
+                         * Creates a plain object from a TransitionRouteGroupCoverage message. Also converts values to other types if specified.
+                         * @param message TransitionRouteGroupCoverage
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this TransitionRouteGroupCoverage to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    namespace TransitionRouteGroupCoverage {
+
+                        /** Properties of a Coverage. */
+                        interface ICoverage {
+
+                            /** Coverage routeGroup */
+                            routeGroup?: (google.cloud.dialogflow.cx.v3.ITransitionRouteGroup|null);
+
+                            /** Coverage transitions */
+                            transitions?: (google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition[]|null);
+
+                            /** Coverage coverageScore */
+                            coverageScore?: (number|null);
+                        }
+
+                        /** Represents a Coverage. */
+                        class Coverage implements ICoverage {
+
+                            /**
+                             * Constructs a new Coverage.
+                             * @param [properties] Properties to set
+                             */
+                            constructor(properties?: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage);
+
+                            /** Coverage routeGroup. */
+                            public routeGroup?: (google.cloud.dialogflow.cx.v3.ITransitionRouteGroup|null);
+
+                            /** Coverage transitions. */
+                            public transitions: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition[];
+
+                            /** Coverage coverageScore. */
+                            public coverageScore: number;
+
+                            /**
+                             * Creates a new Coverage instance using the specified properties.
+                             * @param [properties] Properties to set
+                             * @returns Coverage instance
+                             */
+                            public static create(properties?: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage;
+
+                            /**
+                             * Encodes the specified Coverage message. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.verify|verify} messages.
+                             * @param message Coverage message or plain object to encode
+                             * @param [writer] Writer to encode to
+                             * @returns Writer
+                             */
+                            public static encode(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                            /**
+                             * Encodes the specified Coverage message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.verify|verify} messages.
+                             * @param message Coverage message or plain object to encode
+                             * @param [writer] Writer to encode to
+                             * @returns Writer
+                             */
+                            public static encodeDelimited(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.ICoverage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                            /**
+                             * Decodes a Coverage message from the specified reader or buffer.
+                             * @param reader Reader or buffer to decode from
+                             * @param [length] Message length if known beforehand
+                             * @returns Coverage
+                             * @throws {Error} If the payload is not a reader or valid buffer
+                             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                             */
+                            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage;
+
+                            /**
+                             * Decodes a Coverage message from the specified reader or buffer, length delimited.
+                             * @param reader Reader or buffer to decode from
+                             * @returns Coverage
+                             * @throws {Error} If the payload is not a reader or valid buffer
+                             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                             */
+                            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage;
+
+                            /**
+                             * Verifies a Coverage message.
+                             * @param message Plain object to verify
+                             * @returns `null` if valid, otherwise the reason why it is not
+                             */
+                            public static verify(message: { [k: string]: any }): (string|null);
+
+                            /**
+                             * Creates a Coverage message from a plain object. Also converts values to their respective internal types.
+                             * @param object Plain object
+                             * @returns Coverage
+                             */
+                            public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage;
+
+                            /**
+                             * Creates a plain object from a Coverage message. Also converts values to other types if specified.
+                             * @param message Coverage
+                             * @param [options] Conversion options
+                             * @returns Plain object
+                             */
+                            public static toObject(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                            /**
+                             * Converts this Coverage to JSON.
+                             * @returns JSON object
+                             */
+                            public toJSON(): { [k: string]: any };
+                        }
+
+                        namespace Coverage {
+
+                            /** Properties of a Transition. */
+                            interface ITransition {
+
+                                /** Transition transitionRoute */
+                                transitionRoute?: (google.cloud.dialogflow.cx.v3.ITransitionRoute|null);
+
+                                /** Transition covered */
+                                covered?: (boolean|null);
+                            }
+
+                            /** Represents a Transition. */
+                            class Transition implements ITransition {
+
+                                /**
+                                 * Constructs a new Transition.
+                                 * @param [properties] Properties to set
+                                 */
+                                constructor(properties?: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition);
+
+                                /** Transition transitionRoute. */
+                                public transitionRoute?: (google.cloud.dialogflow.cx.v3.ITransitionRoute|null);
+
+                                /** Transition covered. */
+                                public covered: boolean;
+
+                                /**
+                                 * Creates a new Transition instance using the specified properties.
+                                 * @param [properties] Properties to set
+                                 * @returns Transition instance
+                                 */
+                                public static create(properties?: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition;
+
+                                /**
+                                 * Encodes the specified Transition message. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition.verify|verify} messages.
+                                 * @param message Transition message or plain object to encode
+                                 * @param [writer] Writer to encode to
+                                 * @returns Writer
+                                 */
+                                public static encode(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                                /**
+                                 * Encodes the specified Transition message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition.verify|verify} messages.
+                                 * @param message Transition message or plain object to encode
+                                 * @param [writer] Writer to encode to
+                                 * @returns Writer
+                                 */
+                                public static encodeDelimited(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.ITransition, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                                /**
+                                 * Decodes a Transition message from the specified reader or buffer.
+                                 * @param reader Reader or buffer to decode from
+                                 * @param [length] Message length if known beforehand
+                                 * @returns Transition
+                                 * @throws {Error} If the payload is not a reader or valid buffer
+                                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                                 */
+                                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition;
+
+                                /**
+                                 * Decodes a Transition message from the specified reader or buffer, length delimited.
+                                 * @param reader Reader or buffer to decode from
+                                 * @returns Transition
+                                 * @throws {Error} If the payload is not a reader or valid buffer
+                                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                                 */
+                                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition;
+
+                                /**
+                                 * Verifies a Transition message.
+                                 * @param message Plain object to verify
+                                 * @returns `null` if valid, otherwise the reason why it is not
+                                 */
+                                public static verify(message: { [k: string]: any }): (string|null);
+
+                                /**
+                                 * Creates a Transition message from a plain object. Also converts values to their respective internal types.
+                                 * @param object Plain object
+                                 * @returns Transition
+                                 */
+                                public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition;
+
+                                /**
+                                 * Creates a plain object from a Transition message. Also converts values to other types if specified.
+                                 * @param message Transition
+                                 * @param [options] Conversion options
+                                 * @returns Plain object
+                                 */
+                                public static toObject(message: google.cloud.dialogflow.cx.v3.TransitionRouteGroupCoverage.Coverage.Transition, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                                /**
+                                 * Converts this Transition to JSON.
+                                 * @returns JSON object
+                                 */
+                                public toJSON(): { [k: string]: any };
+                            }
+                        }
+                    }
+
                     /** Properties of an IntentCoverage. */
                     interface IIntentCoverage {
 
@@ -17516,7 +17816,8 @@ export namespace google {
                         enum CoverageType {
                             COVERAGE_TYPE_UNSPECIFIED = 0,
                             INTENT = 1,
-                            PAGE_TRANSITION = 2
+                            PAGE_TRANSITION = 2,
+                            TRANSITION_ROUTE_GROUP = 3
                         }
                     }
 
@@ -17531,6 +17832,9 @@ export namespace google {
 
                         /** CalculateCoverageResponse transitionCoverage */
                         transitionCoverage?: (google.cloud.dialogflow.cx.v3.ITransitionCoverage|null);
+
+                        /** CalculateCoverageResponse routeGroupCoverage */
+                        routeGroupCoverage?: (google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage|null);
                     }
 
                     /** Represents a CalculateCoverageResponse. */
@@ -17551,8 +17855,11 @@ export namespace google {
                         /** CalculateCoverageResponse transitionCoverage. */
                         public transitionCoverage?: (google.cloud.dialogflow.cx.v3.ITransitionCoverage|null);
 
+                        /** CalculateCoverageResponse routeGroupCoverage. */
+                        public routeGroupCoverage?: (google.cloud.dialogflow.cx.v3.ITransitionRouteGroupCoverage|null);
+
                         /** CalculateCoverageResponse coverageType. */
-                        public coverageType?: ("intentCoverage"|"transitionCoverage");
+                        public coverageType?: ("intentCoverage"|"transitionCoverage"|"routeGroupCoverage");
 
                         /**
                          * Creates a new CalculateCoverageResponse instance using the specified properties.
