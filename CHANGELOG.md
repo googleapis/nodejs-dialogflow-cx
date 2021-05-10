@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.1](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v2.6.0...v2.6.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* **deps:** require google-gax v2.12.0 ([#106](https://www.github.com/googleapis/nodejs-dialogflow-cx/issues/106)) ([2c333d7](https://www.github.com/googleapis/nodejs-dialogflow-cx/commit/2c333d73df45ff13b0a2a85332bbcb23be2e7d41))
+
 ## [2.6.0](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v2.5.0...v2.6.0) (2021-05-05)
 
 
