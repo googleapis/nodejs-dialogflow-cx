@@ -19,9 +19,9 @@
 /* global window */
 import * as gax from 'google-gax';
 import {Callback, CallOptions, Descriptors, ClientOptions} from 'google-gax';
-import * as path from 'path';
 
 import * as protos from '../../protos/protos';
+import jsonProtos = require('../../protos/protos.json');
 /**
  * Client JSON configuration object, loaded from
  * `src/v3/sessions_client_config.json`.
@@ -33,9 +33,8 @@ const version = require('../../../package.json').version;
 
 /**
  *  A session represents an interaction with a user. You retrieve user input
- *  and pass it to the
- *  {@link google.cloud.dialogflow.cx.v3.Sessions.DetectIntent|DetectIntent} method to
- *  determine user intent and respond.
+ *  and pass it to the {@link google.cloud.dialogflow.cx.v3.Sessions.DetectIntent|DetectIntent} method to determine
+ *  user intent and respond.
  * @class
  * @memberof v3
  */
@@ -139,22 +138,7 @@ export class SessionsClient {
       clientHeader.push(`${opts.libName}/${opts.libVersion}`);
     }
     // Load the applicable protos.
-    // For Node.js, pass the path to JSON proto file.
-    // For browsers, pass the JSON content.
-
-    const nodejsProtoPath = path.join(
-      __dirname,
-      '..',
-      '..',
-      'protos',
-      'protos.json'
-    );
-    this._protos = this._gaxGrpc.loadProto(
-      opts.fallback
-        ? // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require('../../protos/protos.json')
-        : nodejsProtoPath
-    );
+    this._protos = this._gaxGrpc.loadProtoJSON(jsonProtos);
 
     // This API contains "path templates"; forward-slash-separated
     // identifiers to uniquely identify resources within the API.
@@ -623,13 +607,9 @@ export class SessionsClient {
     >
   ): void;
   /**
-   * Fulfills a matched intent returned by
-   * {@link google.cloud.dialogflow.cx.v3.Sessions.MatchIntent|MatchIntent}. Must be
-   * called after
-   * {@link google.cloud.dialogflow.cx.v3.Sessions.MatchIntent|MatchIntent}, with
-   * input from
-   * {@link google.cloud.dialogflow.cx.v3.MatchIntentResponse|MatchIntentResponse}.
-   * Otherwise, the behavior is undefined.
+   * Fulfills a matched intent returned by {@link google.cloud.dialogflow.cx.v3.Sessions.MatchIntent|MatchIntent}.
+   * Must be called after {@link google.cloud.dialogflow.cx.v3.Sessions.MatchIntent|MatchIntent}, with input from
+   * {@link google.cloud.dialogflow.cx.v3.MatchIntentResponse|MatchIntentResponse}. Otherwise, the behavior is undefined.
    *
    * @param {Object} request
    *   The request object that will be sent.
