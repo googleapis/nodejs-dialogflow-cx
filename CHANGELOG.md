@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.11.1](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v2.11.0...v2.11.1) (2021-06-24)
+
+
+### Bug Fixes
+
+* make request optional in all cases ([#139](https://www.github.com/googleapis/nodejs-dialogflow-cx/issues/139)) ([ad950f0](https://www.github.com/googleapis/nodejs-dialogflow-cx/commit/ad950f057f413b9c094b6d23a21ada0d64887206))
+
 ## [2.11.0](https://www.github.com/googleapis/nodejs-dialogflow-cx/compare/v2.10.0...v2.11.0) (2021-06-21)
 
 
