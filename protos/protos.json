@@ -7022,6 +7022,28 @@
                         "(google.api.resource_definition).pattern": "projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}"
                       },
                       "nested": {
+                        "AdvancedSettings": {
+                          "fields": {
+                            "loggingSettings": {
+                              "type": "LoggingSettings",
+                              "id": 6
+                            }
+                          },
+                          "nested": {
+                            "LoggingSettings": {
+                              "fields": {
+                                "enableStackdriverLogging": {
+                                  "type": "bool",
+                                  "id": 2
+                                },
+                                "enableInteractionLogging": {
+                                  "type": "bool",
+                                  "id": 3
+                                }
+                              }
+                            }
+                          }
+                        },
                         "Agents": {
                           "options": {
                             "(google.api.default_host)": "dialogflow.googleapis.com",
@@ -7279,11 +7301,18 @@
                             },
                             "enableStackdriverLogging": {
                               "type": "bool",
-                              "id": 18
+                              "id": 18,
+                              "options": {
+                                "deprecated": true
+                              }
                             },
                             "enableSpellCorrection": {
                               "type": "bool",
                               "id": 20
+                            },
+                            "advancedSettings": {
+                              "type": "AdvancedSettings",
+                              "id": 22
                             }
                           }
                         },
@@ -9087,9 +9116,24 @@
                               "rule": "repeated",
                               "type": "PurgeDataType",
                               "id": 8
+                            },
+                            "insightsExportSettings": {
+                              "type": "InsightsExportSettings",
+                              "id": 13,
+                              "options": {
+                                "(google.api.field_behavior)": "OPTIONAL"
+                              }
                             }
                           },
                           "nested": {
+                            "InsightsExportSettings": {
+                              "fields": {
+                                "enableInsightsExport": {
+                                  "type": "bool",
+                                  "id": 1
+                                }
+                              }
+                            },
                             "RedactionStrategy": {
                               "values": {
                                 "REDACTION_STRATEGY_UNSPECIFIED": 0,
@@ -11623,6 +11667,10 @@
                             "speechEndOffset": {
                               "type": "google.protobuf.Duration",
                               "id": 8
+                            },
+                            "languageCode": {
+                              "type": "string",
+                              "id": 10
                             }
                           },
                           "nested": {
@@ -11677,6 +11725,14 @@
                               "keyType": "string",
                               "type": "string",
                               "id": 10
+                            },
+                            "flowVersions": {
+                              "rule": "repeated",
+                              "type": "string",
+                              "id": 14,
+                              "options": {
+                                "(google.api.resource_reference).type": "dialogflow.googleapis.com/Version"
+                              }
                             }
                           }
                         },
@@ -12684,6 +12740,18 @@
                               "type": "Definition",
                               "id": 5
                             },
+                            "rolloutConfig": {
+                              "type": "RolloutConfig",
+                              "id": 14
+                            },
+                            "rolloutState": {
+                              "type": "RolloutState",
+                              "id": 15
+                            },
+                            "rolloutFailureReason": {
+                              "type": "string",
+                              "id": 16
+                            },
                             "result": {
                               "type": "Result",
                               "id": 6
@@ -12844,7 +12912,8 @@
                                 "STATE_UNSPECIFIED": 0,
                                 "DRAFT": 1,
                                 "RUNNING": 2,
-                                "DONE": 3
+                                "DONE": 3,
+                                "ROLLOUT_FAILED": 4
                               }
                             }
                           }
@@ -12873,6 +12942,57 @@
                                   "id": 3
                                 }
                               }
+                            }
+                          }
+                        },
+                        "RolloutConfig": {
+                          "fields": {
+                            "rolloutSteps": {
+                              "rule": "repeated",
+                              "type": "RolloutStep",
+                              "id": 1
+                            },
+                            "rolloutCondition": {
+                              "type": "string",
+                              "id": 2
+                            },
+                            "failureCondition": {
+                              "type": "string",
+                              "id": 3
+                            }
+                          },
+                          "nested": {
+                            "RolloutStep": {
+                              "fields": {
+                                "displayName": {
+                                  "type": "string",
+                                  "id": 1
+                                },
+                                "trafficPercent": {
+                                  "type": "int32",
+                                  "id": 2
+                                },
+                                "minDuration": {
+                                  "type": "google.protobuf.Duration",
+                                  "id": 3
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "RolloutState": {
+                          "fields": {
+                            "step": {
+                              "type": "string",
+                              "id": 1
+                            },
+                            "stepIndex": {
+                              "type": "int32",
+                              "id": 3
+                            },
+                            "startTime": {
+                              "type": "google.protobuf.Timestamp",
+                              "id": 2
                             }
                           }
                         },
