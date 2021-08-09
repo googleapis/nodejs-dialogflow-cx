@@ -64,12 +64,14 @@ describe('update intent', () => {
     });
   });
 
-  after('delete Agent', async () =>{
-    agentClient.deleteAgent({'name':agentPath})
+  after('delete Agent', async () => { 
+    agentClient.deleteAgent({name: agentPath});
   });
 
   it('should update an intent using fieldmasks', async () => {
-    const output = exec(`${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`);
+    const output = exec(
+      `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
+    );
     assert.include(output, displayName);
   });
 });
