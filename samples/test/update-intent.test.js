@@ -23,9 +23,9 @@ const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 const projectId =
   process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
 const intentId = [];
-const agentId = "";
-const agentPath = "";
-const location = "global";
+const location = 'global';
+let agentId = '';
+let agentPath = '';
 
 describe('update intent', () => {
   const intentClient = new dialogflow.IntentsClient();
@@ -33,6 +33,7 @@ describe('update intent', () => {
   const cmd = 'node update-intent.js';
   const displayName = `fake_display_name_${uuid.v4().split('-')[0]}`;
   const agentDisplayName = `temp_agent_${uuid.v4().split('-')[0]}`;
+  const parent = 'projects/' + projectId + '/locations/global';
 
   before('get intent ID and agent ID', async () => {
     // The path to identify the agent that owns the intents.
@@ -51,7 +52,7 @@ describe('update intent', () => {
     const [agentResponse] = await agentClient.createAgent(request);
 
     agentPath = agentResponse.name;
-    agentId = agentPath.split("/")[5];
+    agentId = agentPath.split('/')[5];
 
     const intentRequest = {
       parent: agentPath,
@@ -64,7 +65,7 @@ describe('update intent', () => {
   });
 
   after('delete Agent', async () =>{
-    agentClient.deleteAgent({"name":agentPath})
+    agentClient.deleteAgent({'name':agentPath})
   });
 
   it('should update an intent using fieldmasks', async () => {
