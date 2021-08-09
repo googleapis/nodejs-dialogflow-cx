@@ -48,13 +48,13 @@ describe('update intent', () => {
       parent,
     };
 
-    const [response] = await agentClient.createAgent(request);
+    const [agentResponse] = await agentClient.createAgent(request);
 
-    agentPath = response.name;
+    agentPath = agentResponse.name;
     agentId = agentPath.split("/")[5];
 
     const intentRequest = {
-      parent: response.name(),
+      parent: agentPath,
     };
 
     const [response] = await intentClient.listIntents(intentRequest);
