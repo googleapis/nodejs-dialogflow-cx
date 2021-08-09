@@ -64,7 +64,7 @@ describe('update intent', () => {
     });
   });
 
-  after('delete Agent', async () => { 
+  after('delete Agent', async () => {
     agentClient.deleteAgent({name: agentPath});
   });
 
