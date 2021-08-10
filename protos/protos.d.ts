@@ -33582,6 +33582,9 @@ export namespace google {
                         /** SecuritySettings inspectTemplate */
                         inspectTemplate?: (string|null);
 
+                        /** SecuritySettings deidentifyTemplate */
+                        deidentifyTemplate?: (string|null);
+
                         /** SecuritySettings retentionWindowDays */
                         retentionWindowDays?: (number|null);
 
@@ -33615,6 +33618,9 @@ export namespace google {
 
                         /** SecuritySettings inspectTemplate. */
                         public inspectTemplate: string;
+
+                        /** SecuritySettings deidentifyTemplate. */
+                        public deidentifyTemplate: string;
 
                         /** SecuritySettings retentionWindowDays. */
                         public retentionWindowDays?: (number|null);
@@ -33810,18 +33816,6 @@ export namespace google {
                         }
                     }
 
-                    /** AudioEncoding enum. */
-                    enum AudioEncoding {
-                        AUDIO_ENCODING_UNSPECIFIED = 0,
-                        AUDIO_ENCODING_LINEAR_16 = 1,
-                        AUDIO_ENCODING_FLAC = 2,
-                        AUDIO_ENCODING_MULAW = 3,
-                        AUDIO_ENCODING_AMR = 4,
-                        AUDIO_ENCODING_AMR_WB = 5,
-                        AUDIO_ENCODING_OGG_OPUS = 6,
-                        AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE = 7
-                    }
-
                     /** Properties of a SpeechWordInfo. */
                     interface ISpeechWordInfo {
 
@@ -33928,6 +33922,18 @@ export namespace google {
                          * @returns JSON object
                          */
                         public toJSON(): { [k: string]: any };
+                    }
+
+                    /** AudioEncoding enum. */
+                    enum AudioEncoding {
+                        AUDIO_ENCODING_UNSPECIFIED = 0,
+                        AUDIO_ENCODING_LINEAR_16 = 1,
+                        AUDIO_ENCODING_FLAC = 2,
+                        AUDIO_ENCODING_MULAW = 3,
+                        AUDIO_ENCODING_AMR = 4,
+                        AUDIO_ENCODING_AMR_WB = 5,
+                        AUDIO_ENCODING_OGG_OPUS = 6,
+                        AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE = 7
                     }
 
                     /** Properties of an InputAudioConfig. */
