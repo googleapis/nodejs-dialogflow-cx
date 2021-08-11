@@ -16,12 +16,13 @@
 
 const {assert} = require('chai');
 const {describe, it} = require('mocha');
+const uuid = require('uuid');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('create agent', () => {
   const cmd = 'node create-agent.js';
-
+  const agentId = `temp_agent_${uuid.v4().split('-')[0]}`;
   const projectId = process.env.GCLOUD_PROJECT;
 
   it('should create agent', async () => {
