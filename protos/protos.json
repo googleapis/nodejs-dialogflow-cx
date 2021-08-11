@@ -2105,7 +2105,17 @@
                             },
                             "inspectTemplate": {
                               "type": "string",
-                              "id": 9
+                              "id": 9,
+                              "options": {
+                                "(google.api.resource_reference).type": "dlp.googleapis.com/InspectTemplate"
+                              }
+                            },
+                            "deidentifyTemplate": {
+                              "type": "string",
+                              "id": 17,
+                              "options": {
+                                "(google.api.resource_reference).type": "dlp.googleapis.com/DeidentifyTemplate"
+                              }
                             },
                             "retentionWindowDays": {
                               "type": "int32",
@@ -2118,10 +2128,7 @@
                             },
                             "insightsExportSettings": {
                               "type": "InsightsExportSettings",
-                              "id": 13,
-                              "options": {
-                                "(google.api.field_behavior)": "OPTIONAL"
-                              }
+                              "id": 13
                             }
                           },
                           "nested": {

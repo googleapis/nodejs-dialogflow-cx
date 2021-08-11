@@ -7514,6 +7514,9 @@ export namespace google {
                         /** SecuritySettings inspectTemplate */
                         inspectTemplate?: (string|null);
 
+                        /** SecuritySettings deidentifyTemplate */
+                        deidentifyTemplate?: (string|null);
+
                         /** SecuritySettings retentionWindowDays */
                         retentionWindowDays?: (number|null);
 
@@ -7547,6 +7550,9 @@ export namespace google {
 
                         /** SecuritySettings inspectTemplate. */
                         public inspectTemplate: string;
+
+                        /** SecuritySettings deidentifyTemplate. */
+                        public deidentifyTemplate: string;
 
                         /** SecuritySettings retentionWindowDays. */
                         public retentionWindowDays?: (number|null);
