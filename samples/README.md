@@ -121,7 +121,7 @@ __Usage:__
 
 ### Update-intent
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/update-intent.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/update-intent.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/update-intent.js,samples/README.md)
 
