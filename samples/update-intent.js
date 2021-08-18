@@ -56,7 +56,7 @@ async function main(projectId, intentId, agentId, location, displayName) {
 
   //Send the request for update the intent.
   const result = await intentClient.updateIntent(updateIntentRequest);
-  console.log(result[0].displayName);
+  console.log(result);
   // [END dialogflow_cx_update_intent]
 }
 
