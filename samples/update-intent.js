@@ -16,10 +16,15 @@
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
+let projectId = "your-project-id";
+let intentId = "your-intent-id";
+let agentId = "your-agent-id";
+let location = "your-location";
+let displayName = "your-display-name";
+
 async function main(projectId, intentId, agentId, location, displayName) {
   // [START dialogflow_cx_update_intent]
 
-  //await updateIntent("valiant-marker-319718","8dcfc58a-7fc3-4469-ae60-77402e98c933","a02e8272-a62d-4bf5-b235-b365ce4c4137","global","testFieldMask");
   const {IntentsClient} = require('@google-cloud/dialogflow-cx');
 
   const intentClient = new IntentsClient();
@@ -34,21 +39,24 @@ async function main(projectId, intentId, agentId, location, displayName) {
     '/intents/' +
     intentId;
 
+  //Gets the intent from intentPath 
   const intent = await intentClient.getIntent({name: intentPath});
   intent[0].displayName = displayName;
+
+  //Specifies what is being updated 
   const updateMask = {
     paths: ['display_name'],
   };
 
   const updateIntentRequest = {
     intent: intent[0],
-    updateMask: updateMask,
+    updateMask,
     languageCode: 'en',
   };
 
   //Send the request for update the intent.
   const result = await intentClient.updateIntent(updateIntentRequest);
-  console.log(result);
+  console.log(result[0].displayName);
   // [END dialogflow_cx_update_intent]
 }
 
@@ -56,4 +64,11 @@ process.on('unhandledRejection', err => {
   console.error(err.message);
   process.exitCode = 1;
 });
-main(...process.argv.slice(2));
+
+projectId = process.argv[2];
+intentId = process.argv[3];
+agentId = process.argv[4];
+location = process.argv[5];
+displayName = process.argv[6];
+
+main(projectId, intentId, agentId, location, displayName);

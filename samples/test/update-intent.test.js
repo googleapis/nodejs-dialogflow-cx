@@ -16,12 +16,13 @@
 
 const {assert} = require('chai');
 const {describe, before, it, after} = require('mocha');
+const DLP = require('@google-cloud/dlp');
 const execSync = require('child_process').execSync;
 const uuid = require('uuid');
 const dialogflow = require('@google-cloud/dialogflow-cx');
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
-const projectId =
-  process.env.GCLOUD_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
+const dlpClient = new DLP.DlpServiceClient();
+const projectId = await dlpClient.getProjectId();
 const intentId = [];
 const location = 'global';
 let agentId = '';
@@ -30,10 +31,9 @@ let agentPath = '';
 describe('update intent', () => {
   const intentClient = new dialogflow.IntentsClient();
   const agentClient = new dialogflow.AgentsClient();
-  const cmd = 'node update-intent.js';
   const displayName = `fake_display_name_${uuid.v4().split('-')[0]}`;
   const agentDisplayName = `temp_agent_${uuid.v4().split('-')[0]}`;
-  const parent = 'projects/' + projectId + '/locations/global';
+  const parent = 'projects/' + projectId + '/locations/' + location;
 
   before('get intent ID and agent ID', async () => {
     // The path to identify the agent that owns the intents.
@@ -70,8 +70,8 @@ describe('update intent', () => {
 
   it('should update an intent using fieldmasks', async () => {
     const output = exec(
-      `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
+      `node update-intent.js ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
     );
-    assert.include(output, displayName);
+    assert.match(output, displayName);
   });
 });
