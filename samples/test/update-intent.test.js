@@ -71,6 +71,6 @@ describe('update intent', async () => {
     const output = exec(
       `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
     );
-    assert.match(output, displayName);
+    assert.include(output, displayName);
   });
 });
