@@ -32,6 +32,7 @@ describe('update intent', async () => {
   const displayName = `fake_display_name_${uuid.v4().split('-')[0]}`;
   const agentDisplayName = `temp_agent_${uuid.v4().split('-')[0]}`;
   const parent = 'projects/' + projectId + '/locations/' + location;
+  const cmd = 'node update-intent.js'
 
   before('get intent ID and agent ID', async () => {
     // The path to identify the agent that owns the intents.
@@ -68,7 +69,7 @@ describe('update intent', async () => {
 
   it('should update an intent using fieldmasks', async () => {
     const output = exec(
-      `node update-intent.js ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
+      `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
     );
     assert.match(output, displayName);
   });
