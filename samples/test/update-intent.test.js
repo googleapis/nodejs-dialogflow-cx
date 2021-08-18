@@ -25,7 +25,7 @@ const location = 'global';
 let agentId = '';
 let agentPath = '';
 
-describe('update intent', async () => {
+describe('update intent', () => {
   const intentClient = new dialogflow.IntentsClient();
   const agentClient = new dialogflow.AgentsClient();
   const projectId = await agentClient.getProjectId();
@@ -71,6 +71,6 @@ describe('update intent', async () => {
     const output = exec(
       `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
     );
-    assert.equal(output, displayName);
+    assert.match(output, displayName);
   });
 });
