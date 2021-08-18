@@ -16,21 +16,19 @@
 
 const {assert} = require('chai');
 const {describe, before, it, after} = require('mocha');
-const DLP = require('@google-cloud/dlp');
 const execSync = require('child_process').execSync;
 const uuid = require('uuid');
 const dialogflow = require('@google-cloud/dialogflow-cx');
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
-const dlpClient = new DLP.DlpServiceClient();
 const intentId = [];
 const location = 'global';
 let agentId = '';
 let agentPath = '';
 
 describe('update intent', async () => {
-  const projectId = await dlpClient.getProjectId();
   const intentClient = new dialogflow.IntentsClient();
   const agentClient = new dialogflow.AgentsClient();
+  const projectId = await agentClient.getProjectId();
   const displayName = `fake_display_name_${uuid.v4().split('-')[0]}`;
   const agentDisplayName = `temp_agent_${uuid.v4().split('-')[0]}`;
   const parent = 'projects/' + projectId + '/locations/' + location;
