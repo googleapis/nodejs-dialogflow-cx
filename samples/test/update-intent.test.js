@@ -25,7 +25,7 @@ const location = 'global';
 let agentId = '';
 let agentPath = '';
 
-describe('update intent', () => {
+describe('update intent', async () => {
   const intentClient = new dialogflow.IntentsClient();
   const agentClient = new dialogflow.AgentsClient();
   const projectId = await agentClient.getProjectId();
