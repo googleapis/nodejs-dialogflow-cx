@@ -22,13 +22,13 @@ const uuid = require('uuid');
 const dialogflow = require('@google-cloud/dialogflow-cx');
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 const dlpClient = new DLP.DlpServiceClient();
-const projectId = await dlpClient.getProjectId();
 const intentId = [];
 const location = 'global';
 let agentId = '';
 let agentPath = '';
 
-describe('update intent', () => {
+describe('update intent', async () => {
+  const projectId = await dlpClient.getProjectId();
   const intentClient = new dialogflow.IntentsClient();
   const agentClient = new dialogflow.AgentsClient();
   const displayName = `fake_display_name_${uuid.v4().split('-')[0]}`;

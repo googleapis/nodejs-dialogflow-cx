@@ -16,11 +16,11 @@
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
-let projectId = "your-project-id";
-let intentId = "your-intent-id";
-let agentId = "your-agent-id";
-let location = "your-location";
-let displayName = "your-display-name";
+let projectId = 'your-project-id';
+let intentId = 'your-intent-id';
+let agentId = 'your-agent-id';
+let location = 'your-location';
+let displayName = 'your-display-name';
 
 async function main(projectId, intentId, agentId, location, displayName) {
   // [START dialogflow_cx_update_intent]
@@ -39,11 +39,11 @@ async function main(projectId, intentId, agentId, location, displayName) {
     '/intents/' +
     intentId;
 
-  //Gets the intent from intentPath 
+  //Gets the intent from intentPath
   const intent = await intentClient.getIntent({name: intentPath});
   intent[0].displayName = displayName;
 
-  //Specifies what is being updated 
+  //Specifies what is being updated
   const updateMask = {
     paths: ['display_name'],
   };
