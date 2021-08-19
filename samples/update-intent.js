@@ -17,11 +17,11 @@
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 async function main(
-  projectId = "your-project-id",
-  agentId = "your-agent-id",
-  intentId = "your-intent-id",
-  location = "your-location",
-  displayName = "your-display-name"
+  projectId = 'your-project-id',
+  agentId = 'your-agent-id',
+  intentId = 'your-intent-id',
+  location = 'your-location',
+  displayName = 'your-display-name'
 ) {
   // [START dialogflow_cx_update_intent]
 

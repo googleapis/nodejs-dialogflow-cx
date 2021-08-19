@@ -69,7 +69,7 @@ describe('update intent', async () => {
 
   it('should update an intent using fieldmasks', async () => {
     const output = exec(
-      `${cmd} ${projectId} ${intentId[0]} ${agentId} ${location} ${displayName}`
+      `${cmd} ${projectId} ${agentId} ${intentId[0]} ${location} ${displayName}`
     );
     assert.include(output, displayName);
   });
