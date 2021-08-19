@@ -16,13 +16,13 @@
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
-let projectId = 'your-project-id';
-let intentId = 'your-intent-id';
-let agentId = 'your-agent-id';
-let location = 'your-location';
-let displayName = 'your-display-name';
-
-async function main(projectId, intentId, agentId, location, displayName) {
+async function main(
+  projectId = "your-project-id",
+  agentId = "your-agent-id",
+  intentId = "your-intent-id",
+  location = "your-location",
+  displayName = "your-display-name"
+) {
   // [START dialogflow_cx_update_intent]
 
   const {IntentsClient} = require('@google-cloud/dialogflow-cx');
@@ -65,10 +65,4 @@ process.on('unhandledRejection', err => {
   process.exitCode = 1;
 });
 
-projectId = process.argv[2];
-intentId = process.argv[3];
-agentId = process.argv[4];
-location = process.argv[5];
-displayName = process.argv[6];
-
-main(projectId, intentId, agentId, location, displayName);
+main(...process.argv.slice(2));
