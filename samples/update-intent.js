@@ -14,13 +14,7 @@
 
 'use strict';
 
-async function main(
-  projectId,
-  agentId,
-  intentId,
-  location,
-  displayName
-) {
+async function main(projectId, agentId, intentId, location, displayName) {
   // [START dialogflow_cx_update_intent]
 
   const { IntentsClient } = require('@google-cloud/dialogflow-cx');
