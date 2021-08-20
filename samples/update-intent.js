@@ -14,8 +14,6 @@
 
 'use strict';
 
-process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
-
 async function main(
   projectId = 'your-project-id',
   agentId = 'your-agent-id',
