@@ -30,7 +30,6 @@ async function main(
   const agentPath = intentClient.projectPath(projectId);
   const intentPath = `${agentPath}/locations/${location}/agents/${agentId}/intents/${intentId}`;
 
-
   //Gets the intent from intentPath
   const intent = await intentClient.getIntent({name: intentPath});
   intent[0].displayName = displayName;
