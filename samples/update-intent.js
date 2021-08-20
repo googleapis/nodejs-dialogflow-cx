@@ -17,7 +17,7 @@
 async function main(projectId, agentId, intentId, location, displayName) {
   // [START dialogflow_cx_update_intent]
 
-  const { IntentsClient } = require('@google-cloud/dialogflow-cx');
+  const {IntentsClient} = require('@google-cloud/dialogflow-cx');
 
   const intentClient = new IntentsClient();
 
@@ -33,7 +33,7 @@ async function main(projectId, agentId, intentId, location, displayName) {
     const intentPath = `${agentPath}/locations/${location}/agents/${agentId}/intents/${intentId}`;
 
     //Gets the intent from intentPath
-    const intent = await intentClient.getIntent({ name: intentPath });
+    const intent = await intentClient.getIntent({name: intentPath});
     intent[0].displayName = displayName;
 
     //Specifies what is being updated
