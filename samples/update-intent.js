@@ -23,7 +23,7 @@ async function main(
 ) {
   // [START dialogflow_cx_update_intent]
 
-  const {IntentsClient} = require('@google-cloud/dialogflow-cx');
+  const { IntentsClient } = require('@google-cloud/dialogflow-cx');
 
   const intentClient = new IntentsClient();
 
@@ -34,27 +34,32 @@ async function main(
   //  const location = 'your-location';
   //  const displayName = 'your-display-name';
 
-  const agentPath = intentClient.projectPath(projectId);
-  const intentPath = `${agentPath}/locations/${location}/agents/${agentId}/intents/${intentId}`;
+  async function updateIntent() {
+    const agentPath = intentClient.projectPath(projectId);
+    const intentPath = `${agentPath}/locations/${location}/agents/${agentId}/intents/${intentId}`;
 
-  //Gets the intent from intentPath
-  const intent = await intentClient.getIntent({name: intentPath});
-  intent[0].displayName = displayName;
+    //Gets the intent from intentPath
+    const intent = await intentClient.getIntent({ name: intentPath });
+    intent[0].displayName = displayName;
 
-  //Specifies what is being updated
-  const updateMask = {
-    paths: ['display_name'],
-  };
+    //Specifies what is being updated
+    const updateMask = {
+      paths: ['display_name'],
+    };
 
-  const updateIntentRequest = {
-    intent: intent[0],
-    updateMask,
-    languageCode: 'en',
-  };
+    const updateIntentRequest = {
+      intent: intent[0],
+      updateMask,
+      languageCode: 'en',
+    };
 
-  //Send the request for update the intent.
-  const result = await intentClient.updateIntent(updateIntentRequest);
-  console.log(result);
+    //Send the request for update the intent.
+    const result = await intentClient.updateIntent(updateIntentRequest);
+    console.log(result);
+  }
+
+  updateIntent();
+
   // [END dialogflow_cx_update_intent]
 }
 
