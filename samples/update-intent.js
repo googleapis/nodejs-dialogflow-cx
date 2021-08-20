@@ -15,17 +15,24 @@
 'use strict';
 
 async function main(
-  projectId = 'your-project-id',
-  agentId = 'your-agent-id',
-  intentId = 'your-intent-id',
-  location = 'your-location',
-  displayName = 'your-display-name'
+  projectId,
+  agentId,
+  intentId,
+  location,
+  displayName
 ) {
   // [START dialogflow_cx_update_intent]
 
   const {IntentsClient} = require('@google-cloud/dialogflow-cx');
 
   const intentClient = new IntentsClient();
+
+  //TODO(developer): Uncomment these variables before running the sample.
+  //  const projectId = 'your-project-id';
+  //  const agentId = 'your-agent-id';
+  //  const intentId = 'your-intent-id';
+  //  const location = 'your-location';
+  //  const displayName = 'your-display-name';
 
   const agentPath = intentClient.projectPath(projectId);
   const intentPath = `${agentPath}/locations/${location}/agents/${agentId}/intents/${intentId}`;
