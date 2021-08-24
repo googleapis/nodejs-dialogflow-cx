@@ -32,12 +32,15 @@ describe('should test page management functions', () => {
     const output = exec(`${cmd} ${projectId} ${agentId}`);
     const response = JSON.stringify(output)
     agentID = response["name"].split("/")[5]
+    assert.equal(response, "")
   });
 
   
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global ${pageName}`);
+    const flowId = "00000000-0000-0000-0000-000000000000"
+    const location = "global"
+    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
     const response = JSON.stringify(output)
     pageID = response["name"].split("/")[9]
     assert.include(output,pageName)
