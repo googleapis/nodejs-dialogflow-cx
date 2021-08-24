@@ -34,6 +34,7 @@ describe('should test page management functions', () => {
     agentID = response["name"].split("/")[5]
   });
 
+  
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global ${pageName}`);
@@ -42,15 +43,15 @@ describe('should test page management functions', () => {
     assert.include(output,pageName)
   });
 
-  it('should list pages', async () => {
-    const cmd = 'node list.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
-    assert.include(output,pageName)
-  });
+  // it('should list pages', async () => {
+  //   const cmd = 'node list.js';
+  //   const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
+  //   assert.include(output,pageName)
+  // });
 
-  it('should delete a page', async () => {
-    const cmd = 'node delete.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-    assert.equal(len(output),0)
-  });
+  // it('should delete a page', async () => {
+  //   const cmd = 'node delete.js';
+  //   const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
+  //   assert.equal(len(output),0)
+  //});
 });
