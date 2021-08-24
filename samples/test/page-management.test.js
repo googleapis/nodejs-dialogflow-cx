@@ -28,11 +28,9 @@ describe('should test page management functions', () => {
 
   it('should create agent', async () => {
     const cmd = 'node create-agent.js';
-    const agentId = `temp_agent_${uuid.v4().split('-')[0]}`;
-    const output = exec(`${cmd} ${projectId} ${agentId}`);
-    const response = JSON.stringify(output)
-    agentID = response["name"].split("/")[5]
-    assert.equal(response, "")
+    const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
+    const output = exec(`${cmd} ${projectId} ${agentName}`);
+    assert.equal(output, "")
   });
 
   
