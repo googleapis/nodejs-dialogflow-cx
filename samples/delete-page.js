@@ -47,7 +47,7 @@ async function main(projectId, agentId, flowId, pageId, location)  {
     const response = await pagesClient.deletePage(deletePageRequest);
     console.log(response);
   }
-  // [END dialogflow_delete_page_sample]
+  // [END dialogflow_cx_delete_page_sample]
 
   await deletePage(
     projectId,
