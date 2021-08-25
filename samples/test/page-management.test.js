@@ -30,7 +30,7 @@ describe('should test page management functions', () => {
     const cmd = 'node create-agent.js';
     const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
     const output = exec(`${cmd} ${projectId} ${agentName}`);
-    const response = JSON.parse(output)
+    const response = JSON.parse(JSON.stringify(output))
     assert.equal(response, "")
   });
 
