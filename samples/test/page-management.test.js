@@ -35,15 +35,15 @@ describe('should test page management functions', () => {
   });
 
   
-  it('should create a page', async () => {
-    const cmd = 'node create-page.js';
-    const flowId = "00000000-0000-0000-0000-000000000000"
-    const location = "global"
-    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-    const response = JSON.stringify(output)
-    pageID = response["name"].split("/")[9]
-    assert.include(output,pageName)
-  });
+  // it('should create a page', async () => {
+  //   const cmd = 'node create-page.js';
+  //   const flowId = "00000000-0000-0000-0000-000000000000"
+  //   const location = "global"
+  //   const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
+  //   const response = JSON.stringify(output)
+  //   pageID = response["name"].split("/")[9]
+  //   assert.include(output,pageName)
+  // });
 
   // it('should list pages', async () => {
   //   const cmd = 'node list.js';
