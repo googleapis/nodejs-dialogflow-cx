@@ -27,23 +27,40 @@ describe('should test page management functions', () => {
   let agentID = ""
 
   it('should create agent', async () => {
-    const cmd = 'node create-agent.js';
+    const parent = 'projects/' + projectId + '/locations/global';
     const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
-    const output = exec(`${cmd} ${projectId} ${agentName}`);
-    const response = JSON.parse(JSON.stringify(output))
-    assert.equal(response.displayName,"")
+    const api_endpoint = 'global-dialogflow.googleapis.com:443';
+
+    const agent = {
+      displayName: agentName,
+      defaultLanguageCode: 'en',
+      timeZone: 'America/Los_Angeles',
+    };
+
+    const {AgentsClient} = require('@google-cloud/dialogflow-cx');
+
+    const client = new AgentsClient({api_endpoint: api_endpoint});
+
+    const request = {
+      agent,
+      parent,
+    };
+
+    const [response] = await client.createAgent(request);
+    agentID = response.name.split("/")[9];
+
   });
 
   
-  // it('should create a page', async () => {
-  //   const cmd = 'node create-page.js';
-  //   const flowId = "00000000-0000-0000-0000-000000000000"
-  //   const location = "global"
-  //   const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-  //   const response = JSON.stringify(output)
-  //   pageID = response["name"].split("/")[9]
-  //   assert.include(output,pageName)
-  // });
+  it('should create a page', async () => {
+    const cmd = 'node create-page.js';
+    const flowId = "00000000-0000-0000-0000-000000000000"
+    const location = "global"
+    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
+    const response = JSON.stringify(output)
+    pageID = response["name"].split("/")[9]
+    assert.include(output,pageName)
+  });
 
   // it('should list pages', async () => {
   //   const cmd = 'node list.js';
