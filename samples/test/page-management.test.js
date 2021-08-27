@@ -15,7 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
-const {describe, it} = require('mocha');
+const {describe, it, after, before} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
@@ -25,8 +25,9 @@ describe('should test page management functions', () => {
   const projectId = process.env.GCLOUD_PROJECT;
   let pageID = ""
   let agentID = ""
+  let agentPath = ""
 
-  it('should create agent', async () => {
+  before( async () => {
     const parent = 'projects/' + projectId + '/locations/global';
     const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
     const api_endpoint = 'global-dialogflow.googleapis.com:443';
@@ -47,7 +48,8 @@ describe('should test page management functions', () => {
     };
 
     const [response] = await client.createAgent(request);
-    assert.equal(response.name,"")
+    agentID = response.name.split("/")[5];
+    agentPath = response.name;
 
   });
 
@@ -62,15 +64,22 @@ describe('should test page management functions', () => {
     assert.include(output,pageName)
   });
 
-  // it('should list pages', async () => {
-  //   const cmd = 'node list.js';
-  //   const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
-  //   assert.include(output,pageName)
-  // });
+  it('should list pages', async () => {
+    const cmd = 'node list.js';
+    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
+    assert.include(output,pageName)
+  });
 
-  // it('should delete a page', async () => {
-  //   const cmd = 'node delete.js';
-  //   const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-  //   assert.equal(len(output),0)
-  //});
+  it('should delete a page', async () => {
+    const cmd = 'node delete.js';
+    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
+    assert.equal(len(output),0)
+  });
+
+  after (async () => {
+    const api_endpoint = 'global-dialogflow.googleapis.com:443';
+    const {AgentsClient} = require('@google-cloud/dialogflow-cx');
+    const client = new AgentsClient({api_endpoint: api_endpoint});
+    await client.deleteAgent(agentPath);
+  });
 });
