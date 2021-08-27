@@ -60,18 +60,36 @@ describe('should test page management functions', () => {
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
     const response = JSON.stringify(output)
-    pageID = response["name"].split("/")[9]
-    assert.include(output,pageName)
+
+    const pagesClient = new PagesClient();
+    const listPageRequest =
+      new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
+
+    listPageRequest.parent =
+      'projects/' +
+      projectId +
+      '/locations/' +
+      location +
+      '/agents/' +
+      agentID +
+      '/flows/' +
+      flowId;
+    listPageRequest.languageCode = 'en';
+
+    const response = await pagesClient.listPages(listPageRequest);
+    pageID = response[0].name.split("/")[9]
+  
+    assert.equal(JSON.stringify(response),"")
   });
 
   it('should list pages', async () => {
-    const cmd = 'node list.js';
+    const cmd = 'node list-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
     assert.include(output,pageName)
   });
 
   it('should delete a page', async () => {
-    const cmd = 'node delete.js';
+    const cmd = 'node delete-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
     assert.equal(len(output),0)
   });
