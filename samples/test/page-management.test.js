@@ -47,7 +47,7 @@ describe('should test page management functions', () => {
     };
 
     const [response] = await client.createAgent(request);
-    agentID = response.name.split("/")[9];
+    assert.equal(response.name,"")
 
   });
 
