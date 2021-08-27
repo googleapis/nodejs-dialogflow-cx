@@ -31,7 +31,7 @@ describe('should test page management functions', () => {
     const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
     const output = exec(`${cmd} ${projectId} ${agentName}`);
     const response = JSON.parse(JSON.stringify(output))
-    assert.equal(response['name'],"")
+    assert.equal(response.displayName,"")
   });
 
   
