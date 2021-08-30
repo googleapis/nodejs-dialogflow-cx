@@ -21,7 +21,7 @@ const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('should test page management functions', () => {
-  const pageName = ""
+  let pageName = ""
   const projectId = process.env.GCLOUD_PROJECT;
   let pageID = ""
   let agentID = ""
