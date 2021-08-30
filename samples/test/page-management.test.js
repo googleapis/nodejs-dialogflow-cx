@@ -23,6 +23,7 @@ const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 describe('should test page management functions', () => {
   let pageName = ""
   const projectId = process.env.GCLOUD_PROJECT;
+  const flowId = "00000000-0000-0000-0000-000000000000"
   let pageID = ""
   let agentID = "4e2cb784-012c-48b2-9d8c-a877d3be3437"
   let agentPath = ""
@@ -34,7 +35,6 @@ describe('should test page management functions', () => {
   
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
-    const flowId = "00000000-0000-0000-0000-000000000000"
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
     assert.include(output,pageName)
@@ -42,11 +42,35 @@ describe('should test page management functions', () => {
 
   it('should list pages', async () => {
     const cmd = 'node list-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 global`);
-    assert.equal(output,"")
+    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} global`);
+    assert.include(output,pageName)
   });
 
   it('should delete a page', async () => {
+    const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+    const pagesClient = new PagesClient();
+    const listPageRequest =
+      new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
+
+    listPageRequest.parent =
+      'projects/' +
+      projectId +
+      '/locations/' +
+      location +
+      '/agents/' +
+      agentID +
+      '/flows/' +
+      flowId;
+    listPageRequest.languageCode = 'en';
+
+    const response = await pagesClient.listPages(listPageRequest);
+
+    for(var i = 0; i < response.length; i++){
+        if(response[i].displayName == pageName){
+          pageID = response[i].name.split("/")[9]
+        }
+    }
+
     const cmd = 'node delete-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
     assert.equal(len(output),0)
