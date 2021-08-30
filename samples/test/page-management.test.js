@@ -61,7 +61,7 @@ describe('should test page management functions', async () => {
 
     for(var i = 0; i < response[0].length; i++){
         if(response[0][i].displayName == pageName){
-          pageID = response[i].name.split("/")[9]
+          pageID = response[0][i].name.split("/")[9]
         }
     }
 
