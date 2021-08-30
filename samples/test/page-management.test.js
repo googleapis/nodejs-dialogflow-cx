@@ -15,19 +15,20 @@
 'use strict';
 
 const {assert} = require('chai');
-const {describe, it, after, before} = require('mocha');
+const {describe, before, it, after} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('should test page management functions', () => {
-  const pageName = `temp_page_${uuid.v4().split('-')[0]}`;
+  const pageName = ""
   const projectId = process.env.GCLOUD_PROJECT;
   let pageID = ""
   let agentID = ""
   let agentPath = ""
 
-  before( async () => {
+  before('Create Agent', async () => {
+    pageName = `temp_page_${uuid.v4().split('-')[0]}`;
     const parent = 'projects/' + projectId + '/locations/global';
     const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
     const api_endpoint = 'global-dialogflow.googleapis.com:443';
@@ -53,6 +54,13 @@ describe('should test page management functions', () => {
 
   });
 
+  after ('Delete Agent', async () => {
+    const api_endpoint = 'global-dialogflow.googleapis.com:443';
+    const {AgentsClient} = require('@google-cloud/dialogflow-cx');
+    const client = new AgentsClient({api_endpoint: api_endpoint});
+    await client.deleteAgent(agentPath);
+  });
+
   
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
@@ -60,7 +68,7 @@ describe('should test page management functions', () => {
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
     const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
-    
+
     const pagesClient = new PagesClient();
     const listPageRequest =
       new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
@@ -94,10 +102,4 @@ describe('should test page management functions', () => {
     assert.equal(len(output),0)
   });
 
-  after (async () => {
-    const api_endpoint = 'global-dialogflow.googleapis.com:443';
-    const {AgentsClient} = require('@google-cloud/dialogflow-cx');
-    const client = new AgentsClient({api_endpoint: api_endpoint});
-    await client.deleteAgent(agentPath);
-  });
 });
