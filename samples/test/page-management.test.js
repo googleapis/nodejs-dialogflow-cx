@@ -28,11 +28,11 @@ describe('should test page management functions', async () => {
   let pageID = ""
   let agentID = "4e2cb784-012c-48b2-9d8c-a877d3be3437"
   
-  it('should create a page', async () => {
-    const cmd = 'node create-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-    assert.include(output,pageName)
-  });
+  // it('should create a page', async () => {
+  //   const cmd = 'node create-page.js';
+  //   const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
+  //   assert.include(output,pageName)
+  // });
 
   it('should list pages', async () => {
     const cmd = 'node list-page.js';
@@ -40,34 +40,34 @@ describe('should test page management functions', async () => {
     assert.include(output,pageName)
   });
 
-  // it('should delete a page', async () => {
-  //   const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
-  //   const pagesClient = new PagesClient();
-  //   const listPageRequest =
-  //     new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
+  it('should delete a page', async () => {
+    const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+    const pagesClient = new PagesClient();
+    const listPageRequest =
+      new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
 
-  //   listPageRequest.parent =
-  //     'projects/' +
-  //     projectId +
-  //     '/locations/' +
-  //     location +
-  //     '/agents/' +
-  //     agentID +
-  //     '/flows/' +
-  //     flowId;
-  //   listPageRequest.languageCode = 'en';
+    listPageRequest.parent =
+      'projects/' +
+      projectId +
+      '/locations/' +
+      location +
+      '/agents/' +
+      agentID +
+      '/flows/' +
+      flowId;
+    listPageRequest.languageCode = 'en';
 
-  //   const response = await pagesClient.listPages(listPageRequest);
+    const response = await pagesClient.listPages(listPageRequest);
 
-  //   for(var i = 0; i < response.length; i++){
-  //       if(response[i].displayName == pageName){
-  //         pageID = response[i].name.split("/")[9]
-  //       }
-  //   }
+    for(var i = 0; i < response.length; i++){
+        if(response[i].displayName == pageName){
+          pageID = response[i].name.split("/")[9]
+        }
+    }
 
-  //   const cmd = 'node delete-page.js';
-  //   const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-  //   assert.equal(len(output),0)
-  // });
+    const cmd = 'node delete-page.js';
+    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
+    assert.equal(len(output),0)
+  });
 
 });
