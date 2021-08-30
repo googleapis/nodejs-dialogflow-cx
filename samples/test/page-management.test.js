@@ -59,27 +59,8 @@ describe('should test page management functions', () => {
     const flowId = "00000000-0000-0000-0000-000000000000"
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-    const response = JSON.stringify(output)
-
-    const pagesClient = new PagesClient();
-    const listPageRequest =
-      new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
-
-    listPageRequest.parent =
-      'projects/' +
-      projectId +
-      '/locations/' +
-      location +
-      '/agents/' +
-      agentID +
-      '/flows/' +
-      flowId;
-    listPageRequest.languageCode = 'en';
-
-    const response = await pagesClient.listPages(listPageRequest);
-    pageID = response[0].name.split("/")[9]
   
-    assert.equal(JSON.stringify(response),"")
+    assert.includec(JSON.stringify(output),pageName)
   });
 
   it('should list pages', async () => {
