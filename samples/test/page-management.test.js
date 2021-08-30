@@ -28,9 +28,9 @@ describe('should test page management functions', () => {
   let agentPath = ""
 
   before('Create Agent', async () => {
-    pageName = `temp_page_${uuid.v4().split('-')[0]}`;
+    pageName = `temp_page_${uuid.v4()}`;
     const parent = 'projects/' + projectId + '/locations/global';
-    const agentName = `temp_agent_${uuid.v4().split('-')[0]}`;
+    const agentName = `temp_agent_${uuid.v4()}`;
     const api_endpoint = 'global-dialogflow.googleapis.com:443';
 
     const agent = {
