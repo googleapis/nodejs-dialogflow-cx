@@ -28,11 +28,11 @@ describe('should test page management functions', async () => {
   let pageID = ""
   let agentID = "4e2cb784-012c-48b2-9d8c-a877d3be3437"
   
-  // it('should create a page', async () => {
-  //   const cmd = 'node create-page.js';
-  //   const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-  //   assert.include(output,pageName)
-  // });
+  it('should create a page', async () => {
+    const cmd = 'node create-page.js';
+    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
+    assert.include(output,pageName)
+  });
 
   it('should list pages', async () => {
     const cmd = 'node list-page.js';
@@ -59,8 +59,8 @@ describe('should test page management functions', async () => {
 
     const response = await pagesClient.listPages(listPageRequest);
 
-    for(var i = 0; i < response.length; i++){
-        if(response[i].displayName == pageName){
+    for(var i = 0; i < response[0].length; i++){
+        if(response[0][i].displayName == pageName){
           pageID = response[i].name.split("/")[9]
         }
     }
