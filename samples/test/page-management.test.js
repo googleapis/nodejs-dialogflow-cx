@@ -59,7 +59,8 @@ describe('should test page management functions', () => {
     const flowId = "00000000-0000-0000-0000-000000000000"
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
-  
+    const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+    
     const pagesClient = new PagesClient();
     const listPageRequest =
       new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
