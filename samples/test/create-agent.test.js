@@ -15,7 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
-const {describe, it} = require('mocha');
+const {describe, it, after} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
@@ -24,9 +24,18 @@ describe('create agent', () => {
   const cmd = 'node create-agent.js';
   const agentId = `temp_agent_${uuid.v4().split('-')[0]}`;
   const projectId = process.env.GCLOUD_PROJECT;
+  let response = ""
+
+  after ('Delete Agent', async () => {
+    const api_endpoint = 'global-dialogflow.googleapis.com:443';
+    const {AgentsClient} = require('@google-cloud/dialogflow-cx');
+    const client = new AgentsClient({api_endpoint: api_endpoint});
+    const name = JSON.parse(response)
+    assert.equal(JSON.parse(response),name.name)
+  });
 
   it('should create agent', async () => {
-    const output = exec(`${cmd} ${projectId} ${agentId}`);
-    assert.include(output, agentId);
+    response = exec(`${cmd} ${projectId} ${agentId}`);
+    assert.include(response, agentId);
   });
 });
