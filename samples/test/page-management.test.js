@@ -48,8 +48,8 @@ describe('should test page management functions', () => {
     };
 
     const [response] = await client.createAgent(request);
-    agentID = response.name.split("/")[5];
     agentPath = response.name;
+    agentID = response.name.split("/")[5];
 
   });
 
@@ -60,7 +60,25 @@ describe('should test page management functions', () => {
     const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
   
-    assert.includec(JSON.stringify(output),pageName)
+    const pagesClient = new PagesClient();
+    const listPageRequest =
+      new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
+
+    listPageRequest.parent =
+      'projects/' +
+      projectId +
+      '/locations/' +
+      location +
+      '/agents/' +
+      agentID +
+      '/flows/' +
+      flowId;
+    listPageRequest.languageCode = 'en';
+
+    const response = await pagesClient.listPages(listPageRequest);
+    console.log(response);
+
+    assert.equal("",response)
   });
 
   it('should list pages', async () => {
