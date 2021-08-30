@@ -87,7 +87,7 @@ describe('should test page management functions', () => {
     const response = await pagesClient.listPages(listPageRequest);
     console.log(response);
 
-    assert.equal("",response)
+    assert.equal("",response[2])
   });
 
   it('should list pages', async () => {
