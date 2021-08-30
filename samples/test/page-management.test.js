@@ -21,17 +21,16 @@ const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('should test page management functions', () => {
-  let pageName = `temp_page_${uuid.v4()}`
+  let pageName = ``
   const projectId = process.env.GCLOUD_PROJECT;
   const flowId = "00000000-0000-0000-0000-000000000000"
   let pageID = ""
   let agentID = "4e2cb784-012c-48b2-9d8c-a877d3be3437"
   let agentPath = ""
 
-  after ('Delete Page', async () => {
-    
-  });
-
+  before('get page name',async() =>{
+    pageName = `temp_page_${uuid.v4()}`
+  })
   
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
