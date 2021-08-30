@@ -21,12 +21,12 @@ const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('should test page management functions', () => {
-  let pageName = ``
+  const location = "global"
   const projectId = process.env.GCLOUD_PROJECT;
   const flowId = "00000000-0000-0000-0000-000000000000"
+  let pageName = ``
   let pageID = ""
   let agentID = "4e2cb784-012c-48b2-9d8c-a877d3be3437"
-  let agentPath = ""
 
   before('get page name',async() =>{
     pageName = `temp_page_${uuid.v4()}`
@@ -34,7 +34,6 @@ describe('should test page management functions', () => {
   
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
-    const location = "global"
     const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
     assert.include(output,pageName)
   });
