@@ -62,5 +62,3 @@ main(...process.argv.slice(2)).catch(err => {
   console.error(err);
   process.exitCode = 1;
 });
-
-main(...process.argv.slice(2));
