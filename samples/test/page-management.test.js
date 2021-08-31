@@ -30,8 +30,8 @@ describe('should test page management functions', async () => {
 
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 
-        ${flowId} ${location} ${pageName}`);
+    const temp = `${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`;
+    const output = exec(temp);
     assert.include(output, pageName);
   });
 
@@ -67,8 +67,8 @@ describe('should test page management functions', async () => {
     }
 
     const cmd = 'node delete-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 
-        ${flowId} ${pageID} global`);
+    const temp = `${cmd} ${projectId} ${agentID} ${flowId} ${pageID} global`;
+    const output = exec(temp);
     assert.equal(output, '[ {}, null, null ]\n');
   });
 });
