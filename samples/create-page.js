@@ -55,15 +55,9 @@ async function main(projectId, agentId, flowId, location, displayName) {
     const response = await pagesClient.createPage(createPageRequest);
     console.log(response);
   }
-// [END dialogflow_cx_create_page_sample]
+  // [END dialogflow_cx_create_page_sample]
 
-  await createPage(
-    projectId,
-    agentId,
-    flowId,
-    location,
-    displayName
-  );
+  await createPage(projectId, agentId, flowId, location, displayName);
 }
 
 main(...process.argv.slice(2)).catch(err => {

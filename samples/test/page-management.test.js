@@ -21,16 +21,17 @@ const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('should test page management functions', async () => {
-  const location = 'global'
+  const location = 'global';
   const projectId = process.env.GCLOUD_PROJECT;
   const flowId = '00000000-0000-0000-0000-000000000000';
-  let pageName = `temp_page_${uuid.v4()}`;
+  const pageName = `temp_page_${uuid.v4()}`;
+  const agentID = '4e2cb784-012c-48b2-9d8c-a877d3be3437';
   let pageID = '';
-  let agentID = '4e2cb784-012c-48b2-9d8c-a877d3be3437';
 
   it('should create a page', async () => {
     const cmd = 'node create-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} ${flowId} ${location} ${pageName}`);
+    const output = exec(`${cmd} ${projectId} ${agentID} 
+      ${flowId} ${location} ${pageName}`);
     assert.include(output, pageName);
   });
 
@@ -59,14 +60,15 @@ describe('should test page management functions', async () => {
 
     const response = await pagesClient.listPages(listPageRequest);
 
-    for(let i = 0; i < response[0].length; i++){
-        if (response[0][i].displayName === pageName) {
-          pageID = response[0][i].name.split('/')[9]
-        }
+    for (let i = 0; i < response[0].length; i++) {
+      if (response[0][i].displayName === pageName) {
+        pageID = response[0][i].name.split('/')[9];
+      }
     }
 
     const cmd = 'node delete-page.js';
-    const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-    assert.equal(output,'[ {}, null, null ]\n')
+    const output = exec(`${cmd} ${projectId} ${agentID} 
+      ${flowId} ${pageID} global`);
+    assert.equal(output, '[ {}, null, null ]\n');
   });
 });

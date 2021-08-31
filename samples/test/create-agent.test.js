@@ -15,7 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
-const {describe, it, after} = require('mocha');
+const {describe, it} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
@@ -24,10 +24,9 @@ describe('create agent', () => {
   const cmd = 'node create-agent.js';
   const agentId = `temp_agent_${uuid.v4().split('-')[0]}`;
   const projectId = process.env.GCLOUD_PROJECT;
-  let response = ''
 
   it('should create agent', async () => {
-    response = exec(`${cmd} ${projectId} ${agentId}`);
-    assert.include(response, agentId);
+    const output = exec(`${cmd} ${projectId} ${agentId}`);
+    assert.include(output, agentId);
   });
 });
