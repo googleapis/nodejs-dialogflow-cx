@@ -67,7 +67,7 @@ describe('should test page management functions', async () => {
 
     const cmd = 'node delete-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-    assert.equal(output.length,0)
+    assert.equal(output,"")
   });
 
 });
