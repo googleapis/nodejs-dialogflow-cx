@@ -61,13 +61,13 @@ describe('should test page management functions', async () => {
 
     for(var i = 0; i < response[0].length; i++){
         if(response[0][i].displayName == pageName){
-          pageID = response[0][i].name.split("/")[9]
+          pageID = response[0][i].name
         }
     }
 
     const cmd = 'node delete-page.js';
     const output = exec(`${cmd} ${projectId} ${agentID} 00000000-0000-0000-0000-000000000000 ${pageID} global`);
-    assert.equal(len(output),0)
+    assert.equal(output.length,0)
   });
 
 });
