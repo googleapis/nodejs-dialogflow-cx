@@ -17,8 +17,8 @@
 const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
 
 
-async function main(projectId, agentId, flowId, location)  {
-    /**
+async function main(projectId, agentId, flowId, location) {
+  /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   // const projectId = 'my-project';
@@ -48,12 +48,7 @@ async function main(projectId, agentId, flowId, location)  {
   }
   // [END dialogflow_cx_list_page_sample]
 
-  await listPages(
-    projectId,
-    agentId,
-    flowId,
-    location
-  );
+  await listPages(projectId, agentId, flowId, location);
 }
 
 main(...process.argv.slice(2)).catch(err => {

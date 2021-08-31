@@ -16,7 +16,7 @@
 
 const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
 
-async function main(projectId, agentId, flowId, pageId, location)  {
+async function main(projectId, agentId, flowId, pageId, location) {
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -49,13 +49,7 @@ async function main(projectId, agentId, flowId, pageId, location)  {
   }
   // [END dialogflow_cx_delete_page_sample]
 
-  await deletePage(
-    projectId,
-    agentId,
-    flowId,
-    pageId,
-    location
-  );
+  await deletePage(projectId, agentId, flowId, pageId, location);
 }
 
 main(...process.argv.slice(2)).catch(err => {

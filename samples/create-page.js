@@ -16,7 +16,7 @@
 
 const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
 
-async function main(projectId, agentId, flowId, location, displayName)  {
+async function main(projectId, agentId, flowId, location, displayName) {
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -27,48 +27,46 @@ async function main(projectId, agentId, flowId, location, displayName)  {
   // const location = 'global';
 
   // [START dialogflow_cx_create_page_sample]
-async function createPage(
-  project_id,
-  agent_id,
-  flow_id,
-  location,
-  displayName
-) {
-  const pagesClient = new PagesClient();
-  const createPageRequest =
-    new protos.google.cloud.dialogflow.cx.v3.CreatePageRequest();
-  const page = new protos.google.cloud.dialogflow.cx.v3.Page();
+  async function createPage(
+    project_id,
+    agent_id,
+    flow_id,
+    location,
+    displayName
+  ) {
+    const pagesClient = new PagesClient();
+    const createPageRequest =
+      new protos.google.cloud.dialogflow.cx.v3.CreatePageRequest();
+    const page = new protos.google.cloud.dialogflow.cx.v3.Page();
 
-  page.displayName = displayName;
+    page.displayName = displayName;
 
-  createPageRequest.parent =
-    'projects/' +
-    project_id +
-    '/locations/' +
-    location +
-    '/agents/' +
-    agent_id +
-    '/flows/' +
-    flow_id;
-  createPageRequest.page = page;
+    createPageRequest.parent =
+      'projects/' +
+      project_id +
+      '/locations/' +
+      location +
+      '/agents/' +
+      agent_id +
+      '/flows/' +
+      flow_id;
+    createPageRequest.page = page;
 
-  const response = await pagesClient.createPage(createPageRequest);
-  console.log(response);
-}
+    const response = await pagesClient.createPage(createPageRequest);
+    console.log(response);
+  }
 // [END dialogflow_cx_create_page_sample]
 
-  const response = await createPage(
+  await createPage(
     projectId,
     agentId,
     flowId,
     location,
     displayName
   );
-
 }
 
 main(...process.argv.slice(2)).catch(err => {
   console.error(err);
   process.exitCode = 1;
 });
-

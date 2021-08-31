@@ -24,7 +24,7 @@ describe('create agent', () => {
   const cmd = 'node create-agent.js';
   const agentId = `temp_agent_${uuid.v4().split('-')[0]}`;
   const projectId = process.env.GCLOUD_PROJECT;
-  let response = ""
+  let response = ''
 
   it('should create agent', async () => {
     response = exec(`${cmd} ${projectId} ${agentId}`);
