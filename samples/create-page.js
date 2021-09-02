@@ -28,9 +28,9 @@ async function main(projectId, agentId, flowId, location, displayName) {
 
   // [START dialogflow_cx_create_page_sample]
   async function createPage(
-    project_id,
-    agent_id,
-    flow_id,
+    projectId,
+    agentId,
+    flowId,
     location,
     displayName
   ) {
@@ -41,15 +41,8 @@ async function main(projectId, agentId, flowId, location, displayName) {
 
     page.displayName = displayName;
 
-    createPageRequest.parent =
-      'projects/' +
-      project_id +
-      '/locations/' +
-      location +
-      '/agents/' +
-      agent_id +
-      '/flows/' +
-      flow_id;
+    createPageRequest.parent =`projects/${projectId}/locations/
+        ${location}/agents/${agentId}/flows/${flowId}`
     createPageRequest.page = page;
 
     const response = await pagesClient.createPage(createPageRequest);

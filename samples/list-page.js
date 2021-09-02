@@ -26,20 +26,13 @@ async function main(projectId, agentId, flowId, location) {
   // const location = 'global';
 
   // [START dialogflow_cx_list_page_sample]
-  async function listPages(project_id, agent_id, flow_id, location) {
+  async function listPages(projectId, agentId, flowId, location) {
     const pagesClient = new PagesClient();
     const listPageRequest =
       new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
 
-    listPageRequest.parent =
-      'projects/' +
-      project_id +
-      '/locations/' +
-      location +
-      '/agents/' +
-      agent_id +
-      '/flows/' +
-      flow_id;
+    listPageRequest.parent =`projects/${projectId}/locations/${location}/
+        agents/${agentId}/flows/${flowId}`;
     listPageRequest.languageCode = 'en';
 
     const response = await pagesClient.listPages(listPageRequest);

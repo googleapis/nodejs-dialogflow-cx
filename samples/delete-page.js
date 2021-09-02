@@ -27,24 +27,14 @@ async function main(projectId, agentId, flowId, pageId, location) {
   // const location = 'global';
 
   // [START dialogflow_cx_delete_page_sample]
-  async function deletePage(project_id, agent_id, flow_id, page_id, location) {
+  async function deletePage(projectId, agentId, flowId, pageId, location) {
     const pagesClient = new PagesClient();
-    const deletePageRequest =
-      new protos.google.cloud.dialogflow.cx.v3.DeletePageRequest();
+    const req = { 
+      name:`projects/${projectId}/locations/${location}/
+          agents/${agentId}/flows/${flowId}/pages/${pageId}`
+    }
 
-    deletePageRequest.name =
-      'projects/' +
-      project_id +
-      '/locations/' +
-      location +
-      '/agents/' +
-      agent_id +
-      '/flows/' +
-      flow_id +
-      '/pages/' +
-      page_id;
-
-    const response = await pagesClient.deletePage(deletePageRequest);
+    const response = await pagesClient.deletePage(req);
     console.log(response);
   }
   // [END dialogflow_cx_delete_page_sample]
