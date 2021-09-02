@@ -31,8 +31,7 @@ async function main(projectId, agentId, flowId, location) {
     const listPageRequest =
       new protos.google.cloud.dialogflow.cx.v3.ListPagesRequest();
 
-    listPageRequest.parent =`projects/${projectId}/locations/${location}/
-        agents/${agentId}/flows/${flowId}`;
+    listPageRequest.parent = `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`;
     listPageRequest.languageCode = 'en';
 
     const response = await pagesClient.listPages(listPageRequest);

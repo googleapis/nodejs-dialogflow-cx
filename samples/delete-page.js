@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+const {PagesClient} = require('@google-cloud/dialogflow-cx');
 
 async function main(projectId, agentId, flowId, pageId, location) {
   /**
@@ -29,9 +29,8 @@ async function main(projectId, agentId, flowId, pageId, location) {
   // [START dialogflow_cx_delete_page_sample]
   async function deletePage(projectId, agentId, flowId, pageId, location) {
     const pagesClient = new PagesClient();
-    const req = { 
-      name:`projects/${projectId}/locations/${location}/
-          agents/${agentId}/flows/${flowId}/pages/${pageId}`
+    const req = {
+      name: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}/pages/${pageId}`,
     }
 
     const response = await pagesClient.deletePage(req);
