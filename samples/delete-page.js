@@ -31,7 +31,7 @@ async function main(projectId, agentId, flowId, pageId, location) {
     const pagesClient = new PagesClient();
     const req = {
       name: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}/pages/${pageId}`,
-    }
+    };
 
     const response = await pagesClient.deletePage(req);
     console.log(response);
