@@ -29,18 +29,12 @@ async function main(projectId, agentId, flowId, location, displayName) {
   // [START dialogflow_cx_create_page_sample]
   async function createPage(projectId, agentId, flowId, location, displayName) {
     const pagesClient = new PagesClient();
-    const createPageRequest =
-      new protos.google.cloud.dialogflow.cx.v3.CreatePageRequest();
-    const page = new protos.google.cloud.dialogflow.cx.v3.Page();
-
-    page.displayName = displayName;
-
-    createPageRequest.parent = `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`;
-    createPageRequest.page = page;
 
     const response = await pagesClient.createPage({
       parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
-      page: {},
+      page: {
+        displayName: displayName
+      },
     });
     console.log(response);
   }
