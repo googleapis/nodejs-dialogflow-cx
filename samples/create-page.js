@@ -38,7 +38,10 @@ async function main(projectId, agentId, flowId, location, displayName) {
     createPageRequest.parent = `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`;
     createPageRequest.page = page;
 
-    const response = await pagesClient.createPage(createPageRequest);
+    const response = await pagesClient.createPage({
+      parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
+      page: {}
+    });
     console.log(response);
   }
   // [END dialogflow_cx_create_page_sample]
