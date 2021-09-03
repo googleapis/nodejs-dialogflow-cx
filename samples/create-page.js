@@ -40,7 +40,7 @@ async function main(projectId, agentId, flowId, location, displayName) {
 
     const response = await pagesClient.createPage({
       parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
-      page: {}
+      page: {},
     });
     console.log(response);
   }
