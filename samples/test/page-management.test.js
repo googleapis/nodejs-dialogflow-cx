@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {assert} = require('assert');
+const {assert} = require('chai');
 const {describe, it} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
@@ -69,6 +69,6 @@ describe('should test page management functions', async () => {
     const cmd = 'node delete-page.js';
     const temp = `${cmd} ${projectId} ${agentID} ${flowId} ${pageID} global`;
     const output = exec(temp);
-    assert.strictEqual(output.includes('['), true);
+    assert.equal(output, '[ {}, null, null ]\n');
   });
 });
