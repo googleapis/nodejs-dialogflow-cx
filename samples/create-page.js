@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+const {PagesClient} = require('@google-cloud/dialogflow-cx');
 
 async function main(projectId, agentId, flowId, location, displayName) {
   /**
@@ -29,14 +29,13 @@ async function main(projectId, agentId, flowId, location, displayName) {
   // [START dialogflow_cx_create_page_sample]
   async function createPage(projectId, agentId, flowId, location, displayName) {
     const pagesClient = new PagesClient();
-    const createPageRequest =
-      new protos.google.cloud.dialogflow.cx.v3.CreatePageRequest();
-    const page = new protos.google.cloud.dialogflow.cx.v3.Page();
 
-    page.displayName = displayName;
-
-    createPageRequest.parent = `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`;
-    createPageRequest.page = page;
+    const createPageRequest = {
+      parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
+      page: {
+        displayName: displayName,
+      },
+    };
 
     const response = await pagesClient.createPage(createPageRequest);
     console.log(response);
