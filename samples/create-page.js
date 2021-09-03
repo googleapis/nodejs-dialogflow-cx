@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {PagesClient} = require('@google-cloud/dialogflow-cx');
+const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
 
 async function main(projectId, agentId, flowId, location, displayName) {
   /**
