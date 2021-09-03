@@ -29,7 +29,7 @@ async function main(projectId, agentId, flowId, pageId, location) {
   // [START dialogflow_cx_delete_page_sample]
   async function deletePage(projectId, agentId, flowId, pageId, location) {
     const pagesClient = new PagesClient();
-    
+
     const req = {
       name: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}/pages/${pageId}`,
     };

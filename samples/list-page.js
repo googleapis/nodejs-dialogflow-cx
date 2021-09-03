@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+const {PagesClient} = require('@google-cloud/dialogflow-cx');
 
 async function main(projectId, agentId, flowId, location) {
   /**
@@ -28,11 +28,12 @@ async function main(projectId, agentId, flowId, location) {
   // [START dialogflow_cx_list_page_sample]
   async function listPages(projectId, agentId, flowId, location) {
     const pagesClient = new PagesClient();
-    
+
     const listPageRequest = {
       parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
       languageCode: 'en',
-    }
+    };
+    
     const response = await pagesClient.listPages(listPageRequest);
     console.log(response);
   }

@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {PagesClient, protos} = require('@google-cloud/dialogflow-cx');
+const {PagesClient} = require('@google-cloud/dialogflow-cx');
 
 async function main(projectId, agentId, flowId, location, displayName) {
   /**
@@ -33,7 +33,7 @@ async function main(projectId, agentId, flowId, location, displayName) {
     const response = await pagesClient.createPage({
       parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
       page: {
-        displayName: displayName
+        displayName: displayName,
       },
     });
     console.log(response);
