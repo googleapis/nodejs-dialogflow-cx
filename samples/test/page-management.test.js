@@ -14,7 +14,7 @@
 
 'use strict';
 
-const {assert} = require('chai');
+const {assert} = require('assert')
 const {describe, it} = require('mocha');
 const uuid = require('uuid');
 const execSync = require('child_process').execSync;
