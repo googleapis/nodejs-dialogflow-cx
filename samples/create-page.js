@@ -30,12 +30,21 @@ async function main(projectId, agentId, flowId, location, displayName) {
   async function createPage(projectId, agentId, flowId, location, displayName) {
     const pagesClient = new PagesClient();
 
-    const response = await pagesClient.createPage({
+    const createPageRequest = {
       parent: `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}`,
       page: {
+        name: null,
         displayName: displayName,
+        entryFulfillment: null,
+        form: null,
+        transitionRouteGroups: null,
+        transitionRoutes: null,
+        eventHandlers: null,
       },
-    });
+      languageCode: 'en',
+    }
+
+    const response = await pagesClient.createPage(createPageRequest);
     console.log(response);
   }
   // [END dialogflow_cx_create_page_sample]
