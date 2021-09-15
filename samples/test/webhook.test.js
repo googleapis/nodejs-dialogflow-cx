@@ -53,6 +53,6 @@ describe('create agent', () => {
         };
     
         webhook.handleWebhook(JSON.parse(temp), res);
-        assert.include(res, "Hello from a GCF Webhook");
+        assert.include(str(response), "Hello from a GCF Webhook");
     });
 });
