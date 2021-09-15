@@ -16,9 +16,6 @@
 
 const { assert } = require('chai');
 const { describe, it } = require('mocha');
-const uuid = require('uuid');
-const execSync = require('child_process').execSync;
-const exec = cmd => execSync(cmd, { encoding: 'utf8' });
 const webhook = require('../webhooks');
 
 const request = {
@@ -47,7 +44,7 @@ let response = {}
 
 describe('create agent', () => {
 
-    it('should test webhook', async () => {
+    it('should test webhook returns correct response', async () => {
         let temp = JSON.stringify(request)
 
         let res = {
