@@ -19,6 +19,7 @@
 exports.handleWebhook = (request, response) => {
     console.log(request)
     let tag = request.body.fulfillmentInfo.tag;
+    console.log(tag)
     let jsonResponse = {};
     if (tag == "Default Welcome Intent") {
       //fulfillment response to be sent to the agent if the request tag is equal to "welcome tag"
@@ -65,7 +66,6 @@ exports.handleWebhook = (request, response) => {
         }
       };
     }
- 
-    response.status(200).send(jsonResponse);
+    response.send(jsonResponse);
 };
 // [END dialogflow_cx_webhook]
