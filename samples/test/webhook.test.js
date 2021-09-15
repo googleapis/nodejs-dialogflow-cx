@@ -40,14 +40,14 @@ const request = {
     },
 }
 
-let response = {}
 
 describe('create agent', () => {
 
     it('should test webhook returns correct response', async () => {
-        let temp = JSON.stringify(request)
+        const temp = JSON.stringify(request)
+        let response = ""
 
-        let res = {
+        const res = {
             status: function(s){},
             send: function(s){response = JSON.stringify(s)}
         };
