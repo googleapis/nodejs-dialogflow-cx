@@ -34,9 +34,9 @@ async function main(project_id, agent_id, test_id, location) {
     new protos.google.cloud.dialogflow.cx.v3.ListTestCaseResultsRequest();
 
   req.parent = parent;
-  req.filter = "environment=draft"
+  req.filter = 'environment=draft';
 
-  const res =await client.listTestCaseResults(req);
+  const res = await client.listTestCaseResults(req);
 
   console.log(res);
 }
