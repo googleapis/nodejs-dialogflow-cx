@@ -14,16 +14,25 @@
 
 'use strict';
 
-async function main(project_id, agent_id, test_id, location) {
+async function main(projectId, agentId, testId, location) {
+    /**
+   * TODO(developer): Uncomment these variables before running the sample.
+   */
+  // const projectId = 'my-project';
+  // const agentId = 'my-agent';
+  // const testId = 'my-flow';
+  // const location = 'global';
+
+  // [START dialogflow_cx_list_testcase_sample]
   const parent =
     'projects/' +
-    project_id +
+    projectId +
     '/locations/' +
     location +
     '/agents/' +
-    agent_id +
+    agentId +
     '/testCases/' +
-    test_id;
+    testId;
 
   const {TestCasesClient, protos} = require('@google-cloud/dialogflow-cx');
 
@@ -39,6 +48,7 @@ async function main(project_id, agent_id, test_id, location) {
   const res = await client.listTestCaseResults(req);
 
   console.log(res);
+  // [END dialogflow_cx_list_testcase_sample]
 }
 
 process.on('unhandledRejection', err => {
