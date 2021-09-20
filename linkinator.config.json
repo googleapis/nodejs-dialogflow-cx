@@ -4,7 +4,7 @@
     "https://codecov.io/gh/googleapis/",
     "www.googleapis.com",
     "img.shields.io",
-    " https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/list-testcase-results.js"
+    "https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/list-testcase-results.js"
   ],
   "silent": true,
   "concurrency": 10
