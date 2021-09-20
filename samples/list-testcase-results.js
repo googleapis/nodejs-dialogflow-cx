@@ -15,7 +15,7 @@
 'use strict';
 
 async function main(projectId, agentId, testId, location) {
-    /**
+  /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   // const projectId = 'my-project';
