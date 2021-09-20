@@ -20,14 +20,14 @@ const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 const dialogflow = require('@google-cloud/dialogflow-cx');
 
-describe('create agent', () => {
+describe('Test filtering results', async () => {
   const cmd = 'node list-testcase-results.js';
   const agentId = 'be66a5a2-4602-4f8c-a3f3-046896904362'
   const testId = '9ebddb66-c49e-455b-bacc-24c0538ece01'
   const agentClient = new dialogflow.AgentsClient();
   const projectId = await agentClient.getProjectId();
 
-  it('should create agent', async () => {
+  it('should return filtered test results', async () => {
     const output = exec(`${cmd} ${projectId} ${agentId} ${testId} ${location}`);
     assert.include(output, testId);
   });
