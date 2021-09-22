@@ -444,6 +444,10 @@ export class EntityTypesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getEntityType(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.get_entity_type.js</caption>
+   * region_tag:cx_get_entity_type_sample
+   *
    */
   getEntityType(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IGetEntityTypeRequest,
@@ -556,6 +560,10 @@ export class EntityTypesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createEntityType(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.create_entity_type.js</caption>
+   * region_tag:cx_create_entity_type_sample
+   *
    */
   createEntityType(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.ICreateEntityTypeRequest,
@@ -671,6 +679,10 @@ export class EntityTypesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateEntityType(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.update_entity_type.js</caption>
+   * region_tag:cx_update_entity_type_sample
+   *
    */
   updateEntityType(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateEntityTypeRequest,
@@ -785,6 +797,10 @@ export class EntityTypesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteEntityType(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.delete_entity_type.js</caption>
+   * region_tag:cx_delete_entity_type_sample
+   *
    */
   deleteEntityType(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteEntityTypeRequest,
@@ -902,6 +918,10 @@ export class EntityTypesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.list_entity_types.js</caption>
+   * region_tag:cx_list_entity_types_sample
+   *
    */
   listEntityTypes(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
@@ -983,6 +1003,10 @@ export class EntityTypesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.list_entity_types.js</caption>
+   * region_tag:cx_list_entity_types_sample
+   *
    */
   listEntityTypesStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
@@ -996,7 +1020,8 @@ export class EntityTypesClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntityTypes'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntityTypes.createStream(
       this.innerApiCalls.listEntityTypes as gax.GaxCall,
@@ -1047,6 +1072,10 @@ export class EntityTypesClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v3beta1/entity_types.list_entity_types.js</caption>
+   * region_tag:cx_list_entity_types_sample
+   *
    */
   listEntityTypesAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListEntityTypesRequest,
@@ -1061,7 +1090,8 @@ export class EntityTypesClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listEntityTypes'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listEntityTypes.asyncIterate(
       this.innerApiCalls['listEntityTypes'] as GaxCall,

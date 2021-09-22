@@ -435,6 +435,10 @@ export class WebhooksClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getWebhook(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.get_webhook.js</caption>
+   * region_tag:cx_get_webhook_sample
+   *
    */
   getWebhook(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IGetWebhookRequest,
@@ -532,6 +536,10 @@ export class WebhooksClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createWebhook(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.create_webhook.js</caption>
+   * region_tag:cx_create_webhook_sample
+   *
    */
   createWebhook(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.ICreateWebhookRequest,
@@ -632,6 +640,10 @@ export class WebhooksClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateWebhook(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.update_webhook.js</caption>
+   * region_tag:cx_update_webhook_sample
+   *
    */
   updateWebhook(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IUpdateWebhookRequest,
@@ -741,6 +753,10 @@ export class WebhooksClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.deleteWebhook(request);
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.delete_webhook.js</caption>
+   * region_tag:cx_delete_webhook_sample
+   *
    */
   deleteWebhook(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IDeleteWebhookRequest,
@@ -845,6 +861,10 @@ export class WebhooksClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.list_webhooks.js</caption>
+   * region_tag:cx_list_webhooks_sample
+   *
    */
   listWebhooks(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListWebhooksRequest,
@@ -913,6 +933,10 @@ export class WebhooksClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.list_webhooks.js</caption>
+   * region_tag:cx_list_webhooks_sample
+   *
    */
   listWebhooksStream(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListWebhooksRequest,
@@ -926,7 +950,8 @@ export class WebhooksClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listWebhooks'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listWebhooks.createStream(
       this.innerApiCalls.listWebhooks as gax.GaxCall,
@@ -964,6 +989,10 @@ export class WebhooksClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v3beta1/webhooks.list_webhooks.js</caption>
+   * region_tag:cx_list_webhooks_sample
+   *
    */
   listWebhooksAsync(
     request?: protos.google.cloud.dialogflow.cx.v3beta1.IListWebhooksRequest,
@@ -978,7 +1007,8 @@ export class WebhooksClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listWebhooks'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listWebhooks.asyncIterate(
       this.innerApiCalls['listWebhooks'] as GaxCall,

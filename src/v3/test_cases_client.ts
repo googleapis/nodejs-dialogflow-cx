@@ -511,6 +511,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.batchDeleteTestCases(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.batch_delete_test_cases.js</caption>
+   * region_tag:cx_batch_delete_test_cases_sample
+   *
    */
   batchDeleteTestCases(
     request?: protos.google.cloud.dialogflow.cx.v3.IBatchDeleteTestCasesRequest,
@@ -607,6 +611,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getTestCase(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.get_test_case.js</caption>
+   * region_tag:cx_get_test_case_sample
+   *
    */
   getTestCase(
     request?: protos.google.cloud.dialogflow.cx.v3.IGetTestCaseRequest,
@@ -701,6 +709,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.createTestCase(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.create_test_case.js</caption>
+   * region_tag:cx_create_test_case_sample
+   *
    */
   createTestCase(
     request?: protos.google.cloud.dialogflow.cx.v3.ICreateTestCaseRequest,
@@ -796,6 +808,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.updateTestCase(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.update_test_case.js</caption>
+   * region_tag:cx_update_test_case_sample
+   *
    */
   updateTestCase(
     request?: protos.google.cloud.dialogflow.cx.v3.IUpdateTestCaseRequest,
@@ -893,6 +909,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.calculateCoverage(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.calculate_coverage.js</caption>
+   * region_tag:cx_calculate_coverage_sample
+   *
    */
   calculateCoverage(
     request?: protos.google.cloud.dialogflow.cx.v3.ICalculateCoverageRequest,
@@ -992,6 +1012,10 @@ export class TestCasesClient {
    *   for more details and examples.
    * @example
    * const [response] = await client.getTestCaseResult(request);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.get_test_case_result.js</caption>
+   * region_tag:cx_get_test_case_result_sample
+   *
    */
   getTestCaseResult(
     request?: protos.google.cloud.dialogflow.cx.v3.IGetTestCaseResultRequest,
@@ -1106,6 +1130,10 @@ export class TestCasesClient {
    * @example
    * const [operation] = await client.runTestCase(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.run_test_case.js</caption>
+   * region_tag:cx_run_test_case_sample
+   *
    */
   runTestCase(
     request?: protos.google.cloud.dialogflow.cx.v3.IRunTestCaseRequest,
@@ -1169,6 +1197,10 @@ export class TestCasesClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.run_test_case.js</caption>
+   * region_tag:cx_run_test_case_sample
+   *
    */
   async checkRunTestCaseProgress(
     name: string
@@ -1255,6 +1287,10 @@ export class TestCasesClient {
    * @example
    * const [operation] = await client.batchRunTestCases(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.batch_run_test_cases.js</caption>
+   * region_tag:cx_batch_run_test_cases_sample
+   *
    */
   batchRunTestCases(
     request?: protos.google.cloud.dialogflow.cx.v3.IBatchRunTestCasesRequest,
@@ -1318,6 +1354,10 @@ export class TestCasesClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.batch_run_test_cases.js</caption>
+   * region_tag:cx_batch_run_test_cases_sample
+   *
    */
   async checkBatchRunTestCasesProgress(
     name: string
@@ -1405,6 +1445,10 @@ export class TestCasesClient {
    * @example
    * const [operation] = await client.importTestCases(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.import_test_cases.js</caption>
+   * region_tag:cx_import_test_cases_sample
+   *
    */
   importTestCases(
     request?: protos.google.cloud.dialogflow.cx.v3.IImportTestCasesRequest,
@@ -1468,6 +1512,10 @@ export class TestCasesClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.import_test_cases.js</caption>
+   * region_tag:cx_import_test_cases_sample
+   *
    */
   async checkImportTestCasesProgress(
     name: string
@@ -1567,6 +1615,10 @@ export class TestCasesClient {
    * @example
    * const [operation] = await client.exportTestCases(request);
    * const [response] = await operation.promise();
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.export_test_cases.js</caption>
+   * region_tag:cx_export_test_cases_sample
+   *
    */
   exportTestCases(
     request?: protos.google.cloud.dialogflow.cx.v3.IExportTestCasesRequest,
@@ -1630,6 +1682,10 @@ export class TestCasesClient {
    * console.log(decodedOperation.result);
    * console.log(decodedOperation.done);
    * console.log(decodedOperation.metadata);
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.export_test_cases.js</caption>
+   * region_tag:cx_export_test_cases_sample
+   *
    */
   async checkExportTestCasesProgress(
     name: string
@@ -1712,6 +1768,10 @@ export class TestCasesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_cases.js</caption>
+   * region_tag:cx_list_test_cases_sample
+   *
    */
   listTestCases(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCasesRequest,
@@ -1783,6 +1843,10 @@ export class TestCasesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_cases.js</caption>
+   * region_tag:cx_list_test_cases_sample
+   *
    */
   listTestCasesStream(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCasesRequest,
@@ -1796,7 +1860,8 @@ export class TestCasesClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCases'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCases.createStream(
       this.innerApiCalls.listTestCases as gax.GaxCall,
@@ -1837,6 +1902,10 @@ export class TestCasesClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_cases.js</caption>
+   * region_tag:cx_list_test_cases_sample
+   *
    */
   listTestCasesAsync(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCasesRequest,
@@ -1851,7 +1920,8 @@ export class TestCasesClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCases'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCases.asyncIterate(
       this.innerApiCalls['listTestCases'] as GaxCall,
@@ -1942,6 +2012,10 @@ export class TestCasesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_case_results.js</caption>
+   * region_tag:cx_list_test_case_results_sample
+   *
    */
   listTestCaseResults(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCaseResultsRequest,
@@ -2037,6 +2111,10 @@ export class TestCasesClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_case_results.js</caption>
+   * region_tag:cx_list_test_case_results_sample
+   *
    */
   listTestCaseResultsStream(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCaseResultsRequest,
@@ -2050,7 +2128,8 @@ export class TestCasesClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCaseResults'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCaseResults.createStream(
       this.innerApiCalls.listTestCaseResults as gax.GaxCall,
@@ -2115,6 +2194,10 @@ export class TestCasesClient {
    * for await (const response of iterable) {
    *   // process response
    * }
+   *
+   * @example <caption>include:samples/generated/v3/test_cases.list_test_case_results.js</caption>
+   * region_tag:cx_list_test_case_results_sample
+   *
    */
   listTestCaseResultsAsync(
     request?: protos.google.cloud.dialogflow.cx.v3.IListTestCaseResultsRequest,
@@ -2129,7 +2212,8 @@ export class TestCasesClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCaseResults'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCaseResults.asyncIterate(
       this.innerApiCalls['listTestCaseResults'] as GaxCall,
