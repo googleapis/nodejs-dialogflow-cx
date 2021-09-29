@@ -173,6 +173,9 @@ export class ExperimentsClient {
       continuousTestResultPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/continuousTestResults/{continuous_test_result}'
       ),
+      deploymentPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/deployments/{deployment}'
+      ),
       entityTypePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/entityTypes/{entity_type}'
       ),
@@ -1119,7 +1122,8 @@ export class ExperimentsClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listExperiments'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listExperiments.createStream(
       this.innerApiCalls.listExperiments as gax.GaxCall,
@@ -1172,7 +1176,8 @@ export class ExperimentsClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listExperiments'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listExperiments.asyncIterate(
       this.innerApiCalls['listExperiments'] as GaxCall,
@@ -1383,6 +1388,92 @@ export class ExperimentsClient {
     return this.pathTemplates.continuousTestResultPathTemplate.match(
       continuousTestResultName
     ).continuous_test_result;
+  }
+
+  /**
+   * Return a fully-qualified deployment resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} environment
+   * @param {string} deployment
+   * @returns {string} Resource name string.
+   */
+  deploymentPath(
+    project: string,
+    location: string,
+    agent: string,
+    environment: string,
+    deployment: string
+  ) {
+    return this.pathTemplates.deploymentPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      environment: environment,
+      deployment: deployment,
+    });
+  }
+
+  /**
+   * Parse the project from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .project;
+  }
+
+  /**
+   * Parse the location from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .location;
+  }
+
+  /**
+   * Parse the agent from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .agent;
+  }
+
+  /**
+   * Parse the environment from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the environment.
+   */
+  matchEnvironmentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .environment;
+  }
+
+  /**
+   * Parse the deployment from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the deployment.
+   */
+  matchDeploymentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .deployment;
   }
 
   /**
