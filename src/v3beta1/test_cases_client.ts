@@ -176,6 +176,9 @@ export class TestCasesClient {
       continuousTestResultPathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/continuousTestResults/{continuous_test_result}'
       ),
+      deploymentPathTemplate: new this._gaxModule.PathTemplate(
+        'projects/{project}/locations/{location}/agents/{agent}/environments/{environment}/deployments/{deployment}'
+      ),
       entityTypePathTemplate: new this._gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/agents/{agent}/entityTypes/{entity_type}'
       ),
@@ -1090,6 +1093,7 @@ export class TestCasesClient {
   ): void;
   /**
    * Kicks off a test case run.
+   *
    * This method is a [long-running
    * operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
    * The returned `Operation` type has the following method-specific fields:
@@ -1243,6 +1247,13 @@ export class TestCasesClient {
   /**
    * Kicks off a batch run of test cases.
    *
+   * This method is a [long-running
+   * operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+   * The returned `Operation` type has the following method-specific fields:
+   *
+   * - `metadata`: {@link google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesMetadata|BatchRunTestCasesMetadata}
+   * - `response`: {@link google.cloud.dialogflow.cx.v3beta1.BatchRunTestCasesResponse|BatchRunTestCasesResponse}
+   *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
@@ -1394,6 +1405,13 @@ export class TestCasesClient {
    * always creates new test cases and won't overwite any existing ones. The
    * provided ID in the imported test case is neglected.
    *
+   * This method is a [long-running
+   * operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+   * The returned `Operation` type has the following method-specific fields:
+   *
+   * - `metadata`: {@link google.cloud.dialogflow.cx.v3beta1.ImportTestCasesMetadata|ImportTestCasesMetadata}
+   * - `response`: {@link google.cloud.dialogflow.cx.v3beta1.ImportTestCasesResponse|ImportTestCasesResponse}
+   *
    * @param {Object} request
    *   The request object that will be sent.
    * @param {string} request.parent
@@ -1542,6 +1560,13 @@ export class TestCasesClient {
   /**
    * Exports the test cases under the agent to a Cloud Storage bucket or a local
    * file. Filter can be applied to export a subset of test cases.
+   *
+   * This method is a [long-running
+   * operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
+   * The returned `Operation` type has the following method-specific fields:
+   *
+   * - `metadata`: {@link google.cloud.dialogflow.cx.v3beta1.ExportTestCasesMetadata|ExportTestCasesMetadata}
+   * - `response`: {@link google.cloud.dialogflow.cx.v3beta1.ExportTestCasesResponse|ExportTestCasesResponse}
    *
    * @param {Object} request
    *   The request object that will be sent.
@@ -1808,7 +1833,8 @@ export class TestCasesClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCases'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCases.createStream(
       this.innerApiCalls.listTestCases as gax.GaxCall,
@@ -1863,7 +1889,8 @@ export class TestCasesClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCases'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCases.asyncIterate(
       this.innerApiCalls['listTestCases'] as GaxCall,
@@ -2062,7 +2089,8 @@ export class TestCasesClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCaseResults'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCaseResults.createStream(
       this.innerApiCalls.listTestCaseResults as gax.GaxCall,
@@ -2141,7 +2169,8 @@ export class TestCasesClient {
         parent: request.parent || '',
       });
     options = options || {};
-    const callSettings = new gax.CallSettings(options);
+    const defaultCallSettings = this._defaults['listTestCaseResults'];
+    const callSettings = defaultCallSettings.merge(options);
     this.initialize();
     return this.descriptors.page.listTestCaseResults.asyncIterate(
       this.innerApiCalls['listTestCaseResults'] as GaxCall,
@@ -2352,6 +2381,92 @@ export class TestCasesClient {
     return this.pathTemplates.continuousTestResultPathTemplate.match(
       continuousTestResultName
     ).continuous_test_result;
+  }
+
+  /**
+   * Return a fully-qualified deployment resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} agent
+   * @param {string} environment
+   * @param {string} deployment
+   * @returns {string} Resource name string.
+   */
+  deploymentPath(
+    project: string,
+    location: string,
+    agent: string,
+    environment: string,
+    deployment: string
+  ) {
+    return this.pathTemplates.deploymentPathTemplate.render({
+      project: project,
+      location: location,
+      agent: agent,
+      environment: environment,
+      deployment: deployment,
+    });
+  }
+
+  /**
+   * Parse the project from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the project.
+   */
+  matchProjectFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .project;
+  }
+
+  /**
+   * Parse the location from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the location.
+   */
+  matchLocationFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .location;
+  }
+
+  /**
+   * Parse the agent from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the agent.
+   */
+  matchAgentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .agent;
+  }
+
+  /**
+   * Parse the environment from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the environment.
+   */
+  matchEnvironmentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .environment;
+  }
+
+  /**
+   * Parse the deployment from Deployment resource.
+   *
+   * @param {string} deploymentName
+   *   A fully-qualified path representing Deployment resource.
+   * @returns {string} A string representing the deployment.
+   */
+  matchDeploymentFromDeploymentName(deploymentName: string) {
+    return this.pathTemplates.deploymentPathTemplate.match(deploymentName)
+      .deployment;
   }
 
   /**
