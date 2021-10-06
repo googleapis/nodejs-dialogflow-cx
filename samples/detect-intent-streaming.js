@@ -94,12 +94,12 @@ async function main(
             audioEncoding: encoding,
             sampleRateHertz: sampleRateHertz,
             synthesize_speech_config: {
-              voice : {
+              voice: {
                 // Set's the name and gender of the ssml voice
                 name: 'en-GB-Standard-A',
                 ssml_gender: 'SSML_VOICE_GENDER_FEMALE',
-              }
-            } ,
+              },
+            },
             singleUtterance: true,
           },
         },
