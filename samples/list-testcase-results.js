@@ -24,15 +24,7 @@ async function main(projectId, agentId, testId, location) {
   // const location = 'global';
 
   // [START dialogflow_cx_list_testcase_sample]
-  const parent =
-    'projects/' +
-    projectId +
-    '/locations/' +
-    location +
-    '/agents/' +
-    agentId +
-    '/testCases/' +
-    testId;
+  const parent = `projects/${projectId}/locations/${location}/agents/${agentId}/testCases/${testId}`;
 
   const {TestCasesClient, protos} = require('@google-cloud/dialogflow-cx');
 

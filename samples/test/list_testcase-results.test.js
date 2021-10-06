@@ -22,8 +22,8 @@ const dialogflow = require('@google-cloud/dialogflow-cx');
 
 describe('Test filtering results', async () => {
   const cmd = 'node list-testcase-results.js';
-  const agentId = 'be66a5a2-4602-4f8c-a3f3-046896904362';
-  const testId = '9ebddb66-c49e-455b-bacc-24c0538ece01';
+  const agentId = process.env.AGENT_ID;;
+  const testId = process.env.TEST_ID;
   const location = 'global';
   const agentClient = new dialogflow.AgentsClient();
   const projectId = await agentClient.getProjectId();
