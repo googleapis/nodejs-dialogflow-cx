@@ -31,10 +31,10 @@ async function main(projectId, agentId, testId, location) {
   const client = new TestCasesClient({
     apiEndpoint: 'global-dialogflow.googleapis.com',
   });
-const req = {
-  parent,
-  filter: 'environment=draft'
-}
+  const req = {
+    parent,
+    filter: 'environment=draft',
+  };
 
   const res = await client.listTestCaseResults(req);
 
