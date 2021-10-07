@@ -31,11 +31,10 @@ async function main(projectId, agentId, testId, location) {
   const client = new TestCasesClient({
     apiEndpoint: 'global-dialogflow.googleapis.com',
   });
-  const req =
-    new protos.google.cloud.dialogflow.cx.v3.ListTestCaseResultsRequest();
-
-  req.parent = parent;
-  req.filter = 'environment=draft';
+const req = {
+  parent,
+  filter: 'environment=draft'
+}
 
   const res = await client.listTestCaseResults(req);
 
