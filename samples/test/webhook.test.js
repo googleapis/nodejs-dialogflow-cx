@@ -20,21 +20,6 @@ const webhook = require('../webhooks');
 
 const request = {
   body: {
-    detectIntentResponseId: '0a190188-37e9-400a-89e3-f3e878c86916',
-    intentInfo: {
-      lastMatchedIntent:
-        'projects/galstarter-316823/locations/us-central1/agents/0078f973-e212-4c69-a707-a6e66e3270ce/intents/00000000-0000-0000-0000-000000000000',
-      displayName: 'Default Welcome Intent',
-      confidence: 1.0,
-    },
-    pageInfo: {
-      currentPage:
-        'projects/galstarter-316823/locations/us-central1/agents/0078f973-e212-4c69-a707-a6e66e3270ce/flows/00000000-0000-0000-0000-000000000000/pages/START_PAGE',
-    },
-    sessionInfo: {
-      session:
-        'projects/galstarter-316823/locations/us-central1/agents/0078f973-e212-4c69-a707-a6e66e3270ce/sessions/bd38c7-398-d25-963-7c23a0533',
-    },
     fulfillmentInfo: {
       tag: 'Default Welcome Intent',
     },
