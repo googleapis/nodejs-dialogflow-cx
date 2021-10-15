@@ -38,7 +38,7 @@ async function main(projectId, intentId, location, agentid) {
 
   const intent = await intentClient.getIntent(getIntentRequest);
 
-  console.log(intent[0].trainingPhrases[0]);
+  console.log(intent[0].trainingPhrases);
   // [END dialogflow_list_training_phrases]
 }
 
