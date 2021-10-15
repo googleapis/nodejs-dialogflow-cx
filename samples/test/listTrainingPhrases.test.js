@@ -16,14 +16,14 @@
 
 const {assert} = require('chai');
 const {describe, before, it} = require('mocha');
-const dialogflow = require('@google-cloud/dialogflow');
+const dialogflow = require('@google-cloud/dialogflow-cx');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('list training phrases', () => {
   const location = 'global';
-  const agentId = 'b8d0e85d-0741-4e6d-a66a-3671184b7b93';
-  const intentId = '45974f75-9412-445a-9863-47bfdfa3d96d';
+  const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
+  const intentId = '04e47c8c-69d9-4208-8262-67fc2069a283';
   const intentClient = new dialogflow.IntentsClient();
   const cmd = 'node listTrainingPhrases.js';
   let [projectId] = '';
@@ -37,6 +37,6 @@ describe('list training phrases', () => {
     const output = exec(
       `${cmd} ${projectId} ${intentId} ${location} ${agentId}`
     );
-    assert.include(output, 'red');
+    assert.include(output, 'thanks buddy');
   });
 });
