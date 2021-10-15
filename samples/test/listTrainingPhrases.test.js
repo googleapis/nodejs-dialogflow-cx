@@ -37,6 +37,6 @@ describe('list training phrases', () => {
     const output = exec(
       `${cmd} ${projectId} ${intentId} ${location} ${agentId}`
     );
-    assert.include(output, 'thanks buddy');
+    assert.include(output, 'well thanks');
   });
 });
