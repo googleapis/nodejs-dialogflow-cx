@@ -14,7 +14,7 @@
 
 'use strict';
 
-async function main(projectId, intentId, location, agentid) {
+async function main(projectId, intentId, location, agentId) {
   // [START dialogflow_list_training_phrases]
   const {IntentsClient} = require('@google-cloud/dialogflow-cx');
 
@@ -25,7 +25,7 @@ async function main(projectId, intentId, location, agentid) {
   const intentName = intentClient.intentPath(
     projectId,
     location,
-    agentid,
+    agentId,
     intentId
   );
 
