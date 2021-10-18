@@ -22,8 +22,8 @@ const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
 describe('list training phrases', () => {
   const location = 'global';
-  const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
-  const intentId = '04e47c8c-69d9-4208-8262-67fc2069a283';
+  const agentId = process.env.TRAINING_PHRASE_AGENT_ID;
+  const intentId = process.env.TRAINING_PHRASE_INTENT_ID;
   const intentClient = new dialogflow.IntentsClient();
   const cmd = 'node listTrainingPhrases.js';
   let [projectId] = '';

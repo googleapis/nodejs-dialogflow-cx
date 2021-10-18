@@ -15,7 +15,6 @@
 'use strict';
 
 async function main(projectId, intentId, location, agentid) {
-  console.log('Its working...');
   // [START dialogflow_list_training_phrases]
   const {IntentsClient} = require('@google-cloud/dialogflow-cx');
 
@@ -38,6 +37,7 @@ async function main(projectId, intentId, location, agentid) {
 
   const intent = await intentClient.getIntent(getIntentRequest);
 
+  // Print a single training phrase
   console.log(intent[0].trainingPhrases[0].parts[0].text);
   // [END dialogflow_list_training_phrases]
 }
