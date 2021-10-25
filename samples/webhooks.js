@@ -18,7 +18,7 @@
 
 exports.handleWebhook = (request, response) => {
   const tag = request.body.fulfillmentInfo.tag;
-  let text = ''
+  let text = '';
 
   if (tag === 'Default Welcome Intent') {
     text = 'Hello from a GCF Webhook';
@@ -33,7 +33,7 @@ exports.handleWebhook = (request, response) => {
       messages: [
         {
           text: {
-          //fulfillment text response to be sent to the agent
+            //fulfillment text response to be sent to the agent
             text: [text],
           },
         },
