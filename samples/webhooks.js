@@ -17,55 +17,30 @@
 // [START dialogflow_cx_webhook]
 
 exports.handleWebhook = (request, response) => {
-  console.log(request);
+
   const tag = request.body.fulfillmentInfo.tag;
-  console.log(tag);
-  let jsonResponse = {};
+
   if (tag === 'Default Welcome Intent') {
-    //fulfillment response to be sent to the agent if the request tag is equal to "welcome tag"
-    jsonResponse = {
-      fulfillment_response: {
-        messages: [
-          {
-            text: {
-              //fulfillment text response to be sent to the agent
-              text: ['Hello from a GCF Webhook'],
-            },
-          },
-        ],
-      },
-    };
+    text = 'Hello from a GCF Webhook';
   } else if (tag === 'get-name') {
-    //fulfillment response to be sent to the agent if the request tag is equal to "welcome tag"
-    jsonResponse = {
-      fulfillment_response: {
-        messages: [
-          {
-            text: {
-              //fulfillment text response to be sent to the agent
-              text: ['My name is Flowhook'],
-            },
-          },
-        ],
-      },
-    };
+    text = 'My name is Flowhook';
   } else {
-    jsonResponse = {
-      //fulfillment text response to be sent to the agent if there are no defined responses for the specified tag
-      fulfillment_response: {
-        messages: [
-          {
-            text: {
-              ////fulfillment text response to be sent to the agent
-              text: [
-                `There are no fulfillment responses defined for "${tag}"" tag`,
-              ],
-            },
-          },
-        ],
-      },
-    };
+    text = `There are no fulfillment responses defined for "${tag}"" tag`
   }
+   
+  const jsonResponse = {
+    fulfillment_response: {
+      messages: [
+      {
+        text: {
+          //fulfillment text response to be sent to the agent
+          text: [text],
+        },
+      },
+    ],
+   },
+  };
+
   response.send(jsonResponse);
 };
 // [END dialogflow_cx_webhook]
