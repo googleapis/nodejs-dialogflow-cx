@@ -17,28 +17,28 @@
 // [START dialogflow_cx_webhook]
 
 exports.handleWebhook = (request, response) => {
-
   const tag = request.body.fulfillmentInfo.tag;
+  let text = ''
 
   if (tag === 'Default Welcome Intent') {
     text = 'Hello from a GCF Webhook';
   } else if (tag === 'get-name') {
     text = 'My name is Flowhook';
   } else {
-    text = `There are no fulfillment responses defined for "${tag}"" tag`
+    text = `There are no fulfillment responses defined for "${tag}"" tag`;
   }
-   
+
   const jsonResponse = {
     fulfillment_response: {
       messages: [
-      {
-        text: {
+        {
+          text: {
           //fulfillment text response to be sent to the agent
-          text: [text],
+            text: [text],
+          },
         },
-      },
-    ],
-   },
+      ],
+    },
   };
 
   response.send(jsonResponse);
