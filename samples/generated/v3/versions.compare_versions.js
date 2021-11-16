@@ -12,20 +12,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 'use strict';
 
-function main(name) {
-  // [START dialogflow_v3_generated_Versions_GetVersion_async]
+function main(baseVersion, targetVersion) {
+  // [START dialogflow_v3_generated_Versions_CompareVersions_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
   /**
-   *  Required. The name of the Version google.cloud.dialogflow.cx.v3.Version.
+   *  Required. Name of the base flow version to compare with the target version.
+   *  Use version ID `0` to indicate the draft version of the specified flow.
    *  Format:
    *  `projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/versions/<VersionID>`.
    */
-  // const name = 'abc123'
+  // const baseVersion = 'abc123'
+  /**
+   *  Required. Name of the target flow version to compare with the
+   *  base version. Use version ID `0` to indicate the draft version of the
+   *  specified flow. Format:
+   *  `projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/flows/<FlowID>/versions/<VersionID>`.
+   */
+  // const targetVersion = 'abc123'
+  /**
+   *  The language to compare the flow versions for.
+   *  If not specified, the agent's default language is used.
+   *  Many
+   *  languages (https://cloud.google.com/dialogflow/docs/reference/language) are
+   *  supported. Note: languages must be enabled in the agent before they can be
+   *  used.
+   */
+  // const languageCode = 'abc123'
 
   // Imports the Cx library
   const {VersionsClient} = require('@google-cloud/dialogflow-cx').v3;
@@ -33,19 +49,20 @@ function main(name) {
   // Instantiates a client
   const cxClient = new VersionsClient();
 
-  async function callGetVersion() {
+  async function callCompareVersions() {
     // Construct request
     const request = {
-      name,
+      baseVersion,
+      targetVersion,
     };
 
     // Run request
-    const response = await cxClient.getVersion(request);
+    const response = await cxClient.compareVersions(request);
     console.log(response);
   }
 
-  callGetVersion();
-  // [END dialogflow_v3_generated_Versions_GetVersion_async]
+  callCompareVersions();
+  // [END dialogflow_v3_generated_Versions_CompareVersions_async]
 }
 
 process.on('unhandledRejection', err => {
