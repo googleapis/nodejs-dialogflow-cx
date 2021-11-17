@@ -40,7 +40,7 @@ function main(parent) {
   // Instantiates a client
   const cxClient = new AgentsClient();
 
-  async function callListAgents() {
+  async function listAgents() {
     // Construct request
     const request = {
       parent,
@@ -53,7 +53,7 @@ function main(parent) {
     }
   }
 
-  callListAgents();
+  listAgents();
   // [END dialogflow_v3_generated_Agents_ListAgents_async]
 }
 

@@ -36,7 +36,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new SessionEntityTypesClient();
 
-  async function callDeleteSessionEntityType() {
+  async function deleteSessionEntityType() {
     // Construct request
     const request = {
       name,
@@ -47,7 +47,7 @@ function main(name) {
     console.log(response);
   }
 
-  callDeleteSessionEntityType();
+  deleteSessionEntityType();
   // [END dialogflow_v3_generated_SessionEntityTypes_DeleteSessionEntityType_async]
 }
 

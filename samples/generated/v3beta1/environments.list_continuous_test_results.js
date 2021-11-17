@@ -41,7 +41,7 @@ function main(parent) {
   // Instantiates a client
   const cxClient = new EnvironmentsClient();
 
-  async function callListContinuousTestResults() {
+  async function listContinuousTestResults() {
     // Construct request
     const request = {
       parent,
@@ -54,7 +54,7 @@ function main(parent) {
     }
   }
 
-  callListContinuousTestResults();
+  listContinuousTestResults();
   // [END dialogflow_v3beta1_generated_Environments_ListContinuousTestResults_async]
 }
 

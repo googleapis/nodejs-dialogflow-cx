@@ -41,7 +41,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new EnvironmentsClient();
 
-  async function callLookupEnvironmentHistory() {
+  async function lookupEnvironmentHistory() {
     // Construct request
     const request = {
       name,
@@ -54,7 +54,7 @@ function main(name) {
     }
   }
 
-  callLookupEnvironmentHistory();
+  lookupEnvironmentHistory();
   // [END dialogflow_v3_generated_Environments_LookupEnvironmentHistory_async]
 }
 

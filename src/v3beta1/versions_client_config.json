@@ -52,11 +52,6 @@
           "timeout_millis": 60000,
           "retry_codes_name": "unavailable",
           "retry_params_name": "default"
-        },
-        "CompareVersions": {
-          "timeout_millis": 60000,
-          "retry_codes_name": "unavailable",
-          "retry_params_name": "default"
         }
       }
     }

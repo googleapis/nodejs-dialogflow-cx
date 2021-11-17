@@ -31,7 +31,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new AgentsClient();
 
-  async function callGetAgent() {
+  async function getAgent() {
     // Construct request
     const request = {
       name,
@@ -42,7 +42,7 @@ function main(name) {
     console.log(response);
   }
 
-  callGetAgent();
+  getAgent();
   // [END dialogflow_v3_generated_Agents_GetAgent_async]
 }
 

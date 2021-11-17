@@ -31,7 +31,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new AgentsClient();
 
-  async function callDeleteAgent() {
+  async function deleteAgent() {
     // Construct request
     const request = {
       name,
@@ -42,7 +42,7 @@ function main(name) {
     console.log(response);
   }
 
-  callDeleteAgent();
+  deleteAgent();
   // [END dialogflow_v3_generated_Agents_DeleteAgent_async]
 }
 

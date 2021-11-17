@@ -63,7 +63,7 @@ function main(parent) {
   // Instantiates a client
   const cxClient = new ChangelogsClient();
 
-  async function callListChangelogs() {
+  async function listChangelogs() {
     // Construct request
     const request = {
       parent,
@@ -76,7 +76,7 @@ function main(parent) {
     }
   }
 
-  callListChangelogs();
+  listChangelogs();
   // [END dialogflow_v3_generated_Changelogs_ListChangelogs_async]
 }
 

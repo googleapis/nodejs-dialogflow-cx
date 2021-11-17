@@ -38,7 +38,7 @@ function main(environment, flowVersion) {
   // Instantiates a client
   const cxClient = new EnvironmentsClient();
 
-  async function callDeployFlow() {
+  async function deployFlow() {
     // Construct request
     const request = {
       environment,
@@ -51,7 +51,7 @@ function main(environment, flowVersion) {
     console.log(response);
   }
 
-  callDeployFlow();
+  deployFlow();
   // [END dialogflow_v3_generated_Environments_DeployFlow_async]
 }
 

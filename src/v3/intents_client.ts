@@ -385,36 +385,6 @@ export class IntentsClient {
   // -------------------
   // -- Service calls --
   // -------------------
-  /**
-   * Retrieves the specified intent.
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the intent.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
-   *   ID>/intents/<Intent ID>`.
-   * @param {string} request.languageCode
-   *   The language to retrieve the intent for. The following fields are language
-   *   dependent:
-   *
-   *   *   `Intent.training_phrases.parts.text`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example <caption>include:samples/generated/v3/intents.get_intent.js</caption>
-   * region_tag:dialogflow_v3_generated_Intents_GetIntent_async
-   */
   getIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IGetIntentRequest,
     options?: CallOptions
@@ -442,6 +412,36 @@ export class IntentsClient {
       {} | null | undefined
     >
   ): void;
+  /**
+   * Retrieves the specified intent.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   Required. The name of the intent.
+   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+   *   ID>/intents/<Intent ID>`.
+   * @param {string} request.languageCode
+   *   The language to retrieve the intent for. The following fields are language
+   *   dependent:
+   *
+   *   *   `Intent.training_phrases.parts.text`
+   *
+   *   If not specified, the agent's default language is used.
+   *   [Many
+   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+   *   are supported.
+   *   Note: languages must be enabled in the agent before they can be used.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
+   *   Please see the
+   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+   *   for more details and examples.
+   * @example
+   * const [response] = await client.getIntent(request);
+   */
   getIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IGetIntentRequest,
     optionsOrCallback?:
@@ -483,40 +483,6 @@ export class IntentsClient {
     this.initialize();
     return this.innerApiCalls.getIntent(request, options, callback);
   }
-  /**
-   * Creates an intent in the specified agent.
-   *
-   * Note: You should always train a flow prior to sending it queries. See the
-   * [training
-   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.parent
-   *   Required. The agent to create an intent for.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
-   * @param {google.cloud.dialogflow.cx.v3.Intent} request.intent
-   *   Required. The intent to create.
-   * @param {string} request.languageCode
-   *   The language of the following fields in `intent`:
-   *
-   *   *   `Intent.training_phrases.parts.text`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example <caption>include:samples/generated/v3/intents.create_intent.js</caption>
-   * region_tag:dialogflow_v3_generated_Intents_CreateIntent_async
-   */
   createIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.ICreateIntentRequest,
     options?: CallOptions
@@ -548,6 +514,40 @@ export class IntentsClient {
       {} | null | undefined
     >
   ): void;
+  /**
+   * Creates an intent in the specified agent.
+   *
+   * Note: You should always train a flow prior to sending it queries. See the
+   * [training
+   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.parent
+   *   Required. The agent to create an intent for.
+   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>`.
+   * @param {google.cloud.dialogflow.cx.v3.Intent} request.intent
+   *   Required. The intent to create.
+   * @param {string} request.languageCode
+   *   The language of the following fields in `intent`:
+   *
+   *   *   `Intent.training_phrases.parts.text`
+   *
+   *   If not specified, the agent's default language is used.
+   *   [Many
+   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+   *   are supported.
+   *   Note: languages must be enabled in the agent before they can be used.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
+   *   Please see the
+   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+   *   for more details and examples.
+   * @example
+   * const [response] = await client.createIntent(request);
+   */
   createIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.ICreateIntentRequest,
     optionsOrCallback?:
@@ -591,40 +591,6 @@ export class IntentsClient {
     this.initialize();
     return this.innerApiCalls.createIntent(request, options, callback);
   }
-  /**
-   * Updates the specified intent.
-   *
-   * Note: You should always train a flow prior to sending it queries. See the
-   * [training
-   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {google.cloud.dialogflow.cx.v3.Intent} request.intent
-   *   Required. The intent to update.
-   * @param {string} request.languageCode
-   *   The language of the following fields in `intent`:
-   *
-   *   *   `Intent.training_phrases.parts.text`
-   *
-   *   If not specified, the agent's default language is used.
-   *   [Many
-   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
-   *   are supported.
-   *   Note: languages must be enabled in the agent before they can be used.
-   * @param {google.protobuf.FieldMask} request.updateMask
-   *   The mask to control which fields get updated. If the mask is not present,
-   *   all fields will be updated.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example <caption>include:samples/generated/v3/intents.update_intent.js</caption>
-   * region_tag:dialogflow_v3_generated_Intents_UpdateIntent_async
-   */
   updateIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IUpdateIntentRequest,
     options?: CallOptions
@@ -656,6 +622,40 @@ export class IntentsClient {
       {} | null | undefined
     >
   ): void;
+  /**
+   * Updates the specified intent.
+   *
+   * Note: You should always train a flow prior to sending it queries. See the
+   * [training
+   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {google.cloud.dialogflow.cx.v3.Intent} request.intent
+   *   Required. The intent to update.
+   * @param {string} request.languageCode
+   *   The language of the following fields in `intent`:
+   *
+   *   *   `Intent.training_phrases.parts.text`
+   *
+   *   If not specified, the agent's default language is used.
+   *   [Many
+   *   languages](https://cloud.google.com/dialogflow/cx/docs/reference/language)
+   *   are supported.
+   *   Note: languages must be enabled in the agent before they can be used.
+   * @param {google.protobuf.FieldMask} request.updateMask
+   *   The mask to control which fields get updated. If the mask is not present,
+   *   all fields will be updated.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Intent]{@link google.cloud.dialogflow.cx.v3.Intent}.
+   *   Please see the
+   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+   *   for more details and examples.
+   * @example
+   * const [response] = await client.updateIntent(request);
+   */
   updateIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IUpdateIntentRequest,
     optionsOrCallback?:
@@ -699,29 +699,6 @@ export class IntentsClient {
     this.initialize();
     return this.innerApiCalls.updateIntent(request, options, callback);
   }
-  /**
-   * Deletes the specified intent.
-   *
-   * Note: You should always train a flow prior to sending it queries. See the
-   * [training
-   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
-   *
-   * @param {Object} request
-   *   The request object that will be sent.
-   * @param {string} request.name
-   *   Required. The name of the intent to delete.
-   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
-   *   ID>/intents/<Intent ID>`.
-   * @param {object} [options]
-   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
-   * @returns {Promise} - The promise which resolves to an array.
-   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
-   *   Please see the
-   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
-   *   for more details and examples.
-   * @example <caption>include:samples/generated/v3/intents.delete_intent.js</caption>
-   * region_tag:dialogflow_v3_generated_Intents_DeleteIntent_async
-   */
   deleteIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IDeleteIntentRequest,
     options?: CallOptions
@@ -753,6 +730,29 @@ export class IntentsClient {
       {} | null | undefined
     >
   ): void;
+  /**
+   * Deletes the specified intent.
+   *
+   * Note: You should always train a flow prior to sending it queries. See the
+   * [training
+   * documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {string} request.name
+   *   Required. The name of the intent to delete.
+   *   Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
+   *   ID>/intents/<Intent ID>`.
+   * @param {object} [options]
+   *   Call options. See {@link https://googleapis.dev/nodejs/google-gax/latest/interfaces/CallOptions.html|CallOptions} for more details.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [Empty]{@link google.protobuf.Empty}.
+   *   Please see the
+   *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#regular-methods)
+   *   for more details and examples.
+   * @example
+   * const [response] = await client.deleteIntent(request);
+   */
   deleteIntent(
     request?: protos.google.cloud.dialogflow.cx.v3.IDeleteIntentRequest,
     optionsOrCallback?:
@@ -797,6 +797,37 @@ export class IntentsClient {
     return this.innerApiCalls.deleteIntent(request, options, callback);
   }
 
+  listIntents(
+    request?: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
+    options?: CallOptions
+  ): Promise<
+    [
+      protos.google.cloud.dialogflow.cx.v3.IIntent[],
+      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest | null,
+      protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
+    ]
+  >;
+  listIntents(
+    request: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
+    options: CallOptions,
+    callback: PaginationCallback<
+      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
+      | protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
+      | null
+      | undefined,
+      protos.google.cloud.dialogflow.cx.v3.IIntent
+    >
+  ): void;
+  listIntents(
+    request: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
+    callback: PaginationCallback<
+      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
+      | protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
+      | null
+      | undefined,
+      protos.google.cloud.dialogflow.cx.v3.IIntent
+    >
+  ): void;
   /**
    * Returns the list of all intents in the specified agent.
    *
@@ -836,37 +867,6 @@ export class IntentsClient {
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
    */
-  listIntents(
-    request?: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
-    options?: CallOptions
-  ): Promise<
-    [
-      protos.google.cloud.dialogflow.cx.v3.IIntent[],
-      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest | null,
-      protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
-    ]
-  >;
-  listIntents(
-    request: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
-    options: CallOptions,
-    callback: PaginationCallback<
-      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
-      | protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
-      | null
-      | undefined,
-      protos.google.cloud.dialogflow.cx.v3.IIntent
-    >
-  ): void;
-  listIntents(
-    request: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
-    callback: PaginationCallback<
-      protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
-      | protos.google.cloud.dialogflow.cx.v3.IListIntentsResponse
-      | null
-      | undefined,
-      protos.google.cloud.dialogflow.cx.v3.IIntent
-    >
-  ): void;
   listIntents(
     request?: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
     optionsOrCallback?:
@@ -1007,8 +1007,11 @@ export class IntentsClient {
    *   Please see the
    *   [documentation](https://github.com/googleapis/gax-nodejs/blob/master/client-libraries.md#auto-pagination)
    *   for more details and examples.
-   * @example <caption>include:samples/generated/v3/intents.list_intents.js</caption>
-   * region_tag:dialogflow_v3_generated_Intents_ListIntents_async
+   * @example
+   * const iterable = client.listIntentsAsync(request);
+   * for await (const response of iterable) {
+   *   // process response
+   * }
    */
   listIntentsAsync(
     request?: protos.google.cloud.dialogflow.cx.v3.IListIntentsRequest,
@@ -1022,6 +1025,7 @@ export class IntentsClient {
       gax.routingHeader.fromParams({
         parent: request.parent || '',
       });
+    options = options || {};
     const defaultCallSettings = this._defaults['listIntents'];
     const callSettings = defaultCallSettings.merge(options);
     this.initialize();

@@ -32,7 +32,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new FlowsClient();
 
-  async function callTrainFlow() {
+  async function trainFlow() {
     // Construct request
     const request = {
       name,
@@ -44,7 +44,7 @@ function main(name) {
     console.log(response);
   }
 
-  callTrainFlow();
+  trainFlow();
   // [END dialogflow_v3beta1_generated_Flows_TrainFlow_async]
 }
 

@@ -35306,6 +35306,18 @@ export namespace google {
                         }
                     }
 
+                    /** AudioEncoding enum. */
+                    enum AudioEncoding {
+                        AUDIO_ENCODING_UNSPECIFIED = 0,
+                        AUDIO_ENCODING_LINEAR_16 = 1,
+                        AUDIO_ENCODING_FLAC = 2,
+                        AUDIO_ENCODING_MULAW = 3,
+                        AUDIO_ENCODING_AMR = 4,
+                        AUDIO_ENCODING_AMR_WB = 5,
+                        AUDIO_ENCODING_OGG_OPUS = 6,
+                        AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE = 7
+                    }
+
                     /** Properties of a SpeechWordInfo. */
                     interface ISpeechWordInfo {
 
@@ -35412,18 +35424,6 @@ export namespace google {
                          * @returns JSON object
                          */
                         public toJSON(): { [k: string]: any };
-                    }
-
-                    /** AudioEncoding enum. */
-                    enum AudioEncoding {
-                        AUDIO_ENCODING_UNSPECIFIED = 0,
-                        AUDIO_ENCODING_LINEAR_16 = 1,
-                        AUDIO_ENCODING_FLAC = 2,
-                        AUDIO_ENCODING_MULAW = 3,
-                        AUDIO_ENCODING_AMR = 4,
-                        AUDIO_ENCODING_AMR_WB = 5,
-                        AUDIO_ENCODING_OGG_OPUS = 6,
-                        AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE = 7
                     }
 
                     /** Properties of an InputAudioConfig. */
@@ -35888,492 +35888,6 @@ export namespace google {
                         OUTPUT_AUDIO_ENCODING_MP3_64_KBPS = 4,
                         OUTPUT_AUDIO_ENCODING_OGG_OPUS = 3,
                         OUTPUT_AUDIO_ENCODING_MULAW = 5
-                    }
-
-                    /** Represents a Changelogs */
-                    class Changelogs extends $protobuf.rpc.Service {
-
-                        /**
-                         * Constructs a new Changelogs service.
-                         * @param rpcImpl RPC implementation
-                         * @param [requestDelimited=false] Whether requests are length-delimited
-                         * @param [responseDelimited=false] Whether responses are length-delimited
-                         */
-                        constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
-
-                        /**
-                         * Creates new Changelogs service using the specified rpc implementation.
-                         * @param rpcImpl RPC implementation
-                         * @param [requestDelimited=false] Whether requests are length-delimited
-                         * @param [responseDelimited=false] Whether responses are length-delimited
-                         * @returns RPC service. Useful where requests and/or responses are streamed.
-                         */
-                        public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Changelogs;
-
-                        /**
-                         * Calls ListChangelogs.
-                         * @param request ListChangelogsRequest message or plain object
-                         * @param callback Node-style callback called with the error, if any, and ListChangelogsResponse
-                         */
-                        public listChangelogs(request: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, callback: google.cloud.dialogflow.cx.v3beta1.Changelogs.ListChangelogsCallback): void;
-
-                        /**
-                         * Calls ListChangelogs.
-                         * @param request ListChangelogsRequest message or plain object
-                         * @returns Promise
-                         */
-                        public listChangelogs(request: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest): Promise<google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse>;
-
-                        /**
-                         * Calls GetChangelog.
-                         * @param request GetChangelogRequest message or plain object
-                         * @param callback Node-style callback called with the error, if any, and Changelog
-                         */
-                        public getChangelog(request: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, callback: google.cloud.dialogflow.cx.v3beta1.Changelogs.GetChangelogCallback): void;
-
-                        /**
-                         * Calls GetChangelog.
-                         * @param request GetChangelogRequest message or plain object
-                         * @returns Promise
-                         */
-                        public getChangelog(request: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest): Promise<google.cloud.dialogflow.cx.v3beta1.Changelog>;
-                    }
-
-                    namespace Changelogs {
-
-                        /**
-                         * Callback as used by {@link google.cloud.dialogflow.cx.v3beta1.Changelogs#listChangelogs}.
-                         * @param error Error, if any
-                         * @param [response] ListChangelogsResponse
-                         */
-                        type ListChangelogsCallback = (error: (Error|null), response?: google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse) => void;
-
-                        /**
-                         * Callback as used by {@link google.cloud.dialogflow.cx.v3beta1.Changelogs#getChangelog}.
-                         * @param error Error, if any
-                         * @param [response] Changelog
-                         */
-                        type GetChangelogCallback = (error: (Error|null), response?: google.cloud.dialogflow.cx.v3beta1.Changelog) => void;
-                    }
-
-                    /** Properties of a ListChangelogsRequest. */
-                    interface IListChangelogsRequest {
-
-                        /** ListChangelogsRequest parent */
-                        parent?: (string|null);
-
-                        /** ListChangelogsRequest filter */
-                        filter?: (string|null);
-
-                        /** ListChangelogsRequest pageSize */
-                        pageSize?: (number|null);
-
-                        /** ListChangelogsRequest pageToken */
-                        pageToken?: (string|null);
-                    }
-
-                    /** Represents a ListChangelogsRequest. */
-                    class ListChangelogsRequest implements IListChangelogsRequest {
-
-                        /**
-                         * Constructs a new ListChangelogsRequest.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest);
-
-                        /** ListChangelogsRequest parent. */
-                        public parent: string;
-
-                        /** ListChangelogsRequest filter. */
-                        public filter: string;
-
-                        /** ListChangelogsRequest pageSize. */
-                        public pageSize: number;
-
-                        /** ListChangelogsRequest pageToken. */
-                        public pageToken: string;
-
-                        /**
-                         * Creates a new ListChangelogsRequest instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns ListChangelogsRequest instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
-
-                        /**
-                         * Encodes the specified ListChangelogsRequest message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest.verify|verify} messages.
-                         * @param message ListChangelogsRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified ListChangelogsRequest message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest.verify|verify} messages.
-                         * @param message ListChangelogsRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a ListChangelogsRequest message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns ListChangelogsRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
-
-                        /**
-                         * Decodes a ListChangelogsRequest message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns ListChangelogsRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
-
-                        /**
-                         * Verifies a ListChangelogsRequest message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a ListChangelogsRequest message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns ListChangelogsRequest
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
-
-                        /**
-                         * Creates a plain object from a ListChangelogsRequest message. Also converts values to other types if specified.
-                         * @param message ListChangelogsRequest
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this ListChangelogsRequest to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
-                    }
-
-                    /** Properties of a ListChangelogsResponse. */
-                    interface IListChangelogsResponse {
-
-                        /** ListChangelogsResponse changelogs */
-                        changelogs?: (google.cloud.dialogflow.cx.v3beta1.IChangelog[]|null);
-
-                        /** ListChangelogsResponse nextPageToken */
-                        nextPageToken?: (string|null);
-                    }
-
-                    /** Represents a ListChangelogsResponse. */
-                    class ListChangelogsResponse implements IListChangelogsResponse {
-
-                        /**
-                         * Constructs a new ListChangelogsResponse.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse);
-
-                        /** ListChangelogsResponse changelogs. */
-                        public changelogs: google.cloud.dialogflow.cx.v3beta1.IChangelog[];
-
-                        /** ListChangelogsResponse nextPageToken. */
-                        public nextPageToken: string;
-
-                        /**
-                         * Creates a new ListChangelogsResponse instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns ListChangelogsResponse instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
-
-                        /**
-                         * Encodes the specified ListChangelogsResponse message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse.verify|verify} messages.
-                         * @param message ListChangelogsResponse message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified ListChangelogsResponse message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse.verify|verify} messages.
-                         * @param message ListChangelogsResponse message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a ListChangelogsResponse message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns ListChangelogsResponse
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
-
-                        /**
-                         * Decodes a ListChangelogsResponse message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns ListChangelogsResponse
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
-
-                        /**
-                         * Verifies a ListChangelogsResponse message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a ListChangelogsResponse message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns ListChangelogsResponse
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
-
-                        /**
-                         * Creates a plain object from a ListChangelogsResponse message. Also converts values to other types if specified.
-                         * @param message ListChangelogsResponse
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this ListChangelogsResponse to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
-                    }
-
-                    /** Properties of a GetChangelogRequest. */
-                    interface IGetChangelogRequest {
-
-                        /** GetChangelogRequest name */
-                        name?: (string|null);
-                    }
-
-                    /** Represents a GetChangelogRequest. */
-                    class GetChangelogRequest implements IGetChangelogRequest {
-
-                        /**
-                         * Constructs a new GetChangelogRequest.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest);
-
-                        /** GetChangelogRequest name. */
-                        public name: string;
-
-                        /**
-                         * Creates a new GetChangelogRequest instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns GetChangelogRequest instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
-
-                        /**
-                         * Encodes the specified GetChangelogRequest message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest.verify|verify} messages.
-                         * @param message GetChangelogRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified GetChangelogRequest message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest.verify|verify} messages.
-                         * @param message GetChangelogRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a GetChangelogRequest message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns GetChangelogRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
-
-                        /**
-                         * Decodes a GetChangelogRequest message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns GetChangelogRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
-
-                        /**
-                         * Verifies a GetChangelogRequest message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a GetChangelogRequest message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns GetChangelogRequest
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
-
-                        /**
-                         * Creates a plain object from a GetChangelogRequest message. Also converts values to other types if specified.
-                         * @param message GetChangelogRequest
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this GetChangelogRequest to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
-                    }
-
-                    /** Properties of a Changelog. */
-                    interface IChangelog {
-
-                        /** Changelog name */
-                        name?: (string|null);
-
-                        /** Changelog userEmail */
-                        userEmail?: (string|null);
-
-                        /** Changelog displayName */
-                        displayName?: (string|null);
-
-                        /** Changelog action */
-                        action?: (string|null);
-
-                        /** Changelog type */
-                        type?: (string|null);
-
-                        /** Changelog resource */
-                        resource?: (string|null);
-
-                        /** Changelog createTime */
-                        createTime?: (google.protobuf.ITimestamp|null);
-                    }
-
-                    /** Represents a Changelog. */
-                    class Changelog implements IChangelog {
-
-                        /**
-                         * Constructs a new Changelog.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IChangelog);
-
-                        /** Changelog name. */
-                        public name: string;
-
-                        /** Changelog userEmail. */
-                        public userEmail: string;
-
-                        /** Changelog displayName. */
-                        public displayName: string;
-
-                        /** Changelog action. */
-                        public action: string;
-
-                        /** Changelog type. */
-                        public type: string;
-
-                        /** Changelog resource. */
-                        public resource: string;
-
-                        /** Changelog createTime. */
-                        public createTime?: (google.protobuf.ITimestamp|null);
-
-                        /**
-                         * Creates a new Changelog instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns Changelog instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IChangelog): google.cloud.dialogflow.cx.v3beta1.Changelog;
-
-                        /**
-                         * Encodes the specified Changelog message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.Changelog.verify|verify} messages.
-                         * @param message Changelog message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IChangelog, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified Changelog message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.Changelog.verify|verify} messages.
-                         * @param message Changelog message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IChangelog, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a Changelog message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns Changelog
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.Changelog;
-
-                        /**
-                         * Decodes a Changelog message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns Changelog
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.Changelog;
-
-                        /**
-                         * Verifies a Changelog message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a Changelog message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns Changelog
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.Changelog;
-
-                        /**
-                         * Creates a plain object from a Changelog message. Also converts values to other types if specified.
-                         * @param message Changelog
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.Changelog, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this Changelog to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
                     }
 
                     /** Represents a Deployments */
@@ -51966,20 +51480,6 @@ export namespace google {
                          * @returns Promise
                          */
                         public loadVersion(request: google.cloud.dialogflow.cx.v3beta1.ILoadVersionRequest): Promise<google.longrunning.Operation>;
-
-                        /**
-                         * Calls CompareVersions.
-                         * @param request CompareVersionsRequest message or plain object
-                         * @param callback Node-style callback called with the error, if any, and CompareVersionsResponse
-                         */
-                        public compareVersions(request: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest, callback: google.cloud.dialogflow.cx.v3beta1.Versions.CompareVersionsCallback): void;
-
-                        /**
-                         * Calls CompareVersions.
-                         * @param request CompareVersionsRequest message or plain object
-                         * @returns Promise
-                         */
-                        public compareVersions(request: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest): Promise<google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse>;
                     }
 
                     namespace Versions {
@@ -52025,13 +51525,6 @@ export namespace google {
                          * @param [response] Operation
                          */
                         type LoadVersionCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
-
-                        /**
-                         * Callback as used by {@link google.cloud.dialogflow.cx.v3beta1.Versions#compareVersions}.
-                         * @param error Error, if any
-                         * @param [response] CompareVersionsResponse
-                         */
-                        type CompareVersionsCallback = (error: (Error|null), response?: google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse) => void;
                     }
 
                     /** Properties of a CreateVersionOperationMetadata. */
@@ -52921,210 +52414,6 @@ export namespace google {
                         public toJSON(): { [k: string]: any };
                     }
 
-                    /** Properties of a CompareVersionsRequest. */
-                    interface ICompareVersionsRequest {
-
-                        /** CompareVersionsRequest baseVersion */
-                        baseVersion?: (string|null);
-
-                        /** CompareVersionsRequest targetVersion */
-                        targetVersion?: (string|null);
-
-                        /** CompareVersionsRequest languageCode */
-                        languageCode?: (string|null);
-                    }
-
-                    /** Represents a CompareVersionsRequest. */
-                    class CompareVersionsRequest implements ICompareVersionsRequest {
-
-                        /**
-                         * Constructs a new CompareVersionsRequest.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest);
-
-                        /** CompareVersionsRequest baseVersion. */
-                        public baseVersion: string;
-
-                        /** CompareVersionsRequest targetVersion. */
-                        public targetVersion: string;
-
-                        /** CompareVersionsRequest languageCode. */
-                        public languageCode: string;
-
-                        /**
-                         * Creates a new CompareVersionsRequest instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns CompareVersionsRequest instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest): google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest;
-
-                        /**
-                         * Encodes the specified CompareVersionsRequest message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest.verify|verify} messages.
-                         * @param message CompareVersionsRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified CompareVersionsRequest message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest.verify|verify} messages.
-                         * @param message CompareVersionsRequest message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a CompareVersionsRequest message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns CompareVersionsRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest;
-
-                        /**
-                         * Decodes a CompareVersionsRequest message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns CompareVersionsRequest
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest;
-
-                        /**
-                         * Verifies a CompareVersionsRequest message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a CompareVersionsRequest message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns CompareVersionsRequest
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest;
-
-                        /**
-                         * Creates a plain object from a CompareVersionsRequest message. Also converts values to other types if specified.
-                         * @param message CompareVersionsRequest
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.CompareVersionsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this CompareVersionsRequest to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
-                    }
-
-                    /** Properties of a CompareVersionsResponse. */
-                    interface ICompareVersionsResponse {
-
-                        /** CompareVersionsResponse baseVersionContentJson */
-                        baseVersionContentJson?: (string|null);
-
-                        /** CompareVersionsResponse targetVersionContentJson */
-                        targetVersionContentJson?: (string|null);
-
-                        /** CompareVersionsResponse compareTime */
-                        compareTime?: (google.protobuf.ITimestamp|null);
-                    }
-
-                    /** Represents a CompareVersionsResponse. */
-                    class CompareVersionsResponse implements ICompareVersionsResponse {
-
-                        /**
-                         * Constructs a new CompareVersionsResponse.
-                         * @param [properties] Properties to set
-                         */
-                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsResponse);
-
-                        /** CompareVersionsResponse baseVersionContentJson. */
-                        public baseVersionContentJson: string;
-
-                        /** CompareVersionsResponse targetVersionContentJson. */
-                        public targetVersionContentJson: string;
-
-                        /** CompareVersionsResponse compareTime. */
-                        public compareTime?: (google.protobuf.ITimestamp|null);
-
-                        /**
-                         * Creates a new CompareVersionsResponse instance using the specified properties.
-                         * @param [properties] Properties to set
-                         * @returns CompareVersionsResponse instance
-                         */
-                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsResponse): google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse;
-
-                        /**
-                         * Encodes the specified CompareVersionsResponse message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse.verify|verify} messages.
-                         * @param message CompareVersionsResponse message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Encodes the specified CompareVersionsResponse message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse.verify|verify} messages.
-                         * @param message CompareVersionsResponse message or plain object to encode
-                         * @param [writer] Writer to encode to
-                         * @returns Writer
-                         */
-                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.ICompareVersionsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                        /**
-                         * Decodes a CompareVersionsResponse message from the specified reader or buffer.
-                         * @param reader Reader or buffer to decode from
-                         * @param [length] Message length if known beforehand
-                         * @returns CompareVersionsResponse
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse;
-
-                        /**
-                         * Decodes a CompareVersionsResponse message from the specified reader or buffer, length delimited.
-                         * @param reader Reader or buffer to decode from
-                         * @returns CompareVersionsResponse
-                         * @throws {Error} If the payload is not a reader or valid buffer
-                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                         */
-                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse;
-
-                        /**
-                         * Verifies a CompareVersionsResponse message.
-                         * @param message Plain object to verify
-                         * @returns `null` if valid, otherwise the reason why it is not
-                         */
-                        public static verify(message: { [k: string]: any }): (string|null);
-
-                        /**
-                         * Creates a CompareVersionsResponse message from a plain object. Also converts values to their respective internal types.
-                         * @param object Plain object
-                         * @returns CompareVersionsResponse
-                         */
-                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse;
-
-                        /**
-                         * Creates a plain object from a CompareVersionsResponse message. Also converts values to other types if specified.
-                         * @param message CompareVersionsResponse
-                         * @param [options] Conversion options
-                         * @returns Plain object
-                         */
-                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.CompareVersionsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                        /**
-                         * Converts this CompareVersionsResponse to JSON.
-                         * @returns JSON object
-                         */
-                        public toJSON(): { [k: string]: any };
-                    }
-
                     /** Represents a Webhooks */
                     class Webhooks extends $protobuf.rpc.Service {
 
@@ -53393,9 +52682,6 @@ export namespace google {
 
                             /** GenericWebService requestHeaders */
                             requestHeaders?: ({ [k: string]: string }|null);
-
-                            /** GenericWebService allowedCaCerts */
-                            allowedCaCerts?: (Uint8Array[]|null);
                         }
 
                         /** Represents a GenericWebService. */
@@ -53418,9 +52704,6 @@ export namespace google {
 
                             /** GenericWebService requestHeaders. */
                             public requestHeaders: { [k: string]: string };
-
-                            /** GenericWebService allowedCaCerts. */
-                            public allowedCaCerts: Uint8Array[];
 
                             /**
                              * Creates a new GenericWebService instance using the specified properties.
@@ -55367,6 +54650,492 @@ export namespace google {
 
                         /**
                          * Converts this SessionInfo to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Represents a Changelogs */
+                    class Changelogs extends $protobuf.rpc.Service {
+
+                        /**
+                         * Constructs a new Changelogs service.
+                         * @param rpcImpl RPC implementation
+                         * @param [requestDelimited=false] Whether requests are length-delimited
+                         * @param [responseDelimited=false] Whether responses are length-delimited
+                         */
+                        constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+                        /**
+                         * Creates new Changelogs service using the specified rpc implementation.
+                         * @param rpcImpl RPC implementation
+                         * @param [requestDelimited=false] Whether requests are length-delimited
+                         * @param [responseDelimited=false] Whether responses are length-delimited
+                         * @returns RPC service. Useful where requests and/or responses are streamed.
+                         */
+                        public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Changelogs;
+
+                        /**
+                         * Calls ListChangelogs.
+                         * @param request ListChangelogsRequest message or plain object
+                         * @param callback Node-style callback called with the error, if any, and ListChangelogsResponse
+                         */
+                        public listChangelogs(request: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, callback: google.cloud.dialogflow.cx.v3beta1.Changelogs.ListChangelogsCallback): void;
+
+                        /**
+                         * Calls ListChangelogs.
+                         * @param request ListChangelogsRequest message or plain object
+                         * @returns Promise
+                         */
+                        public listChangelogs(request: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest): Promise<google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse>;
+
+                        /**
+                         * Calls GetChangelog.
+                         * @param request GetChangelogRequest message or plain object
+                         * @param callback Node-style callback called with the error, if any, and Changelog
+                         */
+                        public getChangelog(request: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, callback: google.cloud.dialogflow.cx.v3beta1.Changelogs.GetChangelogCallback): void;
+
+                        /**
+                         * Calls GetChangelog.
+                         * @param request GetChangelogRequest message or plain object
+                         * @returns Promise
+                         */
+                        public getChangelog(request: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest): Promise<google.cloud.dialogflow.cx.v3beta1.Changelog>;
+                    }
+
+                    namespace Changelogs {
+
+                        /**
+                         * Callback as used by {@link google.cloud.dialogflow.cx.v3beta1.Changelogs#listChangelogs}.
+                         * @param error Error, if any
+                         * @param [response] ListChangelogsResponse
+                         */
+                        type ListChangelogsCallback = (error: (Error|null), response?: google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse) => void;
+
+                        /**
+                         * Callback as used by {@link google.cloud.dialogflow.cx.v3beta1.Changelogs#getChangelog}.
+                         * @param error Error, if any
+                         * @param [response] Changelog
+                         */
+                        type GetChangelogCallback = (error: (Error|null), response?: google.cloud.dialogflow.cx.v3beta1.Changelog) => void;
+                    }
+
+                    /** Properties of a ListChangelogsRequest. */
+                    interface IListChangelogsRequest {
+
+                        /** ListChangelogsRequest parent */
+                        parent?: (string|null);
+
+                        /** ListChangelogsRequest filter */
+                        filter?: (string|null);
+
+                        /** ListChangelogsRequest pageSize */
+                        pageSize?: (number|null);
+
+                        /** ListChangelogsRequest pageToken */
+                        pageToken?: (string|null);
+                    }
+
+                    /** Represents a ListChangelogsRequest. */
+                    class ListChangelogsRequest implements IListChangelogsRequest {
+
+                        /**
+                         * Constructs a new ListChangelogsRequest.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest);
+
+                        /** ListChangelogsRequest parent. */
+                        public parent: string;
+
+                        /** ListChangelogsRequest filter. */
+                        public filter: string;
+
+                        /** ListChangelogsRequest pageSize. */
+                        public pageSize: number;
+
+                        /** ListChangelogsRequest pageToken. */
+                        public pageToken: string;
+
+                        /**
+                         * Creates a new ListChangelogsRequest instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns ListChangelogsRequest instance
+                         */
+                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
+
+                        /**
+                         * Encodes the specified ListChangelogsRequest message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest.verify|verify} messages.
+                         * @param message ListChangelogsRequest message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified ListChangelogsRequest message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest.verify|verify} messages.
+                         * @param message ListChangelogsRequest message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a ListChangelogsRequest message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns ListChangelogsRequest
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
+
+                        /**
+                         * Decodes a ListChangelogsRequest message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns ListChangelogsRequest
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
+
+                        /**
+                         * Verifies a ListChangelogsRequest message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a ListChangelogsRequest message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns ListChangelogsRequest
+                         */
+                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest;
+
+                        /**
+                         * Creates a plain object from a ListChangelogsRequest message. Also converts values to other types if specified.
+                         * @param message ListChangelogsRequest
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.ListChangelogsRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this ListChangelogsRequest to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a ListChangelogsResponse. */
+                    interface IListChangelogsResponse {
+
+                        /** ListChangelogsResponse changelogs */
+                        changelogs?: (google.cloud.dialogflow.cx.v3beta1.IChangelog[]|null);
+
+                        /** ListChangelogsResponse nextPageToken */
+                        nextPageToken?: (string|null);
+                    }
+
+                    /** Represents a ListChangelogsResponse. */
+                    class ListChangelogsResponse implements IListChangelogsResponse {
+
+                        /**
+                         * Constructs a new ListChangelogsResponse.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse);
+
+                        /** ListChangelogsResponse changelogs. */
+                        public changelogs: google.cloud.dialogflow.cx.v3beta1.IChangelog[];
+
+                        /** ListChangelogsResponse nextPageToken. */
+                        public nextPageToken: string;
+
+                        /**
+                         * Creates a new ListChangelogsResponse instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns ListChangelogsResponse instance
+                         */
+                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
+
+                        /**
+                         * Encodes the specified ListChangelogsResponse message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse.verify|verify} messages.
+                         * @param message ListChangelogsResponse message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified ListChangelogsResponse message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse.verify|verify} messages.
+                         * @param message ListChangelogsResponse message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IListChangelogsResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a ListChangelogsResponse message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns ListChangelogsResponse
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
+
+                        /**
+                         * Decodes a ListChangelogsResponse message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns ListChangelogsResponse
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
+
+                        /**
+                         * Verifies a ListChangelogsResponse message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a ListChangelogsResponse message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns ListChangelogsResponse
+                         */
+                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse;
+
+                        /**
+                         * Creates a plain object from a ListChangelogsResponse message. Also converts values to other types if specified.
+                         * @param message ListChangelogsResponse
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.ListChangelogsResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this ListChangelogsResponse to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a GetChangelogRequest. */
+                    interface IGetChangelogRequest {
+
+                        /** GetChangelogRequest name */
+                        name?: (string|null);
+                    }
+
+                    /** Represents a GetChangelogRequest. */
+                    class GetChangelogRequest implements IGetChangelogRequest {
+
+                        /**
+                         * Constructs a new GetChangelogRequest.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest);
+
+                        /** GetChangelogRequest name. */
+                        public name: string;
+
+                        /**
+                         * Creates a new GetChangelogRequest instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns GetChangelogRequest instance
+                         */
+                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
+
+                        /**
+                         * Encodes the specified GetChangelogRequest message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest.verify|verify} messages.
+                         * @param message GetChangelogRequest message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified GetChangelogRequest message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest.verify|verify} messages.
+                         * @param message GetChangelogRequest message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IGetChangelogRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a GetChangelogRequest message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns GetChangelogRequest
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
+
+                        /**
+                         * Decodes a GetChangelogRequest message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns GetChangelogRequest
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
+
+                        /**
+                         * Verifies a GetChangelogRequest message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a GetChangelogRequest message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns GetChangelogRequest
+                         */
+                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest;
+
+                        /**
+                         * Creates a plain object from a GetChangelogRequest message. Also converts values to other types if specified.
+                         * @param message GetChangelogRequest
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.GetChangelogRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this GetChangelogRequest to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+                    }
+
+                    /** Properties of a Changelog. */
+                    interface IChangelog {
+
+                        /** Changelog name */
+                        name?: (string|null);
+
+                        /** Changelog userEmail */
+                        userEmail?: (string|null);
+
+                        /** Changelog displayName */
+                        displayName?: (string|null);
+
+                        /** Changelog action */
+                        action?: (string|null);
+
+                        /** Changelog type */
+                        type?: (string|null);
+
+                        /** Changelog resource */
+                        resource?: (string|null);
+
+                        /** Changelog createTime */
+                        createTime?: (google.protobuf.ITimestamp|null);
+                    }
+
+                    /** Represents a Changelog. */
+                    class Changelog implements IChangelog {
+
+                        /**
+                         * Constructs a new Changelog.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: google.cloud.dialogflow.cx.v3beta1.IChangelog);
+
+                        /** Changelog name. */
+                        public name: string;
+
+                        /** Changelog userEmail. */
+                        public userEmail: string;
+
+                        /** Changelog displayName. */
+                        public displayName: string;
+
+                        /** Changelog action. */
+                        public action: string;
+
+                        /** Changelog type. */
+                        public type: string;
+
+                        /** Changelog resource. */
+                        public resource: string;
+
+                        /** Changelog createTime. */
+                        public createTime?: (google.protobuf.ITimestamp|null);
+
+                        /**
+                         * Creates a new Changelog instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns Changelog instance
+                         */
+                        public static create(properties?: google.cloud.dialogflow.cx.v3beta1.IChangelog): google.cloud.dialogflow.cx.v3beta1.Changelog;
+
+                        /**
+                         * Encodes the specified Changelog message. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.Changelog.verify|verify} messages.
+                         * @param message Changelog message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: google.cloud.dialogflow.cx.v3beta1.IChangelog, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified Changelog message, length delimited. Does not implicitly {@link google.cloud.dialogflow.cx.v3beta1.Changelog.verify|verify} messages.
+                         * @param message Changelog message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: google.cloud.dialogflow.cx.v3beta1.IChangelog, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a Changelog message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns Changelog
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.cloud.dialogflow.cx.v3beta1.Changelog;
+
+                        /**
+                         * Decodes a Changelog message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns Changelog
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.cloud.dialogflow.cx.v3beta1.Changelog;
+
+                        /**
+                         * Verifies a Changelog message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a Changelog message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns Changelog
+                         */
+                        public static fromObject(object: { [k: string]: any }): google.cloud.dialogflow.cx.v3beta1.Changelog;
+
+                        /**
+                         * Creates a plain object from a Changelog message. Also converts values to other types if specified.
+                         * @param message Changelog
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: google.cloud.dialogflow.cx.v3beta1.Changelog, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this Changelog to JSON.
                          * @returns JSON object
                          */
                         public toJSON(): { [k: string]: any };
