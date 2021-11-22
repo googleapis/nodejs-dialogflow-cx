@@ -43,7 +43,7 @@ Before running the samples, make sure you've followed the steps outlined in
 
 ### Create-agent
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/create-agent.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/create-agent.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/create-agent.js,samples/README.md)
 
@@ -60,7 +60,7 @@ __Usage:__
 
 ### Create-page
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/create-page.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/create-page.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/create-page.js,samples/README.md)
 
@@ -77,7 +77,7 @@ __Usage:__
 
 ### Delete-page
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/delete-page.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/delete-page.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/delete-page.js,samples/README.md)
 
@@ -94,7 +94,7 @@ __Usage:__
 
 ### Detect-intent-audio
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect-intent-audio.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-audio.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-audio.js,samples/README.md)
 
@@ -111,7 +111,7 @@ __Usage:__
 
 ### Detect-intent-streaming
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect-intent-streaming.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-streaming.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-streaming.js,samples/README.md)
 
@@ -128,7 +128,7 @@ __Usage:__
 
 ### Detect-intent-text
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/detect-intent-text.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-text.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-text.js,samples/README.md)
 
@@ -145,7 +145,7 @@ __Usage:__
 
 ### List-intents
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/list-intents.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/list-intents.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/list-intents.js,samples/README.md)
 
@@ -162,7 +162,7 @@ __Usage:__
 
 ### List-page
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/list-page.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/list-page.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/list-page.js,samples/README.md)
 
@@ -179,7 +179,7 @@ __Usage:__
 
 ### List-testcase-results
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/list-testcase-results.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/list-testcase-results.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/list-testcase-results.js,samples/README.md)
 
@@ -196,7 +196,7 @@ __Usage:__
 
 ### List Training Phrases
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/listTrainingPhrases.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/listTrainingPhrases.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/listTrainingPhrases.js,samples/README.md)
 
@@ -213,7 +213,7 @@ __Usage:__
 
 ### Quickstart
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/quickstart.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/quickstart.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/quickstart.js,samples/README.md)
 
@@ -230,7 +230,7 @@ __Usage:__
 
 ### Update-intent
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/update-intent.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/update-intent.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/update-intent.js,samples/README.md)
 
@@ -247,7 +247,7 @@ __Usage:__
 
 ### Webhooks
 
-View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/master/samples/webhooks.js).
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/webhooks.js).
 
 [![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/webhooks.js,samples/README.md)
 
