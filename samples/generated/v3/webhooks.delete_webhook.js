@@ -31,9 +31,10 @@ function main(name) {
    *  *  If `force` is set to false, an error will be returned with message
    *     indicating the referenced resources.
    *  *  If `force` is set to true, Dialogflow will remove the webhook, as well
-   *     as any references to the webhook (i.e. [Webhook][google.cloud.dialogflow.cx.v3.Fulfillment.webhook]
-   *     and [tag][google.cloud.dialogflow.cx.v3.Fulfillment.tag]in fulfillments that point to this webhook
-   *     will be removed).
+   *     as any references to the webhook (i.e.
+   *     Webhook google.cloud.dialogflow.cx.v3.Fulfillment.webhook  and
+   *     tag google.cloud.dialogflow.cx.v3.Fulfillment.tag in fulfillments that
+   *     point to this webhook will be removed).
    */
   // const force = true
 
@@ -43,7 +44,7 @@ function main(name) {
   // Instantiates a client
   const cxClient = new WebhooksClient();
 
-  async function deleteWebhook() {
+  async function callDeleteWebhook() {
     // Construct request
     const request = {
       name,
@@ -54,7 +55,7 @@ function main(name) {
     console.log(response);
   }
 
-  deleteWebhook();
+  callDeleteWebhook();
   // [END dialogflow_v3_generated_Webhooks_DeleteWebhook_async]
 }
 
