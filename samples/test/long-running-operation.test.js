@@ -20,7 +20,6 @@ const execSync = require('child_process').execSync;
 const uuid = require('uuid');
 const dialogflow = require('@google-cloud/dialogflow-cx');
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
-const intentId = [];
 const location = 'global';
 let agentId = '';
 let agentPath = '';
@@ -50,7 +49,6 @@ describe('update intent', async () => {
 
     agentPath = agentResponse.name;
     agentId = agentPath.split('/')[5];
-
   });
 
   after('delete Agent', async () => {
@@ -58,9 +56,7 @@ describe('update intent', async () => {
   });
 
   it('should export agent', async () => {
-    const output = exec(
-      `${cmd} ${projectId} ${agentId} ${location}`
-    );
+    const output = exec(`${cmd} ${projectId} ${agentId} ${location}`);
     assert.include(output, agentId);
   });
 });
