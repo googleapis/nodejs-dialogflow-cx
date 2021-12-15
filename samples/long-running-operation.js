@@ -31,14 +31,14 @@ async function main(projectId, agentId, location) {
   const client = new AgentsClient({apiEndpoint: api_endpoint});
 
   const exportAgentRequest =
-      new protos.google.cloud.dialogflow.cx.v3.ExportAgentRequest();
+    new protos.google.cloud.dialogflow.cx.v3.ExportAgentRequest();
 
   exportAgentRequest.name = `projects/${projectId}/locations/${location}/agents/${agentId}`;
 
   // exportAgent call returns a promise to a long running operation
   const [operation] = await client.exportAgent(exportAgentRequest);
 
-  // Waiting for the long running opporation to finish 
+  // Waiting for the long running opporation to finish
   const [response] = await operation.promise();
 
   // Prints the result of the operation when the operation is done
