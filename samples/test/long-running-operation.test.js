@@ -57,6 +57,6 @@ describe('update intent', async () => {
 
   it('should export agent', async () => {
     const output = exec(`${cmd} ${projectId} ${agentId} ${location}`);
-    assert.include(output, "agentContent");
+    assert.include(output, 'agentContent');
   });
 });
