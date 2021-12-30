@@ -6,7 +6,6 @@
 
 
 [![npm version](https://img.shields.io/npm/v/@google-cloud/dialogflow-cx.svg)](https://www.npmjs.org/package/@google-cloud/dialogflow-cx)
-[![codecov](https://img.shields.io/codecov/c/github/googleapis/nodejs-dialogflow-cx/main.svg?style=flat)](https://codecov.io/gh/googleapis/nodejs-dialogflow-cx)
 
 
 
