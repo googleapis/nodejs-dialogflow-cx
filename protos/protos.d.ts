@@ -23991,6 +23991,9 @@ export namespace google {
                         /** PageInfo currentPage */
                         currentPage?: (string|null);
 
+                        /** PageInfo displayName */
+                        displayName?: (string|null);
+
                         /** PageInfo formInfo */
                         formInfo?: (google.cloud.dialogflow.cx.v3.PageInfo.IFormInfo|null);
                     }
@@ -24006,6 +24009,9 @@ export namespace google {
 
                         /** PageInfo currentPage. */
                         public currentPage: string;
+
+                        /** PageInfo displayName. */
+                        public displayName: string;
 
                         /** PageInfo formInfo. */
                         public formInfo?: (google.cloud.dialogflow.cx.v3.PageInfo.IFormInfo|null);
@@ -51879,6 +51885,9 @@ export namespace google {
                         /** PageInfo currentPage */
                         currentPage?: (string|null);
 
+                        /** PageInfo displayName */
+                        displayName?: (string|null);
+
                         /** PageInfo formInfo */
                         formInfo?: (google.cloud.dialogflow.cx.v3beta1.PageInfo.IFormInfo|null);
                     }
@@ -51894,6 +51903,9 @@ export namespace google {
 
                         /** PageInfo currentPage. */
                         public currentPage: string;
+
+                        /** PageInfo displayName. */
+                        public displayName: string;
 
                         /** PageInfo formInfo. */
                         public formInfo?: (google.cloud.dialogflow.cx.v3beta1.PageInfo.IFormInfo|null);
