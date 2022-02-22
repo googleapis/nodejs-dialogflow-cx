@@ -19,7 +19,7 @@ const {describe, it} = require('mocha');
 const execSync = require('child_process').execSync;
 const exec = cmd => execSync(cmd, {encoding: 'utf8'});
 
-describe('revive previous session state from queryResult', () => {
+describe('revive previous session state', () => {
   const cmd = 'node revive-previous-session-state.js';
 
   const projectId = process.env.GCLOUD_PROJECT;
@@ -27,17 +27,10 @@ describe('revive previous session state from queryResult', () => {
   const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
   const languageCode = 'en';
 
-  it('should include parameters passed from detectIntent request"', async () => {
+  it('should include parameters revived from previous session state"', async () => {
     const output = exec(
       `${cmd} ${projectId} ${location} ${agentId} 'Hello!' ${languageCode}`
     );
-    assert.include(output, 'How can I assist you today?');
+    assert.include(output, 'firstName');
   });
-
-  // it('should response to "reserve a vent"', async () => {
-  //   const output = exec(
-  //     `${cmd} ${projectId} ${location} ${agentId} 'i need to reserve a van' ${languageCode}`
-  //   );
-  //   assert.include(output, 'Where would you like to pick it up?');
-  // });
 });

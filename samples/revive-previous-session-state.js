@@ -14,17 +14,25 @@
 
 'use strict';
 
-const {SessionsClient} = require('@google-cloud/dialogflow-cx');
-
 async function main(projectId, location, agentId, query, languageCode) {
-  // [START dialogflow_long_lasting_sessions_async]
-  const uuid = require('uuid');
+  // [START dialogflow_revive_previous_session_state_async]
 
+  // projectId = 'my-project';
+  // location = 'global';
+  // agentId = 'my-agent';
+  // query = 'Hello!';
+  // languageCode = 'en';
+
+  // Imports the Google Cloud Dialogflow CX API library
+  const {SessionsClient} = require('@google-cloud/dialogflow-cx');
+
+  /**
+   * Example for regional endpoint:
+   *   const location = 'us-central1'
+   *   const client = new SessionsClient({apiEndpoint: 'us-central1-dialogflow.googleapis.com'})
+   */
   const client = new SessionsClient();
-
-  // const projectId = 'python-docs-samples-tests';
-  // const location = 'global';
-  // const agentId = 'c253b3a4-48a8-46a9-97ef-f08db93f4777';
+  const uuid = require('uuid');
 
   // Create a function that can marshal the current session state to JSON:
   function marshalSession(responses) {
@@ -80,39 +88,42 @@ async function main(projectId, location, agentId, query, languageCode) {
       `Current Page: ${response.queryResult.currentPage.displayName}`
     );
 
-    // // Unmarshal the saved state:
-    // const sessionStateDict = marshalSession(response);
-    // const currentPage = sessionStateDict['currentPage'];
-    // const parameters = sessionStateDict['parameters'];
+    // Unmarshal the saved state:
+    const sessionStateDict = marshalSession(response);
+    const currentPage = sessionStateDict['currentPage'];
+    const parameters = sessionStateDict['parameters'];
 
-    // const queryParams = {
-    //   current_page: currentPage,
-    //   parameters: parameters,
-    // };
+    const queryParams = {
+      curentPage: currentPage,
+      parameters: parameters,
+    };
 
-    // const secondSessionId = uuid.v4().toString;
-    // const secondRequest = {
-    //   session: client.projectLocationAgentSessionPath(
-    //     projectId,
-    //     location,
-    //     agentId,
-    //     secondSessionId
-    //   ),
-    //   queryInput: {
-    //     text: {
-    //       text: 'Hello 60 minutes later!',
-    //     },
-    //     languageCode: 'en-US',
-    //   },
-    //   queryParams: queryParams,
-    // };
+    const secondSessionId = uuid.v4().toString;
+    const secondRequest = {
+      session: client.projectLocationAgentSessionPath(
+        projectId,
+        location,
+        agentId,
+        secondSessionId
+      ),
+      queryInput: {
+        text: {
+          text: 'Hello 60 minutes later!',
+        },
+        languageCode: 'en-US',
+      },
+      queryParams: queryParams,
+    };
 
-    // const [secondResponses] = await client.detectIntent(secondRequest);
-    // console.log(secondResponses);
+    const [secondResponse] = await client.detectIntent(secondRequest);
+    console.log(` Revived Session Parameters:
+      ${JSON.stringify(secondResponse.queryResult.parameters)}`);
+    console.log(` Revived Session Query Text:
+      ${JSON.stringify(secondResponse.queryResult.text)}`);
   }
 
   revivePreviousSessionState();
-  // [END dialogflow_long_lasting_session_async]
+  // [END dialogflow_revive_previous_session_state_async]
 }
 
 process.on('unhandledRejection', err => {
