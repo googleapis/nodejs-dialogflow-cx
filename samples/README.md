@@ -24,6 +24,7 @@
   * [List Training Phrases](#list-training-phrases)
   * [Long-running-operation](#long-running-operation)
   * [Quickstart](#quickstart)
+  * [Revive-previous-session-state](#revive-previous-session-state)
   * [Update-intent](#update-intent)
   * [Webhooks](#webhooks)
 
@@ -239,6 +240,23 @@ __Usage:__
 
 
 `node samples/quickstart.js`
+
+
+-----
+
+
+
+
+### Revive-previous-session-state
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/revive-previous-session-state.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/revive-previous-session-state.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/revive-previous-session-state.js`
 
 
 -----
