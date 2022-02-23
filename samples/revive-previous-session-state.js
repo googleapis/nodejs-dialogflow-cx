@@ -35,16 +35,16 @@ async function main(projectId, location, agentId, query, languageCode) {
   const uuid = require('uuid');
 
   // Create a function that can marshal the current session state to JSON:
-  function marshalSession(responses) {
+  function marshalSession(response) {
     const sessionRestartData = {
-      currentPage: responses.queryResult.currentPage.name,
-      parameters: responses.queryResult.parameters,
+      currentPage: response.queryResult.currentPage.name,
+      parameters: response.queryResult.parameters,
     };
     return sessionRestartData;
   }
 
-  // Marshal the current state:
-  async function revivePreviousSessionState() {
+  async function detectFirstSessionIntent() {
+    // Marshal the current state:
     const sessionId = uuid.v4();
     const sessionPath = client.projectLocationAgentSessionPath(
       projectId,
@@ -84,27 +84,27 @@ async function main(projectId, location, agentId, query, languageCode) {
         `Matched Intent: ${response.queryResult.match.intent.displayName}`
       );
     }
-    console.log(
-      `Current Page: ${response.queryResult.currentPage.displayName}`
-    );
+    return marshalSession(response);
+  }
 
+  async function revivePreviousSessionState() {
     // Unmarshal the saved state:
-    const sessionStateDict = marshalSession(response);
+    const sessionStateDict = await detectFirstSessionIntent();
     const currentPage = sessionStateDict['currentPage'];
     const parameters = sessionStateDict['parameters'];
 
     const queryParams = {
-      curentPage: currentPage,
+      currentPage: currentPage,
       parameters: parameters,
     };
 
-    const secondSessionId = uuid.v4().toString;
+    const sessionId = uuid.v4().toString;
     const secondRequest = {
       session: client.projectLocationAgentSessionPath(
         projectId,
         location,
         agentId,
-        secondSessionId
+        sessionId
       ),
       queryInput: {
         text: {
