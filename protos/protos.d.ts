@@ -28481,6 +28481,9 @@ export namespace google {
                         /** Agent enableSpellCorrection */
                         enableSpellCorrection?: (boolean|null);
 
+                        /** Agent locked */
+                        locked?: (boolean|null);
+
                         /** Agent advancedSettings */
                         advancedSettings?: (google.cloud.dialogflow.cx.v3beta1.IAdvancedSettings|null);
                     }
@@ -28529,6 +28532,9 @@ export namespace google {
 
                         /** Agent enableSpellCorrection. */
                         public enableSpellCorrection: boolean;
+
+                        /** Agent locked. */
+                        public locked: boolean;
 
                         /** Agent advancedSettings. */
                         public advancedSettings?: (google.cloud.dialogflow.cx.v3beta1.IAdvancedSettings|null);
@@ -29183,6 +29189,9 @@ export namespace google {
                         /** ExportAgentRequest agentUri */
                         agentUri?: (string|null);
 
+                        /** ExportAgentRequest dataFormat */
+                        dataFormat?: (google.cloud.dialogflow.cx.v3beta1.ExportAgentRequest.DataFormat|keyof typeof google.cloud.dialogflow.cx.v3beta1.ExportAgentRequest.DataFormat|null);
+
                         /** ExportAgentRequest environment */
                         environment?: (string|null);
                     }
@@ -29201,6 +29210,9 @@ export namespace google {
 
                         /** ExportAgentRequest agentUri. */
                         public agentUri: string;
+
+                        /** ExportAgentRequest dataFormat. */
+                        public dataFormat: (google.cloud.dialogflow.cx.v3beta1.ExportAgentRequest.DataFormat|keyof typeof google.cloud.dialogflow.cx.v3beta1.ExportAgentRequest.DataFormat);
 
                         /** ExportAgentRequest environment. */
                         public environment: string;
@@ -29274,6 +29286,15 @@ export namespace google {
                          * @returns JSON object
                          */
                         public toJSON(): { [k: string]: any };
+                    }
+
+                    namespace ExportAgentRequest {
+
+                        /** DataFormat enum. */
+                        enum DataFormat {
+                            DATA_FORMAT_UNSPECIFIED = 0,
+                            BLOB = 1
+                        }
                     }
 
                     /** Properties of an ExportAgentResponse. */

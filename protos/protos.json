@@ -7807,6 +7807,10 @@
                               "type": "bool",
                               "id": 20
                             },
+                            "locked": {
+                              "type": "bool",
+                              "id": 27
+                            },
                             "advancedSettings": {
                               "type": "AdvancedSettings",
                               "id": 22
@@ -7921,12 +7925,27 @@
                                 "(google.api.field_behavior)": "OPTIONAL"
                               }
                             },
+                            "dataFormat": {
+                              "type": "DataFormat",
+                              "id": 3,
+                              "options": {
+                                "(google.api.field_behavior)": "OPTIONAL"
+                              }
+                            },
                             "environment": {
                               "type": "string",
                               "id": 5,
                               "options": {
                                 "(google.api.field_behavior)": "OPTIONAL",
                                 "(google.api.resource_reference).type": "dialogflow.googleapis.com/Environment"
+                              }
+                            }
+                          },
+                          "nested": {
+                            "DataFormat": {
+                              "values": {
+                                "DATA_FORMAT_UNSPECIFIED": 0,
+                                "BLOB": 1
                               }
                             }
                           }
