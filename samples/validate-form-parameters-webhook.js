@@ -23,7 +23,7 @@ const axios = require('axios');
 
 // const { response } = require('express');
 
-function main() {
+function main(country) {
   // [START dialogflow_v3beta1_generated_Webhooks_CreateWebhook_async] // change region tag
   /*
   //TODO(developer): Uncomment these variables before running the sample.
@@ -32,7 +32,6 @@ function main() {
 
   // TODO - for more information about creating an agent, visit []
 
-  const country = 'Vanuatu';
   const webhookRequest = {
     fulfillmentInfo: {
       tag: 'validate-country',
