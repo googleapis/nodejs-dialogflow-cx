@@ -18,7 +18,6 @@
 
 'use strict';
 
-// eslint-disable-next-line node/no-extraneous-require
 const axios = require('axios');
 
 function main(country, projectId, agent) {
