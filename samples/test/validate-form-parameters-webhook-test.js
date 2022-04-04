@@ -1,4 +1,4 @@
-// Copyright 2021 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,14 +24,20 @@ describe('validate parameter', async () => {
 
   it('should validate form parameter', async () => {
     const country = 'France';
-    const output = exec(`${cmd} ${country}`);
+    const projectId = process.env.GCLOUD_PROJECT;
+    const agent = process.env.AGENT;
+
+    const output = exec(`${cmd} ${country} ${projectId} ${agent}`);
     console.log('valid-output', output);
     assert.include(output, 'VALID');
   });
 
   it('should invalidate form parameter', async () => {
     const country = 'Candyland';
-    const output = exec(`${cmd} ${country}`);
+    const projectId = process.env.GCLOUD_PROJECT;
+    const agent = process.env.AGENT;
+
+    const output = exec(`${cmd} ${country} ${projectId} ${agent}`);
     console.log('invalid-output', output);
     assert.include(output, 'INVALID');
   });

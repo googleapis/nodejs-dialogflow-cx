@@ -21,16 +21,24 @@
 // eslint-disable-next-line node/no-extraneous-require
 const axios = require('axios');
 
-// const { response } = require('express');
-
-function main(country) {
-  // [START dialogflow_v3beta1_generated_Webhooks_CreateWebhook_async] // change region tag
+function main(country, projectId, agent) {
+  // [START dialogflow_v3beta1_webhook_validate_form_parameters_async]
   /*
-  //TODO(developer): Uncomment these variables before running the sample.
-  //  const country = 'your-country-parameter;
+    TODO(developer): Uncomment these variables before running the sample.
+    const country = 'your-country-parameter;
+    const projectId = 'your-project-id'
+    const agent = 'path-to-your-agent';
   */
 
-  // TODO - for more information about creating an agent, visit []
+  /*
+    This sample assumes that you have exported the example agent located at https://storage.googleapis.com/cloud-samples-data/dialogflow-cx/country-info-agent.blob
+    For more information on how to export and restore an agent, visit https://cloud.google.com/dialogflow/cx/docs/concept/agent?hl=en#export
+    ** Retrieving the Agent ID **
+    - In the console (on the page on which all of your project's agents are listed), the Agent ID can be retrieved by clicking the 3-dot menu next to the agent
+      and selecting "Copy Name".
+    - The Agent ID can be retrieved from your browser's URL when you access the agent in the console.
+    - The Agent ID can also be retrieved by using the `projects.locations.agents.list` method in the API.
+  */
 
   const webhookRequest = {
     fulfillmentInfo: {
@@ -46,8 +54,11 @@ function main(country) {
   async function validateParameter() {
     await axios({
       method: 'POST',
-      url: 'https://us-central1-python-docs-samples-tests.cloudfunctions.net/validateParams',
-      data: webhookRequest,
+      url: `https://us-central1-${projectId}.cloudfunctions.net/validateParams`,
+      data: {
+        agent: agent,
+        webhookRequest,
+      },
     }).then(res => {
       const fulfillmentResponseMessage =
         res.data.fulfillmentResponse.messages[0].text.text[0];
@@ -62,6 +73,8 @@ function main(country) {
       // response.send(res.data.fulfillmentResponse.messages[0].text.text[0]); TODO: should I 'send' webhook response?
     });
   }
+  // [END dialogflow_v3beta1_webhook_validate_form_parameters_async]
+
   validateParameter();
 }
 
