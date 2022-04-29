@@ -16,7 +16,7 @@
  * Configures a webhook to configure new session parameters
  */
 
-// [START dialogflow_cx_v3beta1_webhook_configure_session_parameters]
+// [START dialogflow_cx_v3_webhook_configure_session_parameters]
 
 // TODO (developer): change entry point to configureSessionParams in Cloud Function
 
@@ -51,4 +51,4 @@ exports.configureSessionParams = (request, response) => {
 
   response.send(jsonResponse);
 };
-// [END dialogflow_cx_v3beta1_webhook_configure_session_parameters]
+// [END dialogflow_cx_v3_webhook_configure_session_parameters]

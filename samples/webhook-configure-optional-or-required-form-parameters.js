@@ -16,7 +16,7 @@
  * Configures a webhook to configure new session parameters
  */
 
-// [START dialogflow_cx_v3beta1_webhook_configure_optional_or_required_form_params]
+// [START dialogflow_cx_v3_webhook_configure_optional_or_required_form_params]
 
 // TODO (developer): change entry point to configureOptionalFormParam in Cloud Function
 
@@ -68,4 +68,4 @@ exports.configureOptionalFormParam = (request, response) => {
 
   response.send(jsonResponse);
 };
-// [END dialogflow_cx_v3beta1_webhook_configure_optional_or_required_form_params]
+// [END dialogflow_cx_v3_webhook_configure_optional_or_required_form_params]

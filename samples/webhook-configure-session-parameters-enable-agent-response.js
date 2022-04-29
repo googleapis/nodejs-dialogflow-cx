@@ -16,7 +16,7 @@
  * Configures a webhook to enable an agent response.
  */
 
-// [START dialogflow_cx_v3beta1_webhook_configure_session_parameters_enable_agent_response]
+// [START dialogflow_cx_v3_webhook_configure_session_parameters_enable_agent_response]
 
 // TODO (developer): change entry point to enableAgentResponse in Cloud Function
 
@@ -64,4 +64,4 @@ exports.enableAgentResponse = (request, response) => {
   );
   response.send(jsonResponse);
 };
-// [END dialogflow_cx_v3beta1_webhook_configure_session_parameters_enable_agent_response]
+// [END dialogflow_cx_v3_webhook_configure_session_parameters_enable_agent_response]

@@ -16,7 +16,7 @@
  * Configures a webhook to trigger a page transition. This is a simple example.
  */
 
-// [START dialogflow_cx_v3beta1_webhook_configure_session_parameters_trigger_transition]
+// [START dialogflow_cx_v3_webhook_configure_session_parameters_trigger_transition]
 
 // TODO (developer): change entry point to triggerTransition in Cloud Function
 
@@ -50,4 +50,4 @@ exports.triggerTransition = (request, response) => {
 
   response.send(jsonResponse);
 };
-// [END dialogflow_cx_v3beta1_webhook_configure_session_parameters_trigger_transition]
+// [END dialogflow_cx_v3_webhook_configure_session_parameters_trigger_transition]
