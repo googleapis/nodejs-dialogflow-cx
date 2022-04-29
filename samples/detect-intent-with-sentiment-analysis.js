@@ -108,7 +108,7 @@ function main(projectId, location, agentId, query, languageCode) {
       sentiment = 'neutral';
     }
     console.log(
-      `User input sentiment has a score of ${sentimentAnalysis.score}, which indicates ${sentiment} sentiment`
+      `User input sentiment has a score of ${sentimentAnalysis.score}, which indicates ${sentiment} sentiment.`
     );
   }
 
