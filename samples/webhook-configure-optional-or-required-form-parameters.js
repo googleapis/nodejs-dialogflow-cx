@@ -23,7 +23,7 @@
 exports.configureOptionalFormParam = (request, response) => {
   const tag = request.body.fulfillmentInfo.tag;
   // The value of the parameter used to enable agent response
-  const formParameter = request.body.pageInfo.formInfo.parameterInfo[0].number;
+  const formParameter = request.body.pageInfo.formInfo.parameterInfo[0].value;
   let isRequired;
   let text = '';
 

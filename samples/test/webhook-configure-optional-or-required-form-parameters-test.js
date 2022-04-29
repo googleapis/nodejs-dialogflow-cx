@@ -42,9 +42,14 @@ describe('configure optional or required form parameter', () => {
         fulfillmentInfo: {
           tag: 'required',
         },
-        sessionInfo: {
-          parameters: {
-            number: number,
+        pageInfo: {
+          formInfo: {
+            parameterInfo: [
+              {
+                displayName: 'number',
+                value: number,
+              },
+            ],
           },
         },
       },
@@ -68,9 +73,14 @@ describe('configure optional or required form parameter', () => {
         fulfillmentInfo: {
           tag: 'optional',
         },
-        sessionInfo: {
-          parameters: {
-            number: number,
+        pageInfo: {
+          formInfo: {
+            parameterInfo: [
+              {
+                displayName: 'number',
+                value: number,
+              },
+            ],
           },
         },
       },
