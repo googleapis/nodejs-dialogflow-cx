@@ -27,7 +27,7 @@ exports.enableAgentResponse = (request, response) => {
   let text = '';
 
   if (tag === 'increase number') {
-    sessionParameter = sessionParameter += 100;
+    sessionParameter += 100;
     text = `The new increased value of the number parameter is ${sessionParameter}`;
   } else if (tag === 'decrease number') {
     sessionParameter -= 50;
