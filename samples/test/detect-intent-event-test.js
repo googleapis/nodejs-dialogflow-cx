@@ -26,13 +26,13 @@ describe('detect intent with EventInput', () => {
   const location = 'global';
   const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
   const languageCode = 'en';
-  const event = 'customEvent';
+  const event = 'No-input Options';
 
   it('should return agent response for custom event', async () => {
     const output = exec(
       `${cmd} ${projectId} ${location} ${agentId} ${event} ${languageCode}`
     );
     console.log('OUTPUT', output);
-    assert.include(output, 'Hi! You have triggered a custom event.');
+    assert.include(output, "Hi! I'm the Rental Car Virtual Agent");
   });
 });
