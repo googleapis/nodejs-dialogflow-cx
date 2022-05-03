@@ -62,7 +62,7 @@ function main(projectId, location, agentId, event, languageCode) {
   // Instantiates a client
   const cxClient = new SessionsClient();
 
-  async function detectIntentWithSentimentAnalysis() {
+  async function detectIntentWithEventInput() {
     const sessionId = Math.random().toString(36).substring(7);
     const sessionPath = cxClient.projectLocationAgentSessionPath(
       projectId,
@@ -91,7 +91,7 @@ function main(projectId, location, agentId, event, languageCode) {
     console.log(response.queryResult.responseMessages[0].text.text[0]);
   }
 
-  detectIntentWithSentimentAnalysis();
+  detectIntentWithEventInput();
   // [END dialogflow_cx_v3_detect_intent_event_input_async]
 }
 

@@ -55,7 +55,7 @@ function main(projectId, location, agentId, intentId, languageCode) {
   // Instantiates an Intents client
   const intentsClient = new IntentsClient();
 
-  async function detectIntentWithSentimentAnalysis() {
+  async function detectIntentWithIntentInput() {
     const sessionId = Math.random().toString(36).substring(7);
 
     // Creates session path
@@ -97,7 +97,7 @@ function main(projectId, location, agentId, intentId, languageCode) {
     console.log(response.queryResult.responseMessages[0].text.text[0]);
   }
 
-  detectIntentWithSentimentAnalysis();
+  detectIntentWithIntentInput();
   // [END dialogflow_cx_v3_detect_intent_with_intent_input_async]
 }
 
