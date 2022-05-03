@@ -24,7 +24,7 @@ describe('detect intent with TTS response', () => {
 
   const projectId = process.env.GCLOUD_PROJECT;
   const location = 'global';
-  const agentId = '10760cee-f927-4754-af00-4e4dae8b0042';
+  const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
   const sessionId = 'SESSION_ID';
   const testQuery = 'Hello!';
   const languageCode = 'en-US';

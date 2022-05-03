@@ -24,7 +24,7 @@ describe('detect intent with IntentInput', () => {
 
   const projectId = process.env.GCLOUD_PROJECT;
   const location = 'global';
-  const agentId = '10760cee-f927-4754-af00-4e4dae8b0042';
+  const agentId = '5d23f659-cd71-43e9-8fb2-b69cd9896370';
   const languageCode = 'en';
   const intent = '00000000-0000-0000-0000-000000000000';
 
