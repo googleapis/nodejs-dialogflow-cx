@@ -33,6 +33,6 @@ describe('detect intent with IntentInput', () => {
       `${cmd} ${projectId} ${location} ${agentId} ${intent} ${languageCode}`
     );
     console.log(output);
-    assert.include(output, 'Greetings! How can I assist?');
+    assert.include(output, 'Default Welcome Intent');
   });
 });
