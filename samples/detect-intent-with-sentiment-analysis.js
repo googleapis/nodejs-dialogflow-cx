@@ -16,7 +16,7 @@
 //
 
 /**
- * Revives the state of a previous session
+ * Detects intent with sentiment analysis
  *
  * See https://cloud.google.com/dialogflow/cx/docs/quick/api before running the code snippet.
  */
@@ -24,8 +24,7 @@
 'use strict';
 
 function main(projectId, location, agentId, query, languageCode) {
-  // TODO: existing samples pass 'queryInput' as parameter. I'll try passing 'event' and constructing the queryInput in the sample
-  // [START dialogflow_cx_v3_detect_intent_event_input_async]
+  // [START dialogflow_cx_v3_detect_intent_sentiment_analysis_async]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -113,7 +112,7 @@ function main(projectId, location, agentId, query, languageCode) {
   }
 
   detectIntentWithSentimentAnalysis();
-  // [END dialogflow_cx_v3_detect_intent_event_input_async]
+  // [END dialogflow_cx_v3_detect_intent_sentiment_analysis_async]
 }
 
 process.on('unhandledRejection', err => {
