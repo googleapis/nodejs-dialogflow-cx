@@ -36,12 +36,6 @@ exports.configureOptionalFormParam = (request, response) => {
         ],
       },
     },
-    // Set session parameter to null if you want to reprompt the user to enter a required parameter
-    sessionInfo: {
-      parameterInfo: {
-        parameter: parameter,
-      },
-    },
   };
 
   // Info about form parameter that is sent in the webhook response:
