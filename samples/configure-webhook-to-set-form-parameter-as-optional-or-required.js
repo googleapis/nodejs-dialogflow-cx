@@ -13,46 +13,24 @@
 // limitations under the License.
 
 /**
- * Configures a webhook to configure new session parameters
+ * Configures a webhook to set form parameters as optional/required
  */
 
-// [START dialogflow_cx_v3_webhook_configure_optional_or_required_form_params]
-
-// TODO (developer): change entry point to configureOptionalFormParam in Cloud Function
+// [START dialogflow_cx_v3_configure_webhooks_to_set_form_parameter_as_optional_or_required]
 
 exports.configureOptionalFormParam = (request, response) => {
-  const tag = request.body.fulfillmentInfo.tag;
-  // The value of the parameter used to enable agent response
-  const formParameter = request.body.pageInfo.formInfo.parameterInfo[0].value;
-  let isRequired;
-  let text = '';
-
-  if (tag === 'optional') {
-    isRequired = false;
-    text = 'This parameter is optional.';
-  } else {
-    isRequired = true;
-    text = 'This parameter is required.';
-  }
+  // The value of the parameter that the webhook will set as optional or required.
+  // Note that the webhook cannot add or remove any form parameter
+  const parameter = request.body.pageInfo.formInfo.parameterInfo[0].value;
 
   const jsonResponse = {
-    fulfillment_response: {
-      messages: [
-        {
-          text: {
-            //fulfillment text response to be sent to the agent
-            text: [text],
-          },
-        },
-      ],
-    },
     pageInfo: {
       formInfo: {
         parameterInfo: [
           {
-            displayName: formParameter,
+            displayName: parameter,
             // if required: false, the agent will not reprompt for this parameter, even if the state is 'INVALID'
-            required: isRequired,
+            required: true,
             state: 'VALID',
           },
         ],
@@ -61,11 +39,17 @@ exports.configureOptionalFormParam = (request, response) => {
     // Set session parameter to null if you want to reprompt the user to enter a required parameter
     sessionInfo: {
       parameterInfo: {
-        formParameter: formParameter,
+        parameter: parameter,
       },
     },
   };
 
+  // Info about form parameter that is sent in the webhook response:
+  console.log(
+    'Parameter Info: \n',
+    jsonResponse.pageInfo.formInfo.parameterInfo[0]
+  );
+
   response.send(jsonResponse);
 };
-// [END dialogflow_cx_v3_webhook_configure_optional_or_required_form_params]
+// [END dialogflow_cx_v3_configure_webhooks_to_set_form_parameter_as_optional_or_required]
