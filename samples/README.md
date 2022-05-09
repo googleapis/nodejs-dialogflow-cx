@@ -12,12 +12,17 @@
 
 * [Before you begin](#before-you-begin)
 * [Samples](#samples)
+  * [Configure-webhook-to-set-form-parameter-as-optional-or-required](#configure-webhook-to-set-form-parameter-as-optional-or-required)
   * [Create-agent](#create-agent)
   * [Create-page](#create-page)
   * [Delete-page](#delete-page)
   * [Detect-intent-audio](#detect-intent-audio)
+  * [Detect-intent-event](#detect-intent-event)
   * [Detect-intent-streaming](#detect-intent-streaming)
+  * [Detect-intent-synthesize-tts-response](#detect-intent-synthesize-tts-response)
   * [Detect-intent-text](#detect-intent-text)
+  * [Detect-intent-with-intent-input](#detect-intent-with-intent-input)
+  * [Detect-intent-with-sentiment-analysis](#detect-intent-with-sentiment-analysis)
   * [List-intents](#list-intents)
   * [List-page](#list-page)
   * [List-testcase-results](#list-testcase-results)
@@ -25,6 +30,10 @@
   * [Long-running-operation](#long-running-operation)
   * [Quickstart](#quickstart)
   * [Update-intent](#update-intent)
+  * [Webhook-configure-session-parameters-enable-agent-response](#webhook-configure-session-parameters-enable-agent-response)
+  * [Webhook-configure-session-parameters-trigger-transition](#webhook-configure-session-parameters-trigger-transition)
+  * [Webhook-configure-session-parameters](#webhook-configure-session-parameters)
+  * [Webhook-validate-form-parameter](#webhook-validate-form-parameter)
   * [Webhooks](#webhooks)
 
 ## Before you begin
@@ -39,6 +48,23 @@ Before running the samples, make sure you've followed the steps outlined in
 `cd ..`
 
 ## Samples
+
+
+
+### Configure-webhook-to-set-form-parameter-as-optional-or-required
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/configure-webhook-to-set-form-parameter-as-optional-or-required.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/configure-webhook-to-set-form-parameter-as-optional-or-required.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/configure-webhook-to-set-form-parameter-as-optional-or-required.js`
+
+
+-----
+
 
 
 
@@ -110,6 +136,23 @@ __Usage:__
 
 
 
+### Detect-intent-event
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-event.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-event.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/detect-intent-event.js`
+
+
+-----
+
+
+
+
 ### Detect-intent-streaming
 
 View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-streaming.js).
@@ -127,6 +170,23 @@ __Usage:__
 
 
 
+### Detect-intent-synthesize-tts-response
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-synthesize-tts-response.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-synthesize-tts-response.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/detect-intent-synthesize-tts-response.js`
+
+
+-----
+
+
+
+
 ### Detect-intent-text
 
 View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-text.js).
@@ -137,6 +197,40 @@ __Usage:__
 
 
 `node samples/detect-intent-text.js`
+
+
+-----
+
+
+
+
+### Detect-intent-with-intent-input
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-with-intent-input.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-with-intent-input.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/detect-intent-with-intent-input.js`
+
+
+-----
+
+
+
+
+### Detect-intent-with-sentiment-analysis
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-with-sentiment-analysis.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-with-sentiment-analysis.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/detect-intent-with-sentiment-analysis.js`
 
 
 -----
@@ -256,6 +350,74 @@ __Usage:__
 
 
 `node samples/update-intent.js`
+
+
+-----
+
+
+
+
+### Webhook-configure-session-parameters-enable-agent-response
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/webhook-configure-session-parameters-enable-agent-response.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/webhook-configure-session-parameters-enable-agent-response.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/webhook-configure-session-parameters-enable-agent-response.js`
+
+
+-----
+
+
+
+
+### Webhook-configure-session-parameters-trigger-transition
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/webhook-configure-session-parameters-trigger-transition.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/webhook-configure-session-parameters-trigger-transition.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/webhook-configure-session-parameters-trigger-transition.js`
+
+
+-----
+
+
+
+
+### Webhook-configure-session-parameters
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/webhook-configure-session-parameters.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/webhook-configure-session-parameters.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/webhook-configure-session-parameters.js`
+
+
+-----
+
+
+
+
+### Webhook-validate-form-parameter
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/webhook-validate-form-parameter.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/webhook-validate-form-parameter.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/webhook-validate-form-parameter.js`
 
 
 -----
