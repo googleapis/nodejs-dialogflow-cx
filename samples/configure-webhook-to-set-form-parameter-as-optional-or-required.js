@@ -27,7 +27,7 @@ exports.configureOptionalFormParam = (request, response) => {
       formInfo: {
         parameterInfo: [
           {
-            displayName: 'number',
+            displayName: 'order-number',
             // if required: false, the agent will not reprompt for this parameter, even if the state is 'INVALID'
             required: true,
             state: 'VALID',
