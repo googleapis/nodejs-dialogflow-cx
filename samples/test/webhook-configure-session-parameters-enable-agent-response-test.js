@@ -33,19 +33,13 @@
 const {assert} = require('chai');
 const {describe, it} = require('mocha');
 const webhook = require('../webhook-configure-session-parameters-enable-agent-response');
-const number = 100;
 
 describe('enable agent response', () => {
-  it('should test webhook increases value of session parameter', async () => {
+  it('should add orderNumber session parameter', async () => {
     const request = {
       body: {
         fulfillmentInfo: {
-          tag: 'increase number',
-        },
-        sessionInfo: {
-          parameters: {
-            number: number,
-          },
+          tag: 'webhook-configure-session-parameters-enable-agent-response',
         },
       },
     };
@@ -59,32 +53,6 @@ describe('enable agent response', () => {
     };
 
     webhook.enableAgentResponse(JSON.parse(temp), res);
-    assert.include(response, 'increased value');
-  });
-
-  it('should test webhook decreases value of session parameter', async () => {
-    const request = {
-      body: {
-        fulfillmentInfo: {
-          tag: 'decrease number',
-        },
-        sessionInfo: {
-          parameters: {
-            number: number,
-          },
-        },
-      },
-    };
-    const temp = JSON.stringify(request);
-    let response = '';
-
-    const res = {
-      send: function (s) {
-        response = JSON.stringify(s);
-      },
-    };
-
-    webhook.enableAgentResponse(JSON.parse(temp), res);
-    assert.include(response, 'decreased value');
+    assert.include(response, 'orderNumber');
   });
 });

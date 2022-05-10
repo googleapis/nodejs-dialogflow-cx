@@ -36,21 +36,10 @@ const webhook = require('../webhook-validate-form-parameter');
 
 describe('configure session parameters', () => {
   it('should test that webhook validates form parameter', async () => {
-    const number = 4;
     const request = {
       body: {
         fulfillmentInfo: {
-          tag: 'valid-parameter',
-        },
-        pageInfo: {
-          formInfo: {
-            parameterInfo: [
-              {
-                displayName: 'number',
-                value: number,
-              },
-            ],
-          },
+          tag: 'validate-form-parameter',
         },
       },
     };
@@ -65,38 +54,5 @@ describe('configure session parameters', () => {
 
     webhook.validateParameter(JSON.parse(temp), res);
     assert.include(response, 'VALID');
-  });
-
-  it('should test that webhook invalidates form parameter', async () => {
-    const number = 150;
-    const request = {
-      body: {
-        fulfillmentInfo: {
-          tag: 'invalid-parameter',
-        },
-        pageInfo: {
-          formInfo: {
-            parameterInfo: [
-              {
-                displayName: 'number',
-                required: true,
-                value: number,
-              },
-            ],
-          },
-        },
-      },
-    };
-    const temp = JSON.stringify(request);
-    let response = '';
-
-    const res = {
-      send: function (s) {
-        response = JSON.stringify(s);
-      },
-    };
-
-    webhook.validateParameter(JSON.parse(temp), res);
-    assert.include(response, 'INVALID');
   });
 });

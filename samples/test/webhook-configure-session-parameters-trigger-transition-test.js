@@ -27,18 +27,11 @@ const pageId = `temp_page_${uuid.v4()}`;
 const agentId = '4e2cb784-012c-48b2-9d8c-a877d3be3437';
 const targetPage = `projects/${projectId}/locations/${location}/agents/${agentId}/flows/${flowId}/pages/${pageId}`;
 
-const number = 100;
-
 const request = {
   body: {
     targetPage: targetPage,
     fulfillmentInfo: {
       tag: 'configure-session-parameter-trigger-transition',
-    },
-    sessionInfo: {
-      parameters: {
-        number: number,
-      },
     },
   },
 };

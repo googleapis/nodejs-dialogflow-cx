@@ -19,29 +19,18 @@
 // [START dialogflow_cx_v3_webhook_configure_session_parameters_trigger_transition]
 
 exports.triggerTransition = (request, response) => {
-  // The target page to transition to.
+  // The target page to which to transition
   const targetPage = request.body.targetPage; // Must be format projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>
-  // The value of the parameter used to trigger transition
-  let sessionParameter = request.body.sessionInfo.parameters.number;
 
-  sessionParameter = sessionParameter *= 50;
-  const text = `We multiplied your input - the value is now ${sessionParameter}. Let's go the the next page.`;
+  // The value of the parameter used to trigger transition
+  const orderNumber = 123;
+
   const jsonResponse = {
     target_page: targetPage,
-    fulfillment_response: {
-      messages: [
-        {
-          text: {
-            //fulfillment text response to be sent to the agent
-            text: [text],
-          },
-        },
-      ],
-    },
-    // Sets new value of the session parameter
+    // Sets value of the session parameter
     session_info: {
       parameters: {
-        number: sessionParameter,
+        orderNumber: orderNumber,
       },
     },
   };
