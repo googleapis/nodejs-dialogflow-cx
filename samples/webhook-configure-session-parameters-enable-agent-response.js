@@ -13,24 +13,14 @@
 // limitations under the License.
 
 /**
- * Configures a webhook to enable an agent response.
+ * Webhook configures a session parameter to enable an agent response.
  */
 
 // [START dialogflow_cx_v3_webhook_configure_session_parameters_enable_agent_response]
 
 exports.enableAgentResponse = (request, response) => {
-  const tag = request.body.fulfillmentInfo.tag;
-  // The value of the parameter used to enable agent response
-  let sessionParameter = request.body.sessionInfo.parameters.number;
-  let text = '';
-
-  if (tag === 'increase number') {
-    sessionParameter = sessionParameter += 100;
-    text = `The new increased value of the number parameter is ${sessionParameter}`;
-  } else if (tag === 'decrease number') {
-    sessionParameter -= 50;
-    text = `The new decreased value of the number parameter is ${sessionParameter}`;
-  }
+  // The value of the session parameter used to enable agent response
+  const orderNumber = 123;
 
   const jsonResponse = {
     fulfillment_response: {
@@ -38,7 +28,7 @@ exports.enableAgentResponse = (request, response) => {
         {
           text: {
             //fulfillment text response to be sent to the agent
-            text: [text],
+            text: [`Your order number is ${orderNumber}`],
           },
         },
       ],
@@ -46,7 +36,7 @@ exports.enableAgentResponse = (request, response) => {
     // Webhook returns configured session parameter value
     session_info: {
       parameters: {
-        number: sessionParameter,
+        orderNumber: orderNumber,
       },
     },
   };
