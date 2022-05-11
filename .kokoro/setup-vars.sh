@@ -17,10 +17,10 @@
 # nodejs-storage's system tests require additional project and
 # system test key
 
-export AGENT_ID="be66a5a2-4602-4f8c-a3f3-046896904362"
-export TEST_ID="9ebddb66-c49e-455b-bacc-24c0538ece01"
+export AGENT_ID="b1808233-450b-4065-9492-bc9b40151641"
+export TEST_ID="38b15996-92fc-4b42-bbd4-41742a394cb0"
 
-export TRAINING_PHRASE_AGENT_ID="5d23f659-cd71-43e9-8fb2-b69cd9896370"
+export TRAINING_PHRASE_AGENT_ID="b1808233-450b-4065-9492-bc9b40151641"
 export TRAINING_PHRASE_INTENT_ID="04e47c8c-69d9-4208-8262-67fc2069a283"
 
 trap EXIT
