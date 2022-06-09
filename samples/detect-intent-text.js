@@ -42,8 +42,6 @@ async function main(projectId, location, agentId, query, languageCode) {
       agentId,
       sessionId
     );
-    console.info(sessionPath);
-
     const request = {
       session: sessionPath,
       queryInput: {
