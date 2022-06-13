@@ -35,11 +35,11 @@ const {describe, it} = require('mocha');
 const webhook = require('../webhook-validate-form-parameter');
 
 describe('configure session parameters', () => {
-  it('should test that webhook validates form parameter', async () => {
+  it('should test that webhook invalidates form parameter', async () => {
     const request = {
       body: {
         fulfillmentInfo: {
-          tag: 'validate-form-parameter',
+          tag: 'invalidate-form-parameter',
         },
       },
     };
@@ -53,6 +53,6 @@ describe('configure session parameters', () => {
     };
 
     webhook.validateParameter(JSON.parse(temp), res);
-    assert.include(response, 'VALID');
+    assert.include(response, 'INVALID');
   });
 });

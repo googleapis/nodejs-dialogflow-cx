@@ -29,7 +29,7 @@ exports.validateParameter = (request, response) => {
           {
             displayName: 'orderNumber',
             required: true,
-            state: 'VALID',
+            state: 'INVALID',
             value: 123,
           },
         ],
@@ -38,7 +38,7 @@ exports.validateParameter = (request, response) => {
     sessionInfo: {
       parameters: {
         // Set session parameter to null if the form parameter is 'INVALID' and your agent needs to reprompt the user
-        orderNumber: 123,
+        orderNumber: null,
       },
     },
   };
