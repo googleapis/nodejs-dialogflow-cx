@@ -13,7 +13,7 @@
 // limitations under the License.
 
 /**
- * Configures a webhook to configure session parameters
+ * Configures a webhook to set a session parameter
  */
 
 // [START dialogflow_cx_v3_webhook_configure_session_parameters]
