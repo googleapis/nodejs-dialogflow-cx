@@ -27,17 +27,17 @@ describe('detect intent with text input', () => {
   const agentId = 'b1808233-450b-4065-9492-bc9b40151641';
   const languageCode = 'en';
 
-  it('should response to "hello"', async () => {
+  it('should respond to "hello"', async () => {
     const output = exec(
       `${cmd} ${projectId} ${location} ${agentId} 'hello' ${languageCode}`
     );
     assert.include(output, 'How can I assist you today?');
   });
 
-  it('should response to "reserve a vent"', async () => {
+  it('should respond to "reserve a van"', async () => {
     const output = exec(
       `${cmd} ${projectId} ${location} ${agentId} 'i need to reserve a van' ${languageCode}`
     );
-    assert.include(output, 'Where would you like to pick it up?');
+    assert.include(output, 'Where would you like ');
   });
 });
