@@ -17,6 +17,7 @@
   * [Create-page](#create-page)
   * [Delete-page](#delete-page)
   * [Detect-intent-audio](#detect-intent-audio)
+  * [Detect-intent-disabled-webhook](#detect-intent-disabled-webhook)
   * [Detect-intent-event](#detect-intent-event)
   * [Detect-intent-streaming](#detect-intent-streaming)
   * [Detect-intent-synthesize-tts-response](#detect-intent-synthesize-tts-response)
@@ -129,6 +130,23 @@ __Usage:__
 
 
 `node samples/detect-intent-audio.js`
+
+
+-----
+
+
+
+
+### Detect-intent-disabled-webhook
+
+View the [source code](https://github.com/googleapis/nodejs-dialogflow-cx/blob/main/samples/detect-intent-disabled-webhook.js).
+
+[![Open in Cloud Shell][shell_img]](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-dialogflow-cx&page=editor&open_in_editor=samples/detect-intent-disabled-webhook.js,samples/README.md)
+
+__Usage:__
+
+
+`node samples/detect-intent-disabled-webhook.js`
 
 
 -----
