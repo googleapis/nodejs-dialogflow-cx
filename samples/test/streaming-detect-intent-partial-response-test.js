@@ -33,7 +33,6 @@ describe('streaming detect intent with partial response', () => {
     const output = exec(
       `${cmd} ${projectId} ${location} ${agentId} ${audioFileName} ${encoding} ${sampleRateHertz}`
     );
-    console.log('OUTPUT', output);
     assert.include(output, 'One moment while I try to help!');
   });
 });

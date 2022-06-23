@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,9 +32,7 @@ async function main(
   // const audioFileName = '/path/to/audio.raw';
   // const encoding = 'AUDIO_ENCODING_LINEAR_16';
   // const sampleRateHertz = 16000;
-  // const languageCode = 'en-US'
 
-  // Imports the Google Cloud Some API library
   const {SessionsClient} = require('@google-cloud/dialogflow-cx');
   /**
    * Example for regional endpoint:
@@ -90,7 +88,6 @@ async function main(
     stream.on('end', () => {
       /* API call completed */
     });
-
     stream.write(request);
 
     // Stream the audio from audio file to Dialogflow.
@@ -105,62 +102,13 @@ async function main(
       }),
       stream
     );
-
-    stream.end();
-
-    // [END dialogflow_cx_streaming_detect_intent_enable_partial_response]
   }
   streamingDetectIntentPartialResponse();
+  // [END dialogflow_cx_streaming_detect_intent_enable_partial_response]
 }
+
 main(...process.argv.slice(2));
 process.on('unhandledRejection', err => {
   console.error(err.message);
   process.exitCode = 1;
 });
-
-// Create a stream for the streaming request.
-// const detectStream = client
-//   .streamingDetectIntent()
-//   .on('error', console.error)
-//   .on('data', data => {
-//     if (data.recognitionResult) {
-//       console.log(
-//         `Intermediate Transcript: ${data.recognitionResult.transcript}`
-//       );
-//     } else {
-//       console.log('Detected Intent:');
-//       const result = data.detectIntentResponse.queryResult;
-//       console.log('RESPONSE TYPE', data.detectIntentResponse.responseType);
-
-//       console.log(`User Query: ${result.transcript}`);
-//       for (const message of result.responseMessages) {
-//         if (message.text) {
-//           console.log(`Agent Response: ${message.text.text}`);
-//         }
-//       }
-//       if (result.match.intent) {
-//         console.log(`Matched Intent: ${result.match.intent.displayName}`);
-//       }
-//       console.log(`Current Page: ${result.currentPage.displayName}`);
-//     }
-//   });
-
-// Write the initial stream request to config for audio input.
-// const initialStreamRequest = {
-//   session: sessionPath,
-//   queryInput: {
-//     audio: {
-//       config: {
-//         audioEncoding: encoding,
-//         sampleRateHertz: sampleRateHertz,
-//         singleUtterance: true,
-//       },
-//     },
-//     languageCode: languageCode,
-//   },
-//   enablePartialResponse: true,
-// };
-// detectStream.write(initialStreamRequest);
-
-// detectIntentAudio();
-// }
