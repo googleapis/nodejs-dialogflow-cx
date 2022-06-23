@@ -28,10 +28,11 @@ describe('streaming detect intent with partial response', () => {
   const audioFileName = 'resources/book_a_room.wav';
   const encoding = 'AUDIO_ENCODING_LINEAR_16';
   const sampleRateHertz = 16000;
+  const languageCode = 'en';
 
   it('should respond to with partial response', async () => {
     const output = exec(
-      `${cmd} ${projectId} ${location} ${agentId} ${audioFileName} ${encoding} ${sampleRateHertz}`
+      `${cmd} ${projectId} ${location} ${agentId} ${audioFileName} ${encoding} ${sampleRateHertz} ${languageCode}`
     );
     assert.include(output, 'One moment while I try to help!');
   });

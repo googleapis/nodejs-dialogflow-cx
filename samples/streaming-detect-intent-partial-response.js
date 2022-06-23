@@ -20,7 +20,8 @@ async function main(
   agentId,
   audioFileName,
   encoding,
-  sampleRateHertz
+  sampleRateHertz,
+  languageCode
 ) {
   // [START dialogflow_cx_streaming_detect_intent_enable_partial_response]
   /**
@@ -32,6 +33,7 @@ async function main(
   // const audioFileName = '/path/to/audio.raw';
   // const encoding = 'AUDIO_ENCODING_LINEAR_16';
   // const sampleRateHertz = 16000;
+  // const languageCode = 'en';
 
   const {SessionsClient} = require('@google-cloud/dialogflow-cx');
   /**
@@ -65,7 +67,7 @@ async function main(
             singleUtterance: true,
           },
         },
-        languageCode: 'en-US',
+        languageCode: languageCode,
       },
       enablePartialResponse: true,
     };

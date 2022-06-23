@@ -1,4 +1,4 @@
-// Copyright 2020 Google LLC
+// Copyright 2022 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ async function main(projectId, location, agentId, query, languageCode) {
   // const query = 'Hello';
   // const languageCode = 'en'
 
-  // Imports the Google Cloud Some API library
   const {SessionsClient} = require('@google-cloud/dialogflow-cx');
   /**
    * Example for regional endpoint:
