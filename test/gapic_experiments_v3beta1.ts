@@ -25,7 +25,7 @@ import * as experimentsModule from '../src';
 
 import {PassThrough} from 'stream';
 
-import {protobuf, operationsProtos, LocationProtos} from 'google-gax';
+import {protobuf, LocationProtos} from 'google-gax';
 
 // Dynamically loaded proto JSON is needed to get the type information
 // to fill in default values for request objects
@@ -237,9 +237,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -267,9 +268,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -313,9 +315,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -343,9 +346,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.GetExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -363,9 +367,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateExperimentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -393,9 +398,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateExperimentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -439,9 +445,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateExperimentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -469,9 +476,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateExperimentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.CreateExperimentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -490,10 +498,10 @@ describe('v3beta1.ExperimentsClient', () => {
         new protos.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest()
       );
       request.experiment ??= {};
-      const defaultValue1 = getTypeDefaultValue('UpdateExperimentRequest', [
-        'experiment',
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest',
+        ['experiment', 'name']
+      );
       request.experiment.name = defaultValue1;
       const expectedHeaderRequestParams = `experiment.name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -522,10 +530,10 @@ describe('v3beta1.ExperimentsClient', () => {
         new protos.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest()
       );
       request.experiment ??= {};
-      const defaultValue1 = getTypeDefaultValue('UpdateExperimentRequest', [
-        'experiment',
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest',
+        ['experiment', 'name']
+      );
       request.experiment.name = defaultValue1;
       const expectedHeaderRequestParams = `experiment.name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -570,10 +578,10 @@ describe('v3beta1.ExperimentsClient', () => {
         new protos.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest()
       );
       request.experiment ??= {};
-      const defaultValue1 = getTypeDefaultValue('UpdateExperimentRequest', [
-        'experiment',
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest',
+        ['experiment', 'name']
+      );
       request.experiment.name = defaultValue1;
       const expectedHeaderRequestParams = `experiment.name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -602,10 +610,10 @@ describe('v3beta1.ExperimentsClient', () => {
         new protos.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest()
       );
       request.experiment ??= {};
-      const defaultValue1 = getTypeDefaultValue('UpdateExperimentRequest', [
-        'experiment',
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.UpdateExperimentRequest',
+        ['experiment', 'name']
+      );
       request.experiment.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -623,9 +631,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -653,9 +662,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -699,9 +709,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -729,9 +740,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.DeleteExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -749,9 +761,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StartExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -779,9 +792,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StartExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -825,9 +839,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StartExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -855,9 +870,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StartExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StartExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -875,9 +891,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StopExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -905,9 +922,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StopExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -951,9 +969,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StopExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -981,9 +1000,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('StopExperimentRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.StopExperimentRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -1001,9 +1021,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1039,9 +1060,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1095,9 +1117,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1125,9 +1148,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1185,9 +1209,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1234,9 +1259,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1283,9 +1309,10 @@ describe('v3beta1.ExperimentsClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListExperimentsRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.dialogflow.cx.v3beta1.ListExperimentsRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1509,311 +1536,6 @@ describe('v3beta1.ExperimentsClient', () => {
           .args[2].otherArgs.headers['x-goog-request-params'].includes(
             expectedHeaderRequestParams
           )
-      );
-    });
-  });
-  describe('getOperation', () => {
-    it('invokes getOperation without error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      client.initialize();
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.GetOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new operationsProtos.google.longrunning.Operation()
-      );
-      client.operationsClient.getOperation = stubSimpleCall(expectedResponse);
-      const response = await client.getOperation(request);
-      assert.deepStrictEqual(response, [expectedResponse]);
-      assert(
-        (client.operationsClient.getOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-    it('invokes getOperation without error using callback', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.GetOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new operationsProtos.google.longrunning.Operation()
-      );
-      client.operationsClient.getOperation = sinon
-        .stub()
-        .callsArgWith(2, null, expectedResponse);
-      const promise = new Promise((resolve, reject) => {
-        client.operationsClient.getOperation(
-          request,
-          undefined,
-          (
-            err?: Error | null,
-            result?: operationsProtos.google.longrunning.Operation | null
-          ) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          }
-        );
-      });
-      const response = await promise;
-      assert.deepStrictEqual(response, expectedResponse);
-      assert((client.operationsClient.getOperation as SinonStub).getCall(0));
-    });
-    it('invokes getOperation with error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.GetOperationRequest()
-      );
-      const expectedError = new Error('expected');
-      client.operationsClient.getOperation = stubSimpleCall(
-        undefined,
-        expectedError
-      );
-      await assert.rejects(async () => {
-        await client.getOperation(request);
-      }, expectedError);
-      assert(
-        (client.operationsClient.getOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-  });
-  describe('cancelOperation', () => {
-    it('invokes cancelOperation without error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      client.initialize();
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.CancelOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new protos.google.protobuf.Empty()
-      );
-      client.operationsClient.cancelOperation =
-        stubSimpleCall(expectedResponse);
-      const response = await client.cancelOperation(request);
-      assert.deepStrictEqual(response, [expectedResponse]);
-      assert(
-        (client.operationsClient.cancelOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-    it('invokes cancelOperation without error using callback', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.CancelOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new protos.google.protobuf.Empty()
-      );
-      client.operationsClient.cancelOperation = sinon
-        .stub()
-        .callsArgWith(2, null, expectedResponse);
-      const promise = new Promise((resolve, reject) => {
-        client.operationsClient.cancelOperation(
-          request,
-          undefined,
-          (
-            err?: Error | null,
-            result?: protos.google.protobuf.Empty | null
-          ) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          }
-        );
-      });
-      const response = await promise;
-      assert.deepStrictEqual(response, expectedResponse);
-      assert((client.operationsClient.cancelOperation as SinonStub).getCall(0));
-    });
-    it('invokes cancelOperation with error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.CancelOperationRequest()
-      );
-      const expectedError = new Error('expected');
-      client.operationsClient.cancelOperation = stubSimpleCall(
-        undefined,
-        expectedError
-      );
-      await assert.rejects(async () => {
-        await client.cancelOperation(request);
-      }, expectedError);
-      assert(
-        (client.operationsClient.cancelOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-  });
-  describe('deleteOperation', () => {
-    it('invokes deleteOperation without error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      client.initialize();
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.DeleteOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new protos.google.protobuf.Empty()
-      );
-      client.operationsClient.deleteOperation =
-        stubSimpleCall(expectedResponse);
-      const response = await client.deleteOperation(request);
-      assert.deepStrictEqual(response, [expectedResponse]);
-      assert(
-        (client.operationsClient.deleteOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-    it('invokes deleteOperation without error using callback', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.DeleteOperationRequest()
-      );
-      const expectedResponse = generateSampleMessage(
-        new protos.google.protobuf.Empty()
-      );
-      client.operationsClient.deleteOperation = sinon
-        .stub()
-        .callsArgWith(2, null, expectedResponse);
-      const promise = new Promise((resolve, reject) => {
-        client.operationsClient.deleteOperation(
-          request,
-          undefined,
-          (
-            err?: Error | null,
-            result?: protos.google.protobuf.Empty | null
-          ) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(result);
-            }
-          }
-        );
-      });
-      const response = await promise;
-      assert.deepStrictEqual(response, expectedResponse);
-      assert((client.operationsClient.deleteOperation as SinonStub).getCall(0));
-    });
-    it('invokes deleteOperation with error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.DeleteOperationRequest()
-      );
-      const expectedError = new Error('expected');
-      client.operationsClient.deleteOperation = stubSimpleCall(
-        undefined,
-        expectedError
-      );
-      await assert.rejects(async () => {
-        await client.deleteOperation(request);
-      }, expectedError);
-      assert(
-        (client.operationsClient.deleteOperation as SinonStub)
-          .getCall(0)
-          .calledWith(request)
-      );
-    });
-  });
-  describe('listOperationsAsync', () => {
-    it('uses async iteration with listOperations without error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.ListOperationsRequest()
-      );
-      const expectedResponse = [
-        generateSampleMessage(
-          new operationsProtos.google.longrunning.ListOperationsResponse()
-        ),
-        generateSampleMessage(
-          new operationsProtos.google.longrunning.ListOperationsResponse()
-        ),
-        generateSampleMessage(
-          new operationsProtos.google.longrunning.ListOperationsResponse()
-        ),
-      ];
-      client.operationsClient.descriptor.listOperations.asyncIterate =
-        stubAsyncIterationCall(expectedResponse);
-      const responses: operationsProtos.google.longrunning.ListOperationsResponse[] =
-        [];
-      const iterable = client.operationsClient.listOperationsAsync(request);
-      for await (const resource of iterable) {
-        responses.push(resource!);
-      }
-      assert.deepStrictEqual(responses, expectedResponse);
-      assert.deepStrictEqual(
-        (
-          client.operationsClient.descriptor.listOperations
-            .asyncIterate as SinonStub
-        ).getCall(0).args[1],
-        request
-      );
-    });
-    it('uses async iteration with listOperations with error', async () => {
-      const client = new experimentsModule.v3beta1.ExperimentsClient({
-        credentials: {client_email: 'bogus', private_key: 'bogus'},
-        projectId: 'bogus',
-      });
-      client.initialize();
-      const request = generateSampleMessage(
-        new operationsProtos.google.longrunning.ListOperationsRequest()
-      );
-      const expectedError = new Error('expected');
-      client.operationsClient.descriptor.listOperations.asyncIterate =
-        stubAsyncIterationCall(undefined, expectedError);
-      const iterable = client.operationsClient.listOperationsAsync(request);
-      await assert.rejects(async () => {
-        const responses: operationsProtos.google.longrunning.ListOperationsResponse[] =
-          [];
-        for await (const resource of iterable) {
-          responses.push(resource!);
-        }
-      });
-      assert.deepStrictEqual(
-        (
-          client.operationsClient.descriptor.listOperations
-            .asyncIterate as SinonStub
-        ).getCall(0).args[1],
-        request
       );
     });
   });
